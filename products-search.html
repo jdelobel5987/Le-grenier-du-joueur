@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenue sur le Grenier du Joueur</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/products-search.css">
+    <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/e5fa1154d4.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="container-header">
+            <div class="name"><p>Le<br>Grenier<br>du Joueur</p></div>
+            <div class="container-searchbar">    
+                <div class="searchBar">
+                    <!-- burger menu -->
+                    <input class="input" type="text" placeholder="Rechercher un jeu">
+                    <!-- icone de recherche -->
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container-filter">
+            <div class="filters">
+                <h2>Affiner votre recherche</h2>
+                <select name="category" id="category">
+                    <option value="" selected disabled hidden>Catégorie</option>
+                    <option value="enfant">Pour enfants</option>
+                    <option value="carte">Jeux de carte</option>
+                    <option value="dés">Jeux de dés</option>
+                    <option value="classique">Jeux classiques</option>
+                    <option value="réflexion">Jeux de réflexion</option>
+                    <option value="role">Jeux de rôle</option>
+                    <option value="stratégie">Jeux de stratégie</option>
+                    <option value="ambiance">Jeux d'ambiance</option>
+                    <option value="accessoires">Accessoires de jeu</option>
+                </select>
+                <select name="theme" id="theme">
+                    <option value="" selected disabled hidden>thème</option>
+                    <option value=""></option>
+                </select>
+                <select name="difficulty" id="difficulty">
+                    <option value="" selected disabled hidden>Difficulté</option>
+                    <option value="enfant">Enfant</option>
+                    <option value="famille">Familial</option>
+                    <option value="connaisseur">Connaisseur</option>
+                    <option value="expert">Expert</option>
+                </select>
+                <select name="players" id="players">
+                    <option value="" selected disabled hidden>Joueurs</option>
+                    <option value="solo">Solo</option>
+                    <option value="duo">Duo</option>
+                    <option value="1+">1+</option>
+                    <option value="2+">2+</option>
+                    <option value="3+">3+</option>
+                    <option value="max 4">max. 4</option>
+                    <option value="max 6">max. 6</option>
+                    <option value="max 8">max. 8</option>
+                    <option value="max 8+">max. 8 et +</option>
+                </select>
+                <select name="age" id="age">
+                    <option value="" selected disabled hidden>Âge conseillé</option>
+                    <option value="5-7">5-7 ans +</option>
+                    <option value="8-9">8-9 ans +</option>
+                    <option value="10">10 ans +</option>
+                    <option value="12">12 ans +</option>
+                    <option value="14">14 ans +</option>
+                    <option value="18">18 ans +</option>
+                </select>
+                <select name="playtime" id="playtime">
+                    <option value="" selected disabled hidden>Durée</option>
+                    <option value="15">15 minutes</option>
+                    <option value="30">30 minutes</option>
+                    <option value="45">45 minutes</option>
+                    <option value="60">1 heure</option>
+                    <option value="90">1 heure 30</option>
+                    <option value="120">2 heures et plus</option>
+                </select>
+            </div>
+            <div class="price">
+                <label for="price-range">Prix maximal :<span id="price-value"></span></label>
+                <input type="range" id="price-range" value="100" min="0" max="200" step="10">
+            </div>
+        </div>
+
+
+        <div class="icon-bar">
+            <div class="container-icon-bar">
+                <a href="index.html" class="icon" id="icon-search"><i class="fa-solid fa-house fa-2x"></i></a>
+                <a href="products-search.html" class="icon" id="icon-search"><i class="fa-solid fa-magnifying-glass fa-2x"></i></a>
+                <a href="user-account.html" class="icon" id="icon-account"><i class="fa-solid fa-user fa-2x"></i></a>
+                <a href="basket.html" class="icon" id="icon-cart"><i class="fa-solid fa-cart-shopping fa-2x"></i></a>
+                <a href="irl-store.html" class="icon" id="icon-irl-store"><i class="fa-solid fa-dungeon fa-2x"></i></a>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container-footer">
+            <p>Copyright © Julien Delobel 2024</p> 
+            <p>site fictif d'e-commerce: Le Grenier du Joueur</p>
+            <a href="./assets/pdf/Mentions_Légales_Le_Grenier_du_Joueur.pdf">Mentions légales</a>
+            <a href="./assets/pdf/Politique_de_Confidentialite_Le_Grenier_du_Joueur.pdf">Politiques de confidentialité</a>
+        </div>
+    </footer>
+    <script src="./assets/js/index_resize-carousel.js"></script>
+    <script src="./lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
