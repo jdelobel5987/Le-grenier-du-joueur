@@ -24,9 +24,9 @@
     </header>
     <main>
         <div class="container-filter">
-            <div class="filters">
-                <h2>Affiner votre recherche</h2>
-                <select name="category" id="category">
+            <h2 class="">Affiner votre recherche</h2>
+            <div class="filters row">
+                <select name="category" id="category" class="col-12 col-md-6 col-lg-3">
                     <option value="" selected disabled hidden>Catégorie</option>
                     <option value="enfant">Pour enfants</option>
                     <option value="carte">Jeux de carte</option>
@@ -38,18 +38,18 @@
                     <option value="ambiance">Jeux d'ambiance</option>
                     <option value="accessoires">Accessoires de jeu</option>
                 </select>
-                <select name="theme" id="theme">
+                <select name="theme" id="theme" class="col-12 col-md-6 col-lg-3">
                     <option value="" selected disabled hidden>thème</option>
                     <option value=""></option>
                 </select>
-                <select name="difficulty" id="difficulty">
+                <select name="difficulty" id="difficulty" class="col-12 col-md-6 col-lg-3">
                     <option value="" selected disabled hidden>Difficulté</option>
                     <option value="enfant">Enfant</option>
                     <option value="famille">Familial</option>
                     <option value="connaisseur">Connaisseur</option>
                     <option value="expert">Expert</option>
                 </select>
-                <select name="players" id="players">
+                <select name="players" id="players" class="col-12 col-md-6 col-lg-3">
                     <option value="" selected disabled hidden>Joueurs</option>
                     <option value="solo">Solo</option>
                     <option value="duo">Duo</option>
@@ -61,7 +61,7 @@
                     <option value="max 8">max. 8</option>
                     <option value="max 8+">max. 8 et +</option>
                 </select>
-                <select name="age" id="age">
+                <select name="age" id="age" class="col-6 col-md-4 col-lg-3">
                     <option value="" selected disabled hidden>Âge conseillé</option>
                     <option value="5-7">5-7 ans +</option>
                     <option value="8-9">8-9 ans +</option>
@@ -70,7 +70,7 @@
                     <option value="14">14 ans +</option>
                     <option value="18">18 ans +</option>
                 </select>
-                <select name="playtime" id="playtime">
+                <select name="playtime" id="playtime" class="col-6 col-md-4 col-lg-3">
                     <option value="" selected disabled hidden>Durée</option>
                     <option value="15">15 minutes</option>
                     <option value="30">30 minutes</option>
@@ -78,11 +78,11 @@
                     <option value="60">1 heure</option>
                     <option value="90">1 heure 30</option>
                     <option value="120">2 heures et plus</option>
-                </select>
-            </div>
-            <div class="price">
-                <label for="price-range">Prix maximal :<span id="price-value"></span></label>
-                <input type="range" id="price-range" value="100" min="0" max="200" step="10">
+                </select>    
+                <div class="price col-12">
+                    <label for="price-range">Prix maximal :<span id="price-value"></span></label>
+                    <input type="range" id="price-range" value="100" min="0" max="200" step="10">
+                </div>
             </div>
         </div>
 

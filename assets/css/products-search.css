@@ -13,12 +13,12 @@
 .filters {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: flex-start;
     gap: 20px;
 }
 
 select {
-    width: 40%;
+    width: 50%;
 }
 
 /* #playtime {
