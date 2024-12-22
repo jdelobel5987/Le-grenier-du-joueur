@@ -2,29 +2,12 @@
     margin: 20px;
     border: 2px solid black;
     border-radius: 8px;
-    align-self: center;
     padding: 24px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
-}
-
-.filters {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 20px;
 }
 
 select {
-    width: 50%;
+    width: 90%;
 }
-
-/* #playtime {
-    overflow: auto;
-    height: 25px;
-} */
 
 .price {
     width: 60%;
