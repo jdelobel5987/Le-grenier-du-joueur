@@ -25,7 +25,7 @@
     <main>
         <div class="container-filter">
             <div class="filters row gx-1 gy-3">
-                <h2 class="">Affiner votre recherche</h2>
+                <h2 class="">Affiner ma recherche</h2>
                 <div class="col-6 col-md-4 col-lg-3">
                     <select name="category" id="category">
                         <option value="" selected><label for="category">Catégorie : </label></option>
@@ -42,7 +42,7 @@
                 </div>
                 <div class="col-6 col-md-4 col-lg-3">
                     <select name="theme" id="theme">
-                        <option value="" selected><label for="category">Thème : </label></option>
+                        <option value="" selected><label for="theme">Thème : </label></option>
                         <option value="abstrait">Abstrait</option>
                         <option value="animaux-nature">Animaux/Nature</option>
                         <option value="asie">Asie</option>
@@ -51,11 +51,16 @@
                         <option value="medieval">Médiéval</option>
                         <option value="science-fiction">Science-Fiction</option>
                         <option value="sorcellerie">Sorcellerie</option>
+                        <hr>
+                        <optgroup label="Licences">    
+                            <option value="harry-potter">Harry Potter</option>
+                            <option value="star-wars">Star Wars</option>
+                        </optgroup>
                     </select>
                 </div>
                 <div class="col-6 col-md-4 col-lg-3">
                     <select name="difficulty" id="difficulty">
-                        <option value="" selected><label for="category">Difficulté : </label></option>
+                        <option value="" selected><label for="difficulty">Difficulté : </label></option>
                         <option value="enfant">Enfant</option>
                         <option value="famille">Familial</option>
                         <option value="connaisseur">Connaisseur</option>
@@ -64,7 +69,7 @@
                 </div>
                 <div class="col-6 col-md-4 col-lg-3">
                     <select name="players" id="players">
-                        <option value="" selected><label for="category">Joueurs : </label></option>
+                        <option value="" selected><label for="players">Joueurs : </label></option>
                         <option value="solo">Solo</option>
                         <option value="duo">Duo</option>
                         <option value="1+">1+</option>
@@ -78,7 +83,7 @@
                 </div>
                 <div class="col-6 col-md-4 col-lg-3">
                     <select name="age" id="age">
-                        <option value="" selected><label for="category">Âge conseillé : </label></option>
+                        <option value="" selected><label for="age">Âge conseillé : </label></option>
                         <option value="5-7">5-7 ans +</option>
                         <option value="8-9">8-9 ans +</option>
                         <option value="10">10 ans +</option>
@@ -89,7 +94,7 @@
                 </div>
                 <div class="col-6 col-md-4 col-lg-3">
                     <select name="playtime" id="playtime">
-                        <option value="" selected><label for="category">Durée : </label></option>
+                        <option value="" selected><label for="playtime">Durée : </label></option>
                         <option value="15">15 minutes</option>
                         <option value="30">30 minutes</option>
                         <option value="45">45 minutes</option>
@@ -98,10 +103,13 @@
                         <option value="120">2 heures et plus</option>
                     </select>
                 </div>
-                <!-- <div class="filler col-1"></div>     -->
-                <div class="price col-12 col-lg-6">
-                    <label for="price-range">Prix maximal :<span id="price-value"></span></label>
-                    <input type="range" id="price-range" value="100" min="0" max="200" step="10">
+                <div class="price col-12 col-md-8 col-lg-6">
+                    <label for="price-max">Prix maximal : <span id="value"></span></label>
+                    <input type="range" id="price-max" value="50" min="0" max="150" step="10">
+                </div>
+                <div class="submit-button col-12 col-md-4 col-lg-12">
+                    <label for="submit-filters"></label>
+                    <button type="submit" id="submit-filters">Rechercher</button>
                 </div>
             </div>
         </div>
@@ -125,7 +133,7 @@
             <a href="./assets/pdf/Politique_de_Confidentialite_Le_Grenier_du_Joueur.pdf">Politiques de confidentialité</a>
         </div>
     </footer>
-    <script src="./assets/js/index_resize-carousel.js"></script>
+    <script src="./assets/js/product-search.js"></script>
     <script src="./lib/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
