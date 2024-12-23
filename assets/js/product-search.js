@@ -11,15 +11,23 @@ maxPrice.addEventListener("input", function () {
   document.getElementById("value").innerHTML = `${this.value} €`;
 });
 
-const submit = document.getElementById("submit-filters");
-submit.addEventListener("click", function (event) {
-  let submitCategory = category.value;
-  let submitTheme = theme.value;
-  let submitDifficulty = difficulty.value;
-  let submitPlayers = players.value;
-  let submitAge = age.value;
-  let submitPlaytime = playtime.value;
-  let submitMaxPrice = maxPrice.value;
+const filter = document.getElementById("submit-filters");
+filter.addEventListener("click", function () {
+  //   let submitCategory = category.value;
+  //   let submitTheme = theme.value;
+  //   let submitDifficulty = difficulty.value;
+  //   let submitPlayers = players.value;
+  //   let submitAge = age.value;
+  //   let submitPlaytime = playtime.value;
+  //   let submitMaxPrice = maxPrice.value;
+
+  let select = document.querySelectorAll("select");
+  console.log(select);
+  let selected = [];
+  for (let i = 0; i < selected.length; i++) {
+    selected.push(select[i].value);
+  }
+  console.log(selected);
 });
 
 // window.location.href = `products-search.html?category=${submitCategory}&theme=${submitTheme}&difficulty=${submitDifficulty}&players=${submitPlayers}&age=${submitAge}&playtime=${submitPlaytime}`;
