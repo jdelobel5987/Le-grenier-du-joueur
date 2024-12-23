@@ -6,9 +6,9 @@ const age = document.getElementById("age");
 const playtime = document.getElementById("playtime");
 
 const maxPrice = document.getElementById("price-max");
-document.getElementById("value").innerHTML = maxPrice.value;
+document.getElementById("value").innerHTML = `${maxPrice.value} €`;
 maxPrice.addEventListener("input", function () {
-  document.getElementById("value").innerHTML = this.value;
+  document.getElementById("value").innerHTML = `${this.value} €`;
 });
 
 const submit = document.getElementById("submit-filters");
