@@ -67,3 +67,17 @@ select {
         margin-left: 35%;
     }
 }
+
+.products {
+    margin: 20px;
+    text-decoration: none;
+}
+
+.card-body {
+    text-align: center;
+}
+
+.card-footer {
+    display: flex;
+    justify-content:center;
+}
