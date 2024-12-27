@@ -73,6 +73,11 @@ select {
     text-decoration: none;
 }
 
+/* .card-image img {
+    height: 75%;
+    width: 50%;
+} */
+
 .card-body {
     text-align: center;
 }
@@ -81,3 +86,4 @@ select {
     display: flex;
     justify-content:center;
 }
+
