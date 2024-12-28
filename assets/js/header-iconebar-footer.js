@@ -13,6 +13,12 @@ main.insertAdjacentHTML(
                     <!-- icone de recherche -->
                 </div>
             </div>
+            <div class="connexion">                   
+                <button type="button">
+                    <i class="fa-solid fa-user"></i> 
+                    Connexion
+                </button>
+            </div>
         </div>
     </header>`
 );

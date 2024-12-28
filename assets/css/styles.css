@@ -42,7 +42,7 @@ header {
     border-radius: 6px;
     /* margin: 20px; */
     /* height: 100%; */
-    width: 40%;
+    width: 50%;
     max-width: 150px;
 }
 
@@ -52,9 +52,38 @@ header {
     margin: auto;
 }
 
+.connexion {
+    margin-bottom: 10px;
+    align-self: flex-end;
+    /* width: 90%; */
+    height: 20%;
+    display: flex;
+    justify-content:flex-end;
+    /* display: flex; */
+    /* color: var(--myColBrown); */
+    /* font-weight: bolder; */
+    /* background-color: var(--myColYellow); */
+    /* border-radius: 6px; */
+    /* margin: 20px; */
+    /* height: 100%; */
+}
+
+.connexion button {
+    background-color: var(--myColYellow);
+    color: var(--myColBrown);
+    border: 2px solid black;
+    font-weight: bolder;
+    border-radius: 6px;
+    display: flex;
+    flex-wrap:nowrap;
+    gap: 10px;
+    align-items: center;
+}
+
 .container-searchbar {
     margin: 10px;
     align-self: flex-end;
+    justify-self: end;
     display: flex;
     justify-content: center;
     width: 100%;
@@ -223,5 +252,11 @@ footer a {
     header {
         /* background-size: cover; */
         background-position: center;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .connexion {
+        display: none;
     }
 }
