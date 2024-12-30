@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bienvenue sur le Grenier du Joueur</title>
     <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/basket.css">
     <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">
     <script src="https://kit.fontawesome.com/e5fa1154d4.js" crossorigin="anonymous"></script>
 </head>
@@ -12,7 +13,6 @@
     <header>
         <div class="container-header">
             <div class="name"><p>Le<br>Grenier<br>du Joueur</p></div>
-            
             <div class="container-searchbar">    
                 <div class="searchBar">
                     <!-- burger menu -->
@@ -29,7 +29,40 @@
         </div>
     </header>
     <main>
-
+        <div class="container">
+            <h2>Mon panier</h2>
+            <div class="basket-container">
+                <div class="basket-unit"  id="product-1">
+                    <input type="checkbox" checked><img src="assets/img/produits/bunny-kingdom.webp" alt="boîte du jeu Bunny Kingdom">
+                    <label for="product-1">Bunny-Kingdom</label>
+                    <p><span>39</span> €</p>
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+                <div class="basket-unit"  id="product-2">
+                    <input type="checkbox" checked><img src="assets/img/produits/calico.webp" alt="boîte du jeu Calico">
+                    <label for="product-2">Calico</label>
+                    <p><span>25</span> €</p>
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+                <div class="basket-unit"  id="product-3">
+                    <input type="checkbox" checked><img src="assets/img/produits/cascadia.webp" alt="boîte du jeu Cascadia">
+                    <label for="product-3">Cascadia</label>
+                    <p><span>30</span> €</p>
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+                <div class="basket-unit"  id="product-4">
+                    <input type="checkbox" checked><img src="assets/img/produits/TURBULENCES_couverture_2020-600x600.jpg" alt="boîte du jeu Turbulences">
+                    <label for="product-4">Turbulences</label>
+                    <p><span>60</span> €</p>
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+            </div>
+            <div class="basket-validation">
+                <label for="total">Total H.T. </label>
+                <p id="total"></p>
+                <button class="btn btn-primary" type="submit">Valider mon panier</button>
+            </div>
+        </div>
 
         <div class="icon-bar">
             <div class="container-icon-bar">
@@ -49,7 +82,7 @@
             <a href="./assets/pdf/Politique_de_Confidentialite_Le_Grenier_du_Joueur.pdf">Politiques de confidentialité</a>
         </div>
     </footer>
-    <script src="./assets/js/index_resize-carousel.js"></script>
+    <script src="./assets/js/basket.js"></script>
     <script src="./lib/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
