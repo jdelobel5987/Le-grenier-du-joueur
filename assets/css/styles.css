@@ -108,10 +108,17 @@ header {
 
 .input {
     font-size: 12px;
-    margin: auto;
-    width: 80%;
+    margin: auto 10px;
+    width: 90%;
     border-radius: 4px;
     border: none;
+}
+
+.searchBar>button {
+    background-color: transparent;
+    border: none;
+    font-weight: bolder;
+    margin: auto 10px;
 }
 
 /*/////////////////////
