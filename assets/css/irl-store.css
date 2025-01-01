@@ -21,7 +21,7 @@ h2>img {
 
 }
 
-.user-account{
+.irl-store{
     margin: 20px;
     display: flex;
     flex-direction: column;
@@ -31,4 +31,3 @@ h2>img {
 .card-body {
     text-align: center;
 }
-
