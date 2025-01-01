@@ -37,6 +37,9 @@ select {
         width: 80%;
         margin-left: 10%;
     }
+    .icon-bar {
+        margin-left: -10%;
+    }
     #submit-filters {
         margin-top: 12px;
     }

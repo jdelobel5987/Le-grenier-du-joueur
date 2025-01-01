@@ -249,12 +249,15 @@ footer a {
     .input {
         font-size: 18px;
     }
+    /* .icon-bar {
+        display: none;
+    } */
 }
 
 @media screen and (min-width: 768px) {
-    .icon-bar {
+    /* .icon-bar {
         display: none;
-    }
+    } */
     footer {
         height: 150px;
     }
