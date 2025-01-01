@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////////////////
-///// set carousel image width class (w-100 w-75 w-75) according to screen size /////
+///// set carousel image width class (w-75 w-50 w-25) according to screen size /////
 /////////////////////////////////////////////////////////////////////////////////////
 
 let thresholdMobile = 500; // 320; 375; 425; 768; 1024; 1440;
@@ -11,24 +11,24 @@ const carImg = document.querySelectorAll(".carousel-inner img");
 // set img width based on current screen size (will do on page load)
 let screenWidth = window.innerWidth;
 
-for (let i = 0; i < carImg.length; i++) {
+carImg.forEach((img) => {
   if (screenWidth <= thresholdMobile) {
-    carImg[i].classList.add("w-75");
+    img.classList.add("w-75");
   } else if (screenWidth <= thresholdDesktop) {
-    carImg[i].classList.add("w-50");
+    img.classList.add("w-50");
   } else {
-    carImg[i].classList.add("w-25");
+    img.classList.add("w-25");
   }
+});
 
-  value =
-    screenWidth <= thresholdMobile
-      ? "carousel img width set to w-75"
-      : screenWidth <= thresholdDesktop
-      ? "carousel img width set to w-50"
-      : "carousel img width set to w-25";
-  console.log(`screen width: ${screenWidth} px
+value =
+  screenWidth <= thresholdMobile
+    ? "carousel img width set to w-75"
+    : screenWidth <= thresholdDesktop
+    ? "carousel img width set to w-50"
+    : "carousel img width set to w-25";
+console.log(`screen width: ${screenWidth} px
     ${value}`);
-}
 
 // create a function to create an array of values between initial and resized screenWidth values
 function createRange(x, y) {
@@ -50,31 +50,32 @@ function handleResize() {
   let deltaWidth = createRange(screenWidth, newScreenWidth);
 
   // algorith for carousel images width class change
+
   if (deltaWidth.includes(thresholdMobile || thresholdDesktop)) {
-    for (let i = 0; i < carImg.length; i++) {
+    carImg.forEach((img) => {
       if (screenWidth <= thresholdMobile) {
-        carImg[i].classList.remove("w-75");
+        img.classList.remove("w-75");
         if (newScreenWidth <= thresholdDesktop) {
-          carImg[i].classList.add("w-50");
+          img.classList.add("w-50");
         } else {
-          carImg[i].classList.add("w-25");
+          img.classList.add("w-25");
         }
       } else if (screenWidth <= thresholdDesktop) {
-        carImg[i].classList.remove("w-50");
+        img.classList.remove("w-50");
         if (newScreenWidth <= thresholdMobile) {
-          carImg[i].classList.add("w-75");
+          img.classList.add("w-75");
         } else {
-          carImg[i].classList.add("w-25");
+          img.classList.add("w-25");
         }
       } else {
-        carImg[i].classList.remove("w-25");
+        img.classList.remove("w-25");
         if (newScreenWidth <= thresholdMobile) {
-          carImg[i].classList.add("w-75");
+          img.classList.add("w-75");
         } else {
-          carImg[i].classList.add("w-50");
+          img.classList.add("w-50");
         }
       }
-    }
+    });
   }
 
   // update the screen width variable for next resize event check
@@ -102,3 +103,41 @@ window.addEventListener("resize", handleResize);
 //     carImg[i].classList.remove("w-100");
 //     console.log("carousel img width set to w-75");
 //   }
+
+// // verion with 2 screen width thresholds ans using for loops
+// for (let i = 0; i < carImg.length; i++) {
+//   if (screenWidth <= thresholdMobile) {
+//     carImg[i].classList.add("w-75");
+//   } else if (screenWidth <= thresholdDesktop) {
+//     carImg[i].classList.add("w-50");
+//   } else {
+//     carImg[i].classList.add("w-25");
+//   }
+// }
+
+// if (deltaWidth.includes(thresholdMobile || thresholdDesktop)) {
+//   for (let i = 0; i < carImg.length; i++) {
+//     if (screenWidth <= thresholdMobile) {
+//       carImg[i].classList.remove("w-75");
+//       if (newScreenWidth <= thresholdDesktop) {
+//         carImg[i].classList.add("w-50");
+//       } else {
+//         carImg[i].classList.add("w-25");
+//       }
+//     } else if (screenWidth <= thresholdDesktop) {
+//       carImg[i].classList.remove("w-50");
+//       if (newScreenWidth <= thresholdMobile) {
+//         carImg[i].classList.add("w-75");
+//       } else {
+//         carImg[i].classList.add("w-25");
+//       }
+//     } else {
+//       carImg[i].classList.remove("w-25");
+//       if (newScreenWidth <= thresholdMobile) {
+//         carImg[i].classList.add("w-75");
+//       } else {
+//         carImg[i].classList.add("w-50");
+//       }
+//     }
+//   }
+// }
