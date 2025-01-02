@@ -17,6 +17,17 @@
     display: block;
 }
 
+.step>p, #step3>label {
+    text-align: center;
+    color: var(--myColBrown);
+    font-weight: bolder;
+}
+
+#step3>select {
+    display: block;
+    margin-bottom: 10px;
+}
+
 label {
     display: block;
     margin-bottom: 5px;
@@ -83,6 +94,5 @@ label {
 @media screen and (min-width: 1024px) {
     .container-register {
         width: 30%;
-        height: 100%;
     }
 }

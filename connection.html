@@ -38,7 +38,7 @@
     </header>
 
     <main>
-        <div class="container-register">
+        <form class="container-register" action="" method="">
             <h2>Créez votre compte</h2>
             <div class="step-indicator">
                 <span class="active">1</span>
@@ -46,18 +46,20 @@
                 <span>3</span>
             </div>
             <div class="step active" id="step1">
-                <label for="firstName">* Prénom : </label>
+                <p>informations personnelles obligatoires</p>
+                <label for="firstName">Prénom : </label>
                 <input id="firstName" type="text" placeholder="Jean" required>
-                <label for="lastName">* Nom : </label>
+                <label for="lastName">Nom : </label>
                 <input id="lastName" type="text" placeholder="Dupont" required>
-                <label for="email">* E-mail : </label>
+                <label for="email">E-mail : </label>
                 <input id="email" type="email" placeholder="exemple@email.com" required>
-                <label for="password">* Mot de passe : </label>
+                <label for="password">Mot de passe : </label>
                 <input id="password" type="password" placeholder="Mot de passe" required>
-                <label for="pwdConfirm">* Confirmez le mot de passe : </label>
+                <label for="pwdConfirm">Confirmez le mot de passe : </label>
                 <input id="pwdConfirm" type="password" placeholder="Mot de passe" required>
             </div>
             <div class="step" id="step2">
+                <p>informations personnelles facultatives</p>
                 <label for="address">Adresse : </label>
                 <input id="address" type="text" placeholder="7 rue des Français Libres">
                 <label for="address-complement">Compléments : </label>
@@ -70,20 +72,25 @@
                 <input id="phone" type="tel" placeholder="0123456789">
             </div>
             <div class="step" id="step3">
-                <label for="communication">Préférences de communication : </label>
+                <label for="communication">Préférences de communication</label>
                 <select name="communication" id="communication">
                     <option value="email" selected>Email</option>
                     <option value="sms">SMS</option>
                     <option value="both">Email et SMS</option>
                     <option value="none">Aucune</option>
                 </select>
+                <label for="newsletter">Je souhaite recevoir la newsletter</label>
+                <select name="newsletter" id="newsletter">
+                    <option value="yes" selected>Oui</option>
+                    <option value="no">Non</option>
+                </select>
             </div>
             <div class="buttons">
-                <button id="prevButton" disabled>Préc.</button>
-                <button id="nextButton">Suiv.</button>
+                <button type="button" id="prevButton" disabled>Préc.</button>
+                <button type="button" id="nextButton">Suiv.</button>
             </div>
             <span id="result"></span>
-        </div>
+        </form>
 
         <div class="icon-bar">
             <div class="container-icon-bar">

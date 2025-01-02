@@ -1,5 +1,6 @@
 :root {
     --myColYellow: #d4af37;
+    --myColYellowHover: rgb(212, 165, 55);
     --myColBrown: #8b5e3c;
     --myColBckgnd: #fef5ea;
     --myColGrey: #b0b0b0cc;
@@ -222,6 +223,7 @@ footer {
 }
 
 .container-footer {
+    padding-top: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -239,7 +241,7 @@ footer a {
 @media screen and (min-width: 1024px) {
     
     header {
-        height: 250px;
+        height: 200px;
     }
     .name p {
         font-size: 20px;
