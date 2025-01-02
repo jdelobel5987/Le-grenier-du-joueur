@@ -1,0 +1,88 @@
+.container-register {
+    margin: 20px auto;
+    width: 80%;
+    display: grid;
+    gap: 15px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px #0000001a;
+}
+
+.step {
+    display: none;
+}
+
+.step.active {
+    display: block;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.step>input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.buttons>button {
+    padding: 8px 30px;
+    width: 50%;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--myColYellow);
+    color: var(--myColBrown);
+    cursor: pointer;
+}
+
+.buttons>button[disabled] {
+    background-color: var(--myColGrey);
+    cursor: not-allowed;
+}
+
+.buttons>button:hover:not([disabled]) {
+    background-color: var(--myColYellowHover);
+}
+
+.step-indicator {
+    display: flex;
+    justify-content: space-between;
+}
+
+.step-indicator span {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    text-align: center;
+    background-color: var(--myColGrey);
+    color: var(--myColBrown);
+}
+
+.step-indicator span.active {
+    background-color: var(--myColYellow);
+}
+
+@media screen and (min-width: 768px) {
+    .container-register {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .container-register {
+        width: 30%;
+        height: 100%;
+    }
+}
