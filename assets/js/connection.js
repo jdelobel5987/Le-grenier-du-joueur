@@ -98,17 +98,40 @@ function checkPwd(input) {
     nextButton.disabled = true;
   } else {
     document.querySelector(".pwd-error").innerText = "";
-    nextButton.disabled = false;
+    // nextButton.disabled = false;
   }
 }
 
 pwd.addEventListener("change", (e) => checkPwd(e.target));
 
-// pwdConfirm.addEventListener("change", () => {
-//   if (pwdConfirm.value !== pwd.value) {
+pwdConfirm.addEventListener("change", () => {
+  if (pwdConfirm.value !== pwd.value) {
+    document.querySelector(".pwd-repeat-error").innerText =
+      "les mots de passe ne correspondent pas";
+    nextButton.disabled = true;
+  } else {
+    document.querySelector(".pwd-repeat-error").innerText = "";
+    // nextButton.disabled = false;
+  }
+});
 
 // email validation
 emailPattern = /^[a-zA-z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+const email = document.getElementById("email");
+
+function checkEmail(input) {
+  const isValidEmail = validateInput(input, emailPattern);
+
+  if (!isValidEmail) {
+    document.querySelector(".email-error").innerText = "email non valide";
+    nextButton.disabled = true;
+  } else {
+    document.querySelector(".email-error").innerText = "";
+    // nextButton.disabled = false;
+  }
+}
+
+email.addEventListener("change", (e) => checkEmail(e.target));
 
 // phone number validation
 phoneFRPattern = /^0([67]\d{8}|([1-5]|9)\d{8})$/;
