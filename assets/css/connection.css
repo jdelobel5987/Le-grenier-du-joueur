@@ -17,7 +17,7 @@
     display: block;
 }
 
-.step>p, #step3>label {
+.step>p {
     text-align: center;
     color: var(--myColBrown);
     font-weight: bolder;
@@ -28,18 +28,31 @@
     margin-bottom: 10px;
 }
 
-label {
+.step label {
     display: block;
     margin-bottom: 5px;
 }
 
-.step>input {
+.step input {
+    display: block;
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
     margin-bottom: 10px;
+}
+
+/* .step input:required {
+    border: 1px solid orange;
+} */
+
+.step input:required:invalid {
+    border: 1px solid red;
+}
+
+.step input:required:valid {
+    border: 1px solid green;
 }
 
 .buttons {
@@ -69,7 +82,7 @@ label {
 
 .step-indicator {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .step-indicator span {
@@ -93,6 +106,32 @@ label {
 
 @media screen and (min-width: 1024px) {
     .container-register {
-        width: 30%;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+    }
+    .step.active {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .step.active>p, .step.active>small {
+        width: 100%;
+    }
+    .step.active>.field {
+        width: 50%;
+        display: box;
+    }
+    .step.active label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    .step.active input {
+        display: block;
+        width: 80%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-bottom: 10px;
     }
 }

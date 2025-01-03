@@ -46,33 +46,48 @@
                 <span>3</span>
             </div>
             <div class="step active" id="step1">
-                <p>informations personnelles obligatoires</p>
-                <label for="firstName">Prénom : </label>
-                <input id="firstName" type="text" placeholder="Jean" required>
-                <label for="lastName">Nom : </label>
-                <input id="lastName" type="text" placeholder="Dupont" required>
-                <label for="email">E-mail : </label>
-                <input id="email" type="email" placeholder="exemple@email.com" required>
-                <label for="password">Mot de passe : </label>
-                <input id="password" type="password" placeholder="Mot de passe" required>
-                <label for="pwdConfirm">Confirmez le mot de passe : </label>
-                <input id="pwdConfirm" type="password" placeholder="Mot de passe" required>
+                <p>informations obligatoires</p>
+                <small>* Ces champs sont obligatoires</small><br><br>
+                <div class="field">
+                    <label for="firstName">Prénom * : </label>
+                    <input id="firstName" type="text" placeholder="Jean" required>
+                </div>
+                <div class="field">
+                    <label for="lastName">Nom * : </label>
+                    <input id="lastName" type="text" placeholder="Dupont" required>
+                </div>
+                <div class="field">
+                    <label for="email">E-mail * : </label>
+                    <input id="email" type="email" placeholder="exemple@email.com" required>
+                </div>
+                <p class="emailError" style="color: red"></p>
+                <div class="field">
+                    <label for="password">Mot de passe * : </label>
+                    <input id="password" type="password" placeholder="Mot de passe" minlength="8" required>
+                </div>
+                <p class="pwd-error" style="color: red"></p>
+                <div class="field">
+                    <label for="pwdConfirm">Confirmez le mot de passe * : </label>
+                    <input id="pwdConfirm" type="password" placeholder="Mot de passe" minlength="8" required>
+                </div>
+                <p class="pwd-repeat-error" style="color: red"></p>
             </div>
             <div class="step" id="step2">
-                <p>informations personnelles facultatives</p>
+                <p>informations facultatives</p>
                 <label for="address">Adresse : </label>
                 <input id="address" type="text" placeholder="7 rue des Français Libres">
                 <label for="address-complement">Compléments : </label>
                 <input id="address-complement" type="text" placeholder="Résidence, étage, appartement...">
                 <label for="zipcode">Code Postal : </label>
-                <input id="zipcode" type="number" placeholder="35300">
+                <input id="zipcode" type="text" placeholder="35300">
                 <label for="city">Ville : </label>
                 <input id="city" type="text" placeholder="Fougères">
                 <label for="phone">Téléphone : </label>
                 <input id="phone" type="tel" placeholder="0123456789">
             </div>
             <div class="step" id="step3">
-                <label for="communication">Préférences de communication</label>
+                <p>préférences</p>
+                <label for="communication">Mode de communication</label>
                 <select name="communication" id="communication">
                     <option value="email" selected>Email</option>
                     <option value="sms">SMS</option>
