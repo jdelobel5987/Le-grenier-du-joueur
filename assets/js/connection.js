@@ -61,20 +61,20 @@ const required = document.querySelectorAll(
   `#step${currentStep} input[required]`
 );
 console.log(required);
-const isFormValid = Array.from(required).every((input) => input.value !== "");
+const isReqFilled = Array.from(required).every((input) => input.value !== "");
 
-// disable the next-button if the form is invalid
+// disable the next-button if at least one required field is empty
 const nextButton = document.getElementById("nextButton");
-nextButton.disabled = !isFormValid;
+nextButton.disabled = !isReqFilled;
 
-// at each change event of a required field, re-check the form validity
+// at each change event of a required field, re-check the required fields
 // and update the next-button accordingly
 required.forEach((el) => {
   el.addEventListener("change", () => {
-    const isFormValid = Array.from(required).every(
+    const isReqFilled = Array.from(required).every(
       (input) => input.value !== ""
     );
-    nextButton.disabled = !isFormValid;
+    nextButton.disabled = !isReqFilled;
   });
 });
 
@@ -135,5 +135,22 @@ email.addEventListener("change", (e) => checkEmail(e.target));
 
 // phone number validation
 phoneFRPattern = /^0([67]\d{8}|([1-5]|9)\d{8})$/;
-mobilePhoneFRPattern = /^0[67]\d{8}$/;
-fixedPhoneFRPattern = /^0([1-5]|9)\d{8}$/;
+// mobilePhoneFRPattern = /^0[67]\d{8}$/;
+// fixedPhoneFRPattern = /^0([1-5]|9)\d{8}$/;
+
+const phone = document.getElementById("phone");
+
+function checkPhoneNumber(input) {
+  const isValidPhoneNumber = validateInput(input, phoneFRPattern);
+
+  if (!isValidPhoneNumber) {
+    document.querySelector(".phoneNumber-error").innerText =
+      "numéro de téléphone non valide, saisir un numéro national à 10 chiffres commençant par 01 à 07 ou 09";
+    nextButton.disabled = true;
+  } else {
+    document.querySelector(".phoneNumber-error").innerText = "";
+    nextButton.disabled = false;
+  }
+}
+
+phone.addEventListener("change", (e) => checkPhoneNumber(e.target));
