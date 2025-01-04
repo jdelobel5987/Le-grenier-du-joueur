@@ -50,40 +50,45 @@
                 <small>* Ces champs sont obligatoires</small><br><br>
                 <div class="field">
                     <label for="firstName">Prénom * : </label>
-                    <input id="firstName" type="text" placeholder="Frédéric" required>
+                    <input id="firstName" name="firstname" type="text" placeholder="Frédéric" required>
                 </div>
                 <div class="field">
                     <label for="lastName">Nom * : </label>
-                    <input id="lastName" type="text" placeholder="Molas" required>
+                    <input id="lastName" name="lastName" type="text" placeholder="Molas" required>
                 </div>
                 <div class="field">
                     <label for="email">E-mail * : </label>
-                    <input id="email" type="email" placeholder="exemple@email.com" required>
+                    <input id="email" name="email" type="email" placeholder="exemple@email.com" autocomplete="on"
+                        required>
                 </div>
                 <p class="email-error" style="color: red"></p>
                 <div class="field">
                     <label for="password">Mot de passe * : </label>
-                    <input id="password" type="password" placeholder="Mot de passe" minlength="8" required>
+                    <input id="password" name="password" type="password" placeholder="Mot de passe" autocomplete="on"
+                        required>
                 </div>
                 <p class="pwd-error" style="color: red"></p>
                 <div class="field">
                     <label for="pwdConfirm">Confirmez le mot de passe * : </label>
-                    <input id="pwdConfirm" type="password" placeholder="Mot de passe" minlength="8" required>
+                    <input id="pwdConfirm" name="pwdConfirm" type="password" placeholder="Mot de passe"
+                        autocomplete="on" required>
                 </div>
                 <p class="pwd-repeat-error" style="color: red"></p>
             </div>
             <div class="step" id="step2">
                 <p>informations facultatives</p>
                 <label for="address">Adresse : </label>
-                <input id="address" type="text" placeholder="7 rue des Français Libres">
+                <input id="address" name="address" type="text" placeholder="7 rue des Français Libres"
+                    autocomplete="on">
                 <label for="address-complement">Compléments : </label>
-                <input id="address-complement" type="text" placeholder="Résidence, étage, appartement...">
+                <input id="address-complement" name="address-complement" type="text"
+                    placeholder="Résidence, étage, appartement...">
                 <label for="zipcode">Code Postal : </label>
-                <input id="zipcode" type="text" placeholder="35300">
+                <input id="zipcode" name="zipcode" type="text" placeholder="35300">
                 <label for="city">Ville : </label>
-                <input id="city" type="text" placeholder="Fougères">
+                <input id="city" name="city" type="text" placeholder="Fougères">
                 <label for="phone">Téléphone : </label>
-                <input id="phone" type="tel" placeholder="0123456789">
+                <input id="phone" name="phone" type="tel" placeholder="0123456789" autocomplete="on">
                 <p class="phoneNumber-error" style="color: red"></p>
             </div>
             <div class="step" id="step3">

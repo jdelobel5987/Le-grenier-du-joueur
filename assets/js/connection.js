@@ -24,16 +24,54 @@ function showStep(step) {
   nextBtn.innerText = step === 3 ? "Valider" : "Suivant"; // modify the nextBtn during last (3rd) step
 }
 
+// function to collect form data
+function collectFormData() {
+  let fields = document.querySelectorAll(".step input, .step select");
+  let dataKeys = [];
+  let dataValues = [];
+  fields.forEach((field) => {
+    dataKeys.push(field.name);
+    dataValues.push(field.value);
+  });
+
+  let userData = dataKeys.map((key, index) => [key, dataValues[index]]);
+  // userData = JSON.stringify(userData);
+  console.log(userData);
+
+  // let userDataJSON1 = {};
+  // let userDataJSON2 = {};
+  // userData.forEach((pair) => {
+  //   userDataJSON1[pair[0]] = pair[1];
+  // });
+  // userData.forEach((data) => {
+  //   userDataJSON2.push(data);
+  // });
+  // console.log(userDataJSON1);
+  // console.log(userDataJSON2);
+
+  // let fields = document.querySelectorAll(".step input, .step select");
+  // let dataValues = [];
+  // fields.forEach((field) => {
+  //   dataValues.push(field.value);
+  // });
+
+  // let selects = document.querySelectorAll(".step select");
+  // let selectData = [];
+  // selects.forEach((select) => {
+  //   selectData.push(select.value);
+  // });
+
+  // let data = Array(...inputData, ...selectData);
+  // console.log(data);
+}
+
 // function to call the next step
 function nextStep() {
   if (currentStep < 3) {
     currentStep++;
     showStep(currentStep);
   } else {
-    let inputData = document.querySelectorAll(".step>input");
-    let selectData = document.querySelectorAll(".step>select");
-    console.log(inputData);
-    console.log(selectData);
+    collectFormData();
     const result = document.getElementById("result");
     result.innerText = "Informations soumises avec succès!";
   }
@@ -60,7 +98,6 @@ document.getElementById("prevButton").addEventListener("click", prevStep);
 const required = document.querySelectorAll(
   `#step${currentStep} input[required]`
 );
-console.log(required);
 const isReqFilled = Array.from(required).every((input) => input.value !== "");
 
 // disable the next-button if at least one required field is empty
