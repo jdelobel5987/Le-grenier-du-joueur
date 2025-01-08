@@ -47,7 +47,7 @@
             </div>
             <div class="step active" id="step1">
                 <p>informations obligatoires</p>
-                <small>* Ces champs sont obligatoires</small><br><br>
+                <small>* Ces champs sont requis</small><br><br>
                 <div class="field">
                     <label for="firstName">Prénom * : </label>
                     <input id="firstName" name="firstname" type="text" placeholder="Frédéric" required>
@@ -56,61 +56,79 @@
                     <label for="lastName">Nom * : </label>
                     <input id="lastName" name="lastName" type="text" placeholder="Molas" required>
                 </div>
+                <p class="filler"></p>
                 <div class="field">
                     <label for="email">E-mail * : </label>
                     <input id="email" name="email" type="email" placeholder="exemple@email.com" autocomplete="on"
                         required>
                 </div>
-                <p class="email-error" style="color: red"></p>
+                <p class="filler"></p>
                 <div class="field">
                     <label for="password">Mot de passe * : </label>
+                    <i class="fa fa-eye" id="pwd-eye"></i>
                     <input id="password" name="password" type="password" placeholder="Mot de passe" autocomplete="on"
                         required>
                 </div>
-                <p class="pwd-error" style="color: red"></p>
                 <div class="field">
                     <label for="pwdConfirm">Confirmez le mot de passe * : </label>
+                    <i class="fa fa-eye" id="pwdConfirm-eye"></i>
                     <input id="pwdConfirm" name="pwdConfirm" type="password" placeholder="Mot de passe"
                         autocomplete="on" required>
                 </div>
-                <p class="pwd-repeat-error" style="color: red"></p>
+                <i class="fa fa-question-circle"></i>
+                <small class="pwdRules hidden"
+                    title="Règles de sécurité: minimum 8 caractères dont au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial parmi: @, $, !, %, *, ?, &">Règles
+                    de sécurité</small>
             </div>
             <div class="step" id="step2">
                 <p>informations facultatives</p>
-                <label for="address">Adresse : </label>
-                <input id="address" name="address" type="text" placeholder="7 rue des Français Libres"
-                    autocomplete="on">
-                <label for="address-complement">Compléments : </label>
-                <input id="address-complement" name="address-complement" type="text"
-                    placeholder="Résidence, étage, appartement...">
-                <label for="zipcode">Code Postal : </label>
-                <input id="zipcode" name="zipcode" type="text" placeholder="35300">
-                <label for="city">Ville : </label>
-                <input id="city" name="city" type="text" placeholder="Fougères">
-                <label for="phone">Téléphone : </label>
-                <input id="phone" name="phone" type="tel" placeholder="0123456789" autocomplete="on">
-                <p class="phoneNumber-error" style="color: red"></p>
+                <div class="field">
+                    <label for="address">Adresse : </label>
+                    <input id="address" name="address" type="text" placeholder="7 rue des Français Libres"
+                        autocomplete="on">
+                </div>
+                <div class="field">
+                    <label for="address-complement">Compléments : </label>
+                    <input id="address-complement" name="address-complement" type="text"
+                        placeholder="Résidence, étage, appartement...">
+                </div>
+                <div class="field">
+                    <label for="zipcode">Code Postal : </label>
+                    <input id="zipcode" name="zipcode" type="text" placeholder="35300">
+                </div>
+                <div class="field">
+                    <label for="city">Ville : </label>
+                    <input id="city" name="city" type="text" placeholder="Fougères">
+                </div>
+                <div class="field">
+                    <label for="phone">Téléphone : </label>
+                    <input id="phone" name="phone" type="tel" placeholder="0123456789" autocomplete="on">
+                </div>
             </div>
             <div class="step" id="step3">
                 <p>préférences</p>
-                <label for="communication">Mode de communication</label>
-                <select name="communication" id="communication">
-                    <option value="email" selected>Email</option>
-                    <option value="sms">SMS</option>
-                    <option value="both">Email et SMS</option>
-                    <option value="none">Aucune</option>
-                </select>
-                <label for="newsletter">Je souhaite recevoir la newsletter</label>
-                <select name="newsletter" id="newsletter">
-                    <option value="yes" selected>Oui</option>
-                    <option value="no">Non</option>
-                </select>
+                <div class="field">
+                    <label for="communication">Mode de communication</label>
+                    <select name="communication" id="communication">
+                        <option value="email" selected>Email</option>
+                        <option value="sms">SMS</option>
+                        <option value="both">Email et SMS</option>
+                        <option value="none">Aucune</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="newsletter">Je souhaite recevoir la newsletter</label>
+                    <select name="newsletter" id="newsletter">
+                        <option value="yes" selected>Oui</option>
+                        <option value="no">Non</option>
+                    </select>
+                </div>
             </div>
             <div class="buttons">
                 <button type="button" id="prevButton" disabled>Préc.</button>
                 <button type="button" id="nextButton">Suiv.</button>
             </div>
-            <span id="result" style="color: green"></span>
+            <span id="result" style="color: green"><i fa-solid fa-circle-check></i></span>
         </form>
 
         <div class="icon-bar">
@@ -134,7 +152,7 @@
         </div>
     </footer>
     <script src="./assets/js/main.js"></script>
-    <script src="./assets/js/connection2.js"></script>
+    <script src="./assets/js/connection4.js"></script>
     <script src="./lib/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 

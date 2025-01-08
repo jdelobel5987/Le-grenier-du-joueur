@@ -23,14 +23,20 @@
     font-weight: bolder;
 }
 
-#step3>select {
+#step3>.field {
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .step label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.field>i {
+    position: absolute;
+    padding: 14px;
+    /* min-width: 40px; */
 }
 
 .step input {
@@ -41,19 +47,57 @@
     border-radius: 4px;
     box-sizing: border-box;
     margin-bottom: 10px;
+    /* text-align: center; */
 }
 
-/* .step input:required {
-    border: 1px solid orange;
-} */
+.step #password, .step #pwdConfirm {
+    text-align: center
+}
 
-.step input:required:invalid {
+.pwdRules {
+    text-decoration: dashed underline;
+    cursor: help;
+}
+
+.pwdRules:hover {
+    text-decoration: none;
+}
+
+/* .step input:required:invalid {
     border: 1px solid red;
 }
 
 .step input:required:valid {
     border: 1px solid green;
+} */
+
+/* .valid:not(:required) {
+    border: 1px solid blue;
+} */
+
+.valid {
+    border: 1px solid green;
 }
+
+/* .invalid:not(:required) {
+    border: 1px dashed red;
+} */
+
+.invalid {
+    border: 1px solid red;
+}
+
+.invalid +.error {
+    color:red;
+}
+
+.valid +.error {
+    color: green;
+}
+
+/* .valid +.error>i {
+    position: absolute;
+} */
 
 .buttons {
     display: flex;
@@ -82,7 +126,7 @@
 
 .step-indicator {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 
 .step-indicator span {
@@ -117,10 +161,17 @@
     .step.active>p, .step.active>small {
         width: 100%;
     }
+    /* :not(.field:nth-of-type(3)) */
     .step.active>.field {
         width: 50%;
         display: box;
+        padding-left: 20px;
+        /* margin: auto; */
     }
+    .step.active>.field:nth-of-type(3) {
+        width: 100%;
+    }
+
     .step.active label {
         display: block;
         margin-bottom: 5px;
