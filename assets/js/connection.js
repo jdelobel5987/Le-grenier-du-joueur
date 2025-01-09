@@ -1,182 +1,249 @@
+////////////////////////////////////////////////////////////
+/////////////////////// FORM DISPLAY ///////////////////////
+////////////////////////////////////////////////////////////
+
 let currentStep = 1;
+let errorMessage = "";
+validateDisplayedStep();
 
 // function to display form content step by step
 function showStep(step) {
-  // remove "active" class from the current active step of the form
-  const steps = document.querySelectorAll(".step");
-  steps.forEach((el) => el.classList.remove("active"));
 
-  // add "active" class to the selected step (called in the function)
-  const newStep = document.getElementById(`step${step}`);
-  newStep.classList.add("active");
+    console.log(`current step: ${step}`);
 
-  // display the corresponding step-indicator
-  const indicator = document.querySelectorAll(".step-indicator span");
-  indicator.forEach((el, index) => {
-    el.classList.toggle("active", index + 1 === step);
-  });
+    // remove "active" class from the current active step of the form
+    const steps = document.querySelectorAll(".step");
+    steps.forEach((el) => el.classList.remove("active"));
 
-  // modify the prevBtn and nextBtn according to the step
-  const prevBtn = document.getElementById("prevButton");
-  const nextBtn = document.getElementById("nextButton");
+    // add "active" class to the selected step (called in the function)
+    const newStep = document.getElementById(`step${step}`);
+    newStep.classList.add("active");
 
-  prevBtn.disabled = step === 1; // disable the prevBtn during 1st step
-  nextBtn.innerText = step === 3 ? "Valider" : "Suivant"; // modify the nextBtn during last (3rd) step
+    // display the corresponding step-indicator
+    const indicator = document.querySelectorAll(".step-indicator span");
+    indicator.forEach((el, index) => {
+        el.classList.toggle("active", index + 1 === step);
+    });
+
+    // modify the prevBtn and nextBtn according to the step
+    const prevBtn = document.getElementById("prevButton");
+    const nextBtn = document.getElementById("nextButton");
+
+    prevBtn.disabled = step === 1; // disable the prevBtn during 1st step
+    nextBtn.innerText = step === 3 ? "Valider" : "Suivant"; // modify the nextBtn during last (3rd) step
+
+    // check fields validity within the current display step
+    validateDisplayedStep();
 }
 
 // function to collect form data
 function collectFormData() {
-  let fields = document.querySelectorAll(".step input, .step select");
-  let formData = {};
-  fields.forEach((field) => {
-    formData[field.name] = field.value;
-  });
+    let fields = document.querySelectorAll(".step input, .step select");
+    let formData = {};
+    fields.forEach((field) => {
+        formData[field.name] = field.value;
+    });
 
-  let userDataJson = JSON.stringify(formData);
-  console.log(userDataJson);
+    let userDataJson = JSON.stringify(formData);
+    console.log(userDataJson);
 }
 
 // function to call the next step
 function nextStep() {
-  if (currentStep < 3) {
-    currentStep++;
-    showStep(currentStep);
-  } else {
-    collectFormData();
-    const result = document.getElementById("result");
-    result.innerText = "Informations soumises avec succès!";
-  }
+    if (currentStep < 3) {
+        currentStep++;
+        showStep(currentStep);
+    } else {
+        collectFormData();
+        const result = document.getElementById("result");
+        result.innerText = "Informations soumises avec succès! Redirection vers la page compte utilisateur...";
+        function toAccount() {
+            window.location.href = "user-account.html";
+        }
+        setTimeout(toAccount, 3000);
+
+    }
 }
 
 //function to call the previous step
 function prevStep() {
-  if (currentStep === 3) {
-    const result = document.getElementById("result");
-    result.innerText = "";
-  }
-  if (currentStep > 1) {
-    currentStep--;
-    showStep(currentStep);
-  }
+    if (currentStep === 3) {
+        const result = document.getElementById("result");
+        result.innerText = "";
+    }
+    if (currentStep > 1) {
+        currentStep--;
+        showStep(currentStep);
+    }
 }
 
 // call the nextStep or prevStep
 document.getElementById("nextButton").addEventListener("click", nextStep);
 document.getElementById("prevButton").addEventListener("click", prevStep);
 
-//// data validation ////
 
-const fields = document.querySelectorAll(".step input, .step select");
+////////////////////////////////////////////////////////////
+///////////////////// FORM VALIDATION //////////////////////
+////////////////////////////////////////////////////////////
 
-fields.forEach((field) => {
+// 2 base functions returning boolean (true if empty/required, respectively, false otherwise)
 
-  field.addEventListener("change", () => {
-    if (isEmpty(field) && !isRequired(field)) {
+function isEmpty(input) {
+    return input.value === "";
+}
+
+function isRequired(input) {
+    return input.hasAttribute("required");
+}
+
+// a function to validate the input against regular expressions, calling validateInput()
+// returns boolean (true if the input respects the specified regular expression)
+
+function isValidInput(input) {
+    switch (input.type) {
+        case "email":
+            return validateInput(input, emailPattern);
+        case "password":
+            if (input.id === "pwdConfirm") {
+                return input.value === document.getElementById("password").value;
+            } else {
+                return validateInput(input, passwordPattern);
+            }
+        case "tel":
+            return validateInput(input, phonePattern);
+        default:
+            if (input.id === "zipcode") {
+                return validateInput(input, zipcodePattern);
+            } else {
+                return validateInput(input, standardPattern);
+            }
+    }
+}
+
+function validateInput(input, pattern) {
+    return pattern.test(input.value);
+}
+
+const emailPattern = /^[a-zA-z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+const phonePattern = /^0([67]\d{8}|([1-5]|9)\d{8})$/;
+const zipcodePattern = /^[0-9]{5}$/;
+const standardPattern = /^[A-Za-zÀ-ÖØ-öø-ÿ0-9-, ]+$/;
+
+// a function assessing the validity of the field based on isEmpty(), isRequired() and isValidInput()
+// returns boolean, and specifies an errorMessage if the field is not valid
 
 
+// let errorMessage = "";
+function isValidField(input) {
+    // const isEmpty = isEmpty(input);
+    // const isRequired = isRequired(input);
+    // const isValidInput = isValidInput(input);
 
+    if (isEmpty(input) && isRequired(input)) {
+        errorMessage = "Ce champs est requis.";
+        return false;
+    } else if (!isEmpty(input) && !isValidInput(input)) {
+        errorMessage = "Format invalide.";
+        return false;
+    } else if ((isEmpty(input) && !isRequired(input)) | (!isEmpty(input) && isValidInput(input))) {
+        errorMessage = "";
+        return true;
+    }
+}
 
+// a function checking if isValidField() is false for at least one field then disables the nextButton
 
+function checkFormValidity(array) {
+    const allFieldsValid = array.every((value) => value === true);
+    if (allFieldsValid) {
+        document.getElementById("nextButton").disabled = false;
+    } else {
+        document.getElementById("nextButton").disabled = true;
+    }
+}
 
+// evaluate the validity of each field in the currently displayed form step
 
+function validateDisplayedStep() {
+    let fields = document.querySelectorAll(`#step${currentStep} input, #step${currentStep} select`);
+    console.log(fields);
+    let fieldValidity = Array.from(fields).map(isValidField);
+    console.log(fieldValidity);
+    checkFormValidity(fieldValidity);
 
-      /// 1- required fields are filled ///
-
-      //look for any required filed in the current displayed step
-      // and define a boolean checking that all required fields are filled
-      const required = document.querySelectorAll(
-        `#step${currentStep} input[required]`
-      );
-      const isReqFilled = Array.from(required).every((input) => input.value !== "");
-
-      // disable the next-button if at least one required field is empty
-      const nextButton = document.getElementById("nextButton");
-      nextButton.disabled = !isReqFilled;
-
-      // at each change event of a required field, re-check the required fields
-      // and update the next-button accordingly
-      required.forEach((el) => {
-        el.addEventListener("change", () => {
-          const isReqFilled = Array.from(required).every(
-            (input) => input.value !== ""
-          );
-          nextButton.disabled = !isReqFilled;
+    fields.forEach((field) => {
+        field.addEventListener("keyup", () => {
+            errorElement = field.nextElementSibling;
+            if (isValidField(field)) {
+                field.classList.remove("invalid");
+                field.classList.add("valid");
+                if (errorElement) {
+                    document.querySelector(`#error-${field.name}>span`).innerText = "";
+                    document.querySelector(`#error-${field.name}>i`).classList.replace("fa-exclamation-triangle", "fa-check");
+                }
+            } else {
+                field.classList.remove("valid");
+                field.classList.add("invalid");
+                if (!errorElement) {
+                    field.parentElement.insertAdjacentHTML(
+                        "beforeend",
+                        `<p class="error" id="error-${field.name}" ><i class="fa fa-exclamation-triangle"></i> <span>${errorMessage}</span></p>`);
+                } else {
+                    document.querySelector(`#error-${field.name}>span`).innerText = errorMessage;
+                }
+            }
+            fieldValidity = Array.from(fields).map(isValidField);
+            checkFormValidity(fieldValidity);
+            // console.log(fieldValidity);
         });
-      });
+    });
+}
 
-      /// 2- specific field inputs are valid ///
+// function do display the password
 
-      // function to validate an input
-      function validateInput(input, pattern) {
-        return pattern.test(input.value);
-      }
+const passwordInput = document.getElementById("password");
+const pwdConfirmInput = document.getElementById("pwdConfirm");
 
-      // password validation
-      passwordPattern =
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-      const pwd = document.getElementById("password");
-      const pwdConfirm = document.getElementById("pwdConfirm");
+function showPassword(input) {
+    if (input.type === "password") {
+        input.type = "text";
+    } else if (input.type === "text") {
+        input.type = "password";
+    }
+}
 
-      function checkPwd(input) {
-        if (!validateInput(input, passwordPattern)) {
-          document.querySelector(".pwd-error").innerText =
-            "mot de passe non valide (1 minuscule, 1 majuscule, 1 chiffre, 1 caractère spécial)";
-          nextButton.disabled = true;
-        } else {
-          document.querySelector(".pwd-error").innerText = "";
-          // nextButton.disabled = false;
-        }
-      }
+const viewPassword = document.getElementById("pwd-eye");
+const viewConfirmPassword = document.getElementById("pwdConfirm-eye");
 
-      pwd.addEventListener("change", (e) => checkPwd(e.target));
+viewPassword.addEventListener("click", () => {
+    showPassword(passwordInput);
+});
 
-      pwdConfirm.addEventListener("change", () => {
-        if (pwdConfirm.value !== pwd.value) {
-          document.querySelector(".pwd-repeat-error").innerText =
-            "les mots de passe ne correspondent pas";
-          nextButton.disabled = true;
-        } else {
-          document.querySelector(".pwd-repeat-error").innerText = "";
-          // nextButton.disabled = false;
-        }
-      });
+viewConfirmPassword.addEventListener("click", () => {
+    showPassword(pwdConfirmInput);
+});
 
-      // email validation
-      emailPattern = /^[a-zA-z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-      const email = document.getElementById("email");
+// function to display password security rules
 
-      function checkEmail(input) {
-        const isValidEmail = validateInput(input, emailPattern);
+const pwdRules = document.querySelector('.pwdRules');
 
-        if (!isValidEmail) {
-          document.querySelector(".email-error").innerText = "email non valide";
-          nextButton.disabled = true;
-        } else {
-          document.querySelector(".email-error").innerText = "";
-          // nextButton.disabled = false;
-        }
-      }
+function showRules() {
+    pwdRules.classList.remove("hidden");
+    pwdRules.classList.add("showed");
+    pwdRules.textContent = pwdRules.title;
+}
 
-      email.addEventListener("change", (e) => checkEmail(e.target));
+function hideRules() {
+    pwdRules.classList.remove("showed");
+    pwdRules.classList.add("hidden");
+    pwdRules.textContent = "Règles de sécurité";
+}
 
-      // phone number validation
-      phoneFRPattern = /^0([67]\d{8}|([1-5]|9)\d{8})$/;
-      // mobilePhoneFRPattern = /^0[67]\d{8}$/;
-      // fixedPhoneFRPattern = /^0([1-5]|9)\d{8}$/;
-
-      const phone = document.getElementById("phone");
-
-      function checkPhoneNumber(input) {
-        const isValidPhoneNumber = validateInput(input, phoneFRPattern);
-
-        if (!isValidPhoneNumber) {
-          document.querySelector(".phoneNumber-error").innerText =
-            "numéro de téléphone non valide, saisir un numéro national à 10 chiffres commençant par 01 à 07 ou 09";
-          nextButton.disabled = true;
-        } else {
-          document.querySelector(".phoneNumber-error").innerText = "";
-          // nextButton.disabled = false;
-        }
-      }
-
-      phone.addEventListener("change", (e) => checkPhoneNumber(e.target));
+pwdRules.addEventListener("click", () => {
+    if (pwdRules.classList.contains('showed')) {
+        hideRules();
+    } else if (pwdRules.classList.contains('hidden')) {
+        showRules();
+    }
+});

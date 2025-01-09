@@ -158,9 +158,13 @@
         display: flex;
         flex-wrap: wrap;
     }
-    .step.active>p, .step.active>small {
+    .step.active>p, .step.active>small:not(.pwdRules) {
         width: 100%;
     }
+    #pwdHelpIcon {
+        margin: 4px 5px auto 20px;
+    }
+
     /* :not(.field:nth-of-type(3)) */
     .step.active>.field {
         width: 50%;
@@ -168,7 +172,7 @@
         padding-left: 20px;
         /* margin: auto; */
     }
-    .step.active>.field:nth-of-type(3) {
+    #step1>.field:nth-of-type(3) {
         width: 100%;
     }
 
@@ -184,5 +188,8 @@
         border-radius: 4px;
         box-sizing: border-box;
         margin-bottom: 10px;
+    }
+    #step1>.field:nth-of-type(3)>input {
+        width: 90%;
     }
 }
