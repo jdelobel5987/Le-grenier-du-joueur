@@ -24,24 +24,48 @@ keys.forEach((key) => {
 });
 
 // display the correponding content when clicking on a given card
-const detailsCard = document.getElementById('card-details');
+// const detailsCard = document.getElementById('card-details');
 
-detailsCard.addEventListener('click', () => {
-    const content = document.querySelectorAll('.content');
-    content.forEach((element) => {
-        element.classList.remove('active');
-    });
+// detailsCard.addEventListener('click', () => {
+//     const content = document.querySelectorAll('.content');
+//     content.forEach((element) => {
+//         element.classList.remove('active');
+//     });
 
-    const userDetails = document.getElementById('user-details');
-    userDetails.classList.add('active');
+//     const userDetails = document.getElementById('user-details');
+//     userDetails.classList.add('active');
 
-    const close = document.querySelector('#user-details>i');
-    close.addEventListener('click', (event) => {
-        userDetails.classList.remove('active');
+//     const close = document.querySelector('#user-details>i');
+//     close.addEventListener('click', (event) => {
+//         userDetails.classList.remove('active');
+//     });
+// });
+
+const cards = document.querySelectorAll('.card');
+console.log(cards);
+
+cards.forEach((card) => {
+    card.addEventListener('click', () => {
+        const content = document.querySelectorAll('.content');
+        content.forEach((element) => {
+            element.classList.remove('active');
+        });
+
+        const cardContent = document.querySelector(`.${card.id}`);
+        cardContent.classList.add('active');
+
+        const close = document.querySelector(`.${card.id}>i`);
+        close.addEventListener('click', (event) => {
+            cardContent.classList.remove('active');
+        });
     });
 });
 
-
+// function showContent(content) {
+//     const content = document.querySelectorAll('.content');
+//     content.forEach((element) => {
+//         element.classList.remove('active');
+//     });
 
 
 
