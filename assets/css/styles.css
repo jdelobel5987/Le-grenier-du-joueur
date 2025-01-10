@@ -3,7 +3,9 @@
     --myColYellowHover: rgb(212, 165, 55);
     --myColBrown: #8b5e3c;
     --myColBckgnd: #fef5ea;
+    --myColBckgndOpacity: #fef5eacc;
     --myColGrey: #b0b0b0cc;
+    --myColRed: #b22222;
 }
 
 body {
