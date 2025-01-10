@@ -38,12 +38,11 @@
     </header>
     <main>
         <div class="user-account">
-            <h2><img src="assets/img/icones/user.svg" alt="icone d'utilisateur">
-                Bienvenue ${username} !</h2>
-            <div class="container-user">
+            <h2><img src="assets/img/icones/user.svg" alt="icone d'utilisateur"><span></span></h2>
+            <div class="container userCards">
                 <div class="cards row gx-3 gy-3">
                     <div class="col-6 col-md-3 col-lg-3">
-                        <a href="product-card.html" class="card h-100">
+                        <div class="card h-100" id="card-details">
                             <div class="card-image">
                                 <img src="assets/img/user-account/account-details.webp"
                                     alt="image symbolisant les informations personnelles de l'utilisateur"
@@ -51,47 +50,148 @@
                             </div>
                             <div class="card-body">
                                 <p class="card-title">Mes informations</p>
-                                <!-- <p class="card-text">Description du jeu</p> -->
                             </div>
-                        </a>
+                        </div>
                     </div>
                     <div class="col-6 col-md-3 col-lg-3">
-                        <a href="product-card.html" class="card h-100">
+                        <div class="card h-100" id="card-addresses">
                             <div class="card-image">
                                 <img src="assets/img/user-account/account-addresses.webp"
                                     alt="image symbolisant les adresses de l'utilisateur" class="card-img-top">
                             </div>
                             <div class="card-body">
                                 <p class="card-title">Mes adresses</p>
-                                <!-- <p class="card-text">Description du jeu</p> -->
                             </div>
-                        </a>
+                        </div>
                     </div>
                     <div class="col-6 col-md-3 col-lg-3">
-                        <a href="product-card.html" class="card h-100">
+                        <div class="card h-100" id="card-orders">
                             <div class="card-image">
                                 <img src="assets/img/user-account/account-orders.webp"
                                     alt="image symbolisant les commandes de l'utilisateur" class="card-img-top">
                             </div>
                             <div class="card-body">
                                 <p class="card-title">Mes commandes</p>
-                                <!-- <p class="card-text">Description du jeu</p> -->
                             </div>
-                        </a>
+                        </div>
                     </div>
                     <div class="col-6 col-md-3 col-lg-3">
-                        <a href="product-card.html" class="card h-100">
+                        <div class="card h-100" id="card-wishlist">
                             <div class="card-image">
                                 <img src="assets/img/user-account/account-wish-list.png"
                                     alt="image symbolisant la liste d'envies de l'utilisateur" class="card-img-top">
                             </div>
                             <div class="card-body">
                                 <p class="card-title">Ma liste d'envies</p>
-                                <!-- <p class="card-text">Description du jeu</p> -->
                             </div>
-                        </a>
+                        </div>
                     </div>
                 </div>
+            </div>
+            <div class="container userContent">
+                <div class="content" id="user-details">
+                    <i class="fa fa-close fa-2x"></i>
+                    <h3>Mes informations personnelles</h3>
+                    <div class="data">
+                        <div class="field" id="firstName">
+                            <p>Prénom :&nbsp;</p>
+                            <span></span>
+                        </div>
+                        <div class="field" id="lastName">
+                            <p>Nom :&nbsp;</p>
+                            <span></span>
+                        </div>
+                        <div class="field" id="email">
+                            <p>E-mail :&nbsp;</p>
+                            <span></span>
+                        </div>
+                        <div class="field" id="password">
+                            <p>Mot de passe :&nbsp;</p>
+                            <span></span>
+                        </div>
+                        <div class="field" id="communication">
+                            <p>Communication :&nbsp;</p>
+                            <span></span>
+                        </div>
+                        <div class="field" id="newsletter">
+                            <p>Newsletter :&nbsp;</p>
+                            <span></span>
+                        </div>
+                    </div>
+                    <button type="button" id="edit-details">Modifier mes informations : <i
+                            class="fa-solid fa-edit"></i></button>
+                </div>
+                <div class="content" id="user-addresses">
+                    <h3>Mes adresses</h3>
+                    <div class="data">
+                        <div class="field" id="address">
+                            <p>Prénom :&nbsp;</p>
+                            <span></span>
+                        </div>
+                        <div class="field" id="address-complement">
+                            <p>Nom :&nbsp;</p>
+                            <span></span>
+                        </div>
+                        <div class="field" id="zipcode">
+                            <p>E-mail :&nbsp;</p>
+                            <span></span>
+                        </div>
+                        <div class="field" id="city">
+                            <p>Mot de passe :&nbsp;</p>
+                            <span></span>
+                        </div>
+                        <div class="field" id="phone">
+                            <p>Mot de passe :&nbsp;</p>
+                            <span></span>
+                        </div>
+                    </div>
+                    <button type="button" id="edit-btn">Modifier mes informations : <i class="fa fa-edit"></i></button>
+                </div>
+                <div class="content" id="user-orders">
+                    <h3>Mes informations personnelles</h3>
+                    <div class="data">
+                        <div class="field" id="firstName">
+                            <p>Prénom :&nbsp;</p>
+                            <span></span>
+                        </div>
+                        <div class="field" id="lastName">
+                            <p>Nom :&nbsp;</p>
+                            <span></span>
+                        </div>
+                        <div class="field" id="email">
+                            <p>E-mail :&nbsp;</p>
+                            <span></span>
+                        </div>
+                        <div class="field" id="password">
+                            <p>Mot de passe :&nbsp;</p>
+                            <span></span>
+                        </div>
+                    </div>
+                    <button type="button" id="edit-btn">Modifier mes informations : <i class="fa fa-edit"></i></button>
+                </div>
+                <div class="content" id="user-wishlist">
+                    <h3>Mes informations personnelles</h3>
+                    <div class="data">
+                        <div class="field" id="firstName">
+                            <p>Prénom :&nbsp;</p>
+                            <span></span>
+                        </div>
+                        <div class="field" id="lastName">
+                            <p>Nom :&nbsp;</p>
+                            <span></span>
+                        </div>
+                        <div class="field" id="email">
+                            <p>E-mail :&nbsp;</p>
+                            <span></span>
+                        </div>
+                        <div class="field" id="password">
+                            <p>Mot de passe :&nbsp;</p>
+                            <span></span>
+                        </div>
+                    </div>
+                    <button type="button" id="edit-btn">Modifier mes informations : <i class="fa fa-edit"></i></button>
+                </div>
+
             </div>
         </div>
 
@@ -116,6 +216,7 @@
         </div>
     </footer>
     <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/user-account.js"></script>
     <script src="./lib/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 
