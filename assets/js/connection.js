@@ -45,6 +45,7 @@ function collectFormData() {
     });
 
     let userDataJson = JSON.stringify(formData);
+    sessionStorage.setItem('user', userDataJson);
     console.log(userDataJson);
 }
 
@@ -125,7 +126,7 @@ function validateInput(input, pattern) {
 }
 
 const emailPattern = /^[a-zA-z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$/;
 const phonePattern = /^0([67]\d{8}|([1-5]|9)\d{8})$/;
 const zipcodePattern = /^[0-9]{5}$/;
 const standardPattern = /^[A-Za-zÀ-ÖØ-öø-ÿ0-9-, ]+$/;
