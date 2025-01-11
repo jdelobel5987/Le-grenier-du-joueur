@@ -1,7 +1,7 @@
 // get user data from session storage
-const userData = JSON.parse(sessionStorage.user);
-console.log(userData);
-console.log(userData.city);
+// const userData = JSON.parse(sessionStorage.user);
+// console.log(userData);
+// console.log(userData.city);
 
 // greets the user when accessing the user-account page
 greetings = document.querySelector('.user-account>h2>span');

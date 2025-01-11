@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Gérez le contenu de votre panier, sélectionnez vos articles et validez votre commande.">
+    <meta name="description"
+        content="Gérez le contenu de votre panier, sélectionnez vos articles et validez votre commande.">
     <title>Le Grenier du Joueur - Mon panier</title>
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/basket.css">
     <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">
     <script src="https://kit.fontawesome.com/e5fa1154d4.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
     <header>
         <div class="container-header">
-            <div class="name"><p>Le<br>Grenier<br>du Joueur</p></div>
-            <div class="container-searchbar">    
+            <div class="name">
+                <p>Le<br>Grenier<br>du Joueur</p>
+            </div>
+            <div class="container-searchbar">
                 <div class="searchBar">
                     <!-- burger menu -->
                     <input class="input" type="text" placeholder="Rechercher un jeu">
@@ -22,10 +27,10 @@
                     <!-- icone de recherche -->
                 </div>
             </div>
-            <div class="connexion">                   
+            <div class="connection">
                 <button type="button">
-                    <i class="fa-solid fa-user"></i> 
-                    Connexion
+                    <i class="fa-solid fa-user"></i>
+                    <span></span>
                 </button>
             </div>
         </div>
@@ -35,25 +40,30 @@
             <h2>Mon panier</h2>
             <div class="basket-container">
                 <div class="basket-unit">
-                    <input type="checkbox" id="product-1" checked><img src="assets/img/produits/bunny-kingdom.webp" alt="boîte du jeu Bunny Kingdom">
+                    <input type="checkbox" id="product-1" checked><img src="assets/img/produits/bunny-kingdom.webp"
+                        alt="boîte du jeu Bunny Kingdom">
                     <label for="product-1">Bunny-Kingdom</label>
                     <p><span>39</span> €</p>
                     <i class="fa-solid fa-xmark"></i>
                 </div>
                 <div class="basket-unit">
-                    <input type="checkbox" id="product-2" checked><img src="assets/img/produits/calico.webp" alt="boîte du jeu Calico">
+                    <input type="checkbox" id="product-2" checked><img src="assets/img/produits/calico.webp"
+                        alt="boîte du jeu Calico">
                     <label for="product-2">Calico</label>
                     <p><span>25</span> €</p>
                     <i class="fa-solid fa-xmark"></i>
                 </div>
                 <div class="basket-unit">
-                    <input type="checkbox" id="product-3" checked><img src="assets/img/produits/cascadia.webp" alt="boîte du jeu Cascadia">
+                    <input type="checkbox" id="product-3" checked><img src="assets/img/produits/cascadia.webp"
+                        alt="boîte du jeu Cascadia">
                     <label for="product-3">Cascadia</label>
                     <p><span>30</span> €</p>
                     <i class="fa-solid fa-xmark"></i>
                 </div>
                 <div class="basket-unit">
-                    <input type="checkbox" id="product-4" checked><img src="assets/img/produits/TURBULENCES_couverture_2020-600x600.jpg" alt="boîte du jeu Turbulences">
+                    <input type="checkbox" id="product-4" checked><img
+                        src="assets/img/produits/TURBULENCES_couverture_2020-600x600.jpg"
+                        alt="boîte du jeu Turbulences">
                     <label for="product-4">Turbulences</label>
                     <p><span>60</span> €</p>
                     <i class="fa-solid fa-xmark"></i>
@@ -67,24 +77,27 @@
 
         <div class="icon-bar">
             <div class="container-icon-bar">
-                <a href="index.html" class="icon" id="icon-search"><i class="fa-solid fa-house fa-2x"></i></a>
-                <a href="products-search.html" class="icon" id="icon-search"><i class="fa-solid fa-magnifying-glass fa-2x"></i></a>
-                <a href="user-account.html" class="icon" id="icon-account"><i class="fa-solid fa-user fa-2x"></i></a>
-                <a href="basket.html" class="icon" id="icon-cart"><i class="fa-solid fa-cart-shopping fa-2x"></i></a>
-                <a href="irl-store.html" class="icon" id="icon-irl-store"><i class="fa-solid fa-dungeon fa-2x"></i></a>
+                <a href="index.html" class="icon" id="iconHome"><i class="fa-solid fa-house fa-2x"></i></a>
+                <a href="products-search.html" class="icon" id="iconSearch"><i
+                        class="fa-solid fa-magnifying-glass fa-2x"></i></a>
+                <a href="user-account.html" class="icon" id="iconAccount"><i class="fa-solid fa-user fa-2x"></i></a>
+                <a href="basket.html" class="icon" id="iconCart"><i class="fa-solid fa-cart-shopping fa-2x"></i></a>
+                <a href="irl-store.html" class="icon" id="iconStore"><i class="fa-solid fa-dungeon fa-2x"></i></a>
             </div>
         </div>
     </main>
     <footer>
         <div class="container-footer">
-            <p>Copyright © Julien Delobel 2024</p> 
+            <p>Copyright © Julien Delobel 2024</p>
             <p>site fictif d'e-commerce: Le Grenier du Joueur</p>
             <a href="./assets/pdf/Mentions_Légales_Le_Grenier_du_Joueur.pdf">Mentions légales</a>
-            <a href="./assets/pdf/Politique_de_Confidentialite_Le_Grenier_du_Joueur.pdf">Politiques de confidentialité</a>
+            <a href="./assets/pdf/Politique_de_Confidentialite_Le_Grenier_du_Joueur.pdf">Politiques de
+                confidentialité</a>
         </div>
     </footer>
     <script src="./assets/js/main.js"></script>
     <script src="./assets/js/basket.js"></script>
     <script src="./lib/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
