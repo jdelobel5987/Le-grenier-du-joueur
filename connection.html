@@ -38,6 +38,24 @@
     </header>
 
     <main>
+        <form class="container-login" action="" method="">
+            <h2>Connectez-vous</h2>
+            <div class="login">
+                <label for="emailConnect">E-mail * : </label>
+                <i class="fa fa-envelope" id="login-envelope"></i>
+                <input id="emailConnect" name="email" type="email" placeholder="exemple@email.com" required
+                    autocomplete="on">
+            </div>
+            <div class="login">
+                <label for="password">Mot de passe * : </label>
+                <i class="fa fa-lock" id="login-lock"></i>
+                <input id="passwordConnect" name="password" type="password" placeholder="Mot de passe" required>
+            </div>
+            <button type="button" id="loginBtn" disabled>Se connecter</button>
+        </form>
+        <!-- <div class="separator">
+            <span>ou</span>
+        </div> -->
         <form class="container-register" action="" method="">
             <h2>Créez votre compte</h2>
             <div class="step-indicator">
@@ -70,7 +88,7 @@
                         required>
                 </div>
                 <div class="field">
-                    <label for="pwdConfirm">Confirmez le mot de passe * : </label>
+                    <label for="pwdConfirm">Confirmation * : </label>
                     <i class="fa fa-eye" id="pwdConfirm-eye"></i>
                     <input id="pwdConfirm" name="pwdConfirm" type="password" placeholder="Mot de passe"
                         autocomplete="on" required>

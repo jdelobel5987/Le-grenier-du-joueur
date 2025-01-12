@@ -1,4 +1,4 @@
-.container-register {
+.container-register, .container-login {
     margin: 20px auto;
     width: 80%;
     display: grid;
@@ -28,18 +28,18 @@
     margin-bottom: 20px;
 }
 
-.step label {
+.step label, .login label {
     display: block;
     margin-bottom: 10px;
 }
 
-.field>i {
+.field>i, .login>i{
     position: absolute;
     padding: 14px;
     /* min-width: 40px; */
 }
 
-.step input {
+.step input, .login input {
     display: block;
     width: 100%;
     padding: 8px;
@@ -50,7 +50,7 @@
     /* text-align: center; */
 }
 
-.step #password, .step #pwdConfirm {
+.step #password, .step #pwdConfirm, #emailConnect, #passwordConnect {
     text-align: center
 }
 
@@ -105,7 +105,7 @@
     gap: 20px;
 }
 
-.buttons>button {
+.buttons>button, .container-login button {
     padding: 8px 30px;
     width: 50%;
     border: none;
@@ -115,7 +115,11 @@
     cursor: pointer;
 }
 
-.buttons>button[disabled] {
+.container-login button {
+    width: 100%;
+}
+
+.buttons>button[disabled], .container-login button[disabled] {
     background-color: var(--myColGrey);
     cursor: not-allowed;
 }
@@ -143,16 +147,29 @@
 }
 
 @media screen and (min-width: 768px) {
-    .container-register {
+    .container-register, .container-login {
         width: 50%;
     }
 }
 
 @media screen and (min-width: 1024px) {
-    .container-register {
+    body {
+        width: 100%;
+    }
+    main {
+        width: 90%;
+        margin: 20px auto;
+        display: flex;
+        align-content: center;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        justify-content: center;
+    }
+    .container-register, .container-login {
         width: 50%;
         display: flex;
         flex-direction: column;
+        height: fit-content;
     }
     .step.active {
         display: flex;
@@ -182,7 +199,7 @@
     }
     .step.active input {
         display: block;
-        width: 80%;
+        width: 90%;
         padding: 8px;
         border: 1px solid #ccc;
         border-radius: 4px;
@@ -190,6 +207,29 @@
         margin-bottom: 10px;
     }
     #step1>.field:nth-of-type(3)>input {
-        width: 90%;
+        width: 95%;
+    }
+    .container-login button {
+        width: 60%;
+        margin: auto;
     }
 }
+
+/* @media screen and (min-width: 1440px) {
+    body {
+        width: 100%;
+    }
+    main {
+        width: 90%;
+        margin: 20px auto;
+        display: flex;
+        align-content: center;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        justify-content: center;
+    }
+    .container-register, .container-login {
+        width: 40%;
+        height:fit-content;
+    }
+} */
