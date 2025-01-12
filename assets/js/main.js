@@ -21,7 +21,7 @@ if (sessionStorage.user) {
   userData = JSON.parse(sessionStorage.user);
   console.log(userData);
 } else {
-  userData = null;
+  // userData = null;
   console.log('No user data found in session storage');
 }
 
@@ -76,3 +76,22 @@ pageLinks.forEach((link) => {
     // // icon.style.transform = 'translate(-40%, 0%)';
   }
 });
+
+
+// simulate a previously registered user
+let user = {};
+user.email = "user1@example.com";
+user.password = "Password123!";
+user.firstName = "John";
+user.lastName = "Doe";
+user.city = "Paris";
+user.zipcode = "75000";
+user.phone = "0123456789";
+user.address = "1 rue de la Paix";
+user.addressComplement = "3ème étage";
+user.communication = "email";
+user.newsletter = "yes";
+console.log(user);
+
+sessionStorage.setItem('user1', JSON.stringify(user));
+console.log(sessionStorage.user1);

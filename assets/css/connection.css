@@ -213,6 +213,9 @@
         width: 60%;
         margin: auto;
     }
+    #step3>.field {
+        width: 100%;
+    }
 }
 
 /* @media screen and (min-width: 1440px) {

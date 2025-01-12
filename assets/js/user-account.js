@@ -5,6 +5,11 @@
 
 // greets the user when accessing the user-account page
 greetings = document.querySelector('.user-account>h2>span');
+if (sessionStorage.user) {
+    userData = JSON.parse(sessionStorage.user);
+} else if (sessionStorage.user1) {
+    userData = JSON.parse(sessionStorage.user1);
+}
 greetings.textContent = `Bienvenue ${userData.firstName} !`;
 
 // add user data within corresponding span elements 

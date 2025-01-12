@@ -248,3 +248,39 @@ pwdRules.addEventListener("click", () => {
         showRules();
     }
 });
+
+
+
+
+
+
+// simulate retrieved userData from server and user login
+const loginEmail = document.getElementById("emailConnect");
+const loginPassword = document.getElementById("passwordConnect");
+const loginButton = document.getElementById("loginBtn");
+
+userData = JSON.parse(sessionStorage.user1);
+
+loginButton.addEventListener("click", () => {
+    if (loginEmail.value === userData.email && loginPassword.value === userData.password) {
+        window.location.href = "user-account.html";
+    } else {
+        alert("Email ou mot de passe incorrect");
+    }
+});
+
+
+// const simulateLogin = () => {
+//     const user = {
+//         email: "xYHdM@example.com",
+//         password: "password",
+//     };
+//     localStorage.setItem("user", JSON.stringify(user));
+//     window.location.href = "user-account.html";
+// }
+
+// const loginButton = document.getElementById("loginButton");
+
+// loginButton.addEventListener("click", () => {
+//     simulateLogin();
+// });
