@@ -1,11 +1,3 @@
-header-before-connexion.html
-index-appel-js.html
-icon-bar-with-dropup-menu.html
-
-test.php
-
 .vscode/
-
-assets/data/
-assets/pdf/Mentions_Légales_Le_Grenier_Du_Joueur.docx
-assets/pdf/Politique_de_Confidentialite_Le_Grenier_Du_Joueur.docx
+not_for_versioning/
+secret/
