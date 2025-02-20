@@ -1,5 +1,6 @@
 .vscode/
-not_for_versioning/
-secret/
-useDockerCompose.txt
 database/
+src/not_for_versioning/
+src/secret/
+mvc.txt
+useDockerCompose.txt
