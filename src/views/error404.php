@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page non trouvée - Jeux de Société</title>
+    <title>Page non trouvée</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -47,11 +47,11 @@
 </head>
 <body>
     <div class="container">
-        <img src="path/to/game-icon.png" alt="Jeu de société" class="game-icon">
+        <!-- <img src="path/to/game-icon.png" alt="Jeu de société" class="game-icon"> -->
         <h1>404 - Page non trouvée</h1>
         <p>Oups ! Il semble que vous ayez perdu votre chemin dans notre ludothèque.</p>
         <p>Retournez à l'accueil pour continuer à explorer nos jeux de société passionnants.</p>
-        <a href="index.php" class="btn">Retour à l'accueil</a>
+        <a href="/" class="btn">Retour à l'accueil</a>
     </div>
 </body>
 </html>
