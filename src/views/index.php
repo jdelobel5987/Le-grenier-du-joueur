@@ -1,42 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php ob_start(); ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Bienvenue sur le Grenier du Joueur, votre nouvelle expérience achat de jeu de société en ligne. Découvrez nos nouveautés, parcourez vos catégories favorites et recherchez des produits spécifiques.">
-    <title>Bienvenue sur le Grenier du Joueur</title>
-    <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/css/styles.css">
-    <script src="https://kit.fontawesome.com/e5fa1154d4.js" crossorigin="anonymous"></script>
-</head>
-
-<body>
-    <header>
-        <div class="container-header">
-            <div class="name">
-                <p>Le<br>Grenier<br>du Joueur</p>
-            </div>
-
-            <div class="container-searchbar">
-                <div class="searchBar">
-                    <!-- burger menu -->
-                    <input class="input" type="text" placeholder="Rechercher un jeu">
-                    <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    <!-- icone de recherche -->
-                </div>
-            </div>
-            <div class="connection">
-                <button type="button">
-                    <i class="fa-solid fa-user"></i>
-                    <span></span>
-                </button>
-            </div>
-        </div>
-    </header>
-
-    <main>
         <div class="container-carousel">
             <h2>Nouveautés</h2>
             <div class="carousel slide" id="myCarousel" data-bs-touch="true" data-bs-ride="carousel"
@@ -213,29 +176,17 @@
             </div>
         </div>
 
-        <div class="icon-bar">
-            <div class="container-icon-bar">
-                <a href="index.html" class="icon" id="iconHome"><i class="fa-solid fa-house fa-2x"></i></a>
-                <a href="products-search.html" class="icon" id="iconSearch"><i
-                        class="fa-solid fa-magnifying-glass fa-2x"></i></a>
-                <a href="user-account.html" class="icon" id="iconAccount"><i class="fa-solid fa-user fa-2x"></i></a>
-                <a href="basket.html" class="icon" id="iconCart"><i class="fa-solid fa-cart-shopping fa-2x"></i></a>
-                <a href="irl-store.html" class="icon" id="iconStore"><i class="fa-solid fa-dungeon fa-2x"></i></a>
-            </div>
-        </div>
-    </main>
-    <footer>
-        <div class="container-footer">
-            <p>Copyright © Julien Delobel 2024</p>
-            <p>site fictif d'e-commerce: Le Grenier du Joueur</p>
-            <a href="./assets/pdf/Mentions_Légales_Le_Grenier_du_Joueur.pdf">Mentions légales</a>
-            <a href="./assets/pdf/Politique_de_Confidentialite_Le_Grenier_du_Joueur.pdf">Politiques de
-                confidentialité</a>
-        </div>
-    </footer>
-    <script src="/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="/assets/js/main.js"></script>
-    <script src="/assets/js/index_resize-carousel.js"></script>
-</body>
+<?php 
 
-</html>
+$content = ob_get_clean();
+// $defaultDescription = $_SESSION['defaultDescription'];
+
+render('layout', true, [
+    'description' => $defaultDescription,
+    'title' => "Le Grenier du Joueur - Accueil",
+    'css' => ['/lib/bootstrap/css/bootstrap.min.css', '/assets/css/styles.css'],
+    'content' => $content,
+    'js' => ['/lib/bootstrap/js/bootstrap.bundle.min.js', '/assets/js/main.js', '/assets/js/index_resize-carousel.js']
+]);
+
+?>
