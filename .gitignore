@@ -1,5 +1,6 @@
 .vscode/
 database/
+script_DB/
 src/not_for_versioning/
 src/secret/
 mvc.txt
