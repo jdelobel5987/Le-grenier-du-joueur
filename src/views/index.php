@@ -179,7 +179,7 @@
 <?php 
 
 $content = ob_get_clean();
-// $defaultDescription = $_SESSION['defaultDescription'];
+$defaultDescription = $_SESSION['defaultDescription'];
 
 render('layout', true, [
     'description' => $defaultDescription,

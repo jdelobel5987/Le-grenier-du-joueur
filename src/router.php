@@ -1,8 +1,8 @@
 <?php
+
 // useful functions/variables for MVC architecture, called here for availability on the whole site
 require 'utils/utils.php';
 require 'utils/variables.php';
-$defaultDescription = $_SESSION['defaultDescription'];
 
 // get the path of the requested page
 $path = $_SERVER['REDIRECT_URL'];
