@@ -59,7 +59,7 @@ function nextStep() {
         const result = document.getElementById("result");
         result.innerText = "Informations soumises avec succès! Redirection vers la page compte utilisateur...";
         function toAccount() {
-            window.location.href = "user-account.html";
+            window.location.href = "/user-account";
         }
         setTimeout(toAccount, 3000);
 
@@ -263,7 +263,7 @@ userData = JSON.parse(sessionStorage.user1);
 
 loginButton.addEventListener("click", () => {
     if (loginEmail.value === userData.email && loginPassword.value === userData.password) {
-        window.location.href = "user-account.html";
+        window.location.pathname = "/user-account";
     } else {
         alert("Email ou mot de passe incorrect");
     }

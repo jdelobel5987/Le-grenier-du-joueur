@@ -33,15 +33,15 @@ const iconBarUser = document.getElementById('iconAccount');
 if (userData) {
   logBtnText.textContent = 'Mon compte';
   logBtn.addEventListener('click', () => {
-    window.location.href = './user-account.html';
+    window.location.href = '/user-account';
   })
-  iconBarUser.href = "user-account.html";
+  iconBarUser.href = "/user-account";
 } else {
   logBtnText.textContent = 'Connexion';
   logBtn.addEventListener('click', () => {
-    window.location.href = './connection.html';
+    window.location.href = '/connection';
   })
-  iconBarUser.href = "connection.html"
+  iconBarUser.href = "/connection"
 }
 
 // modify iconbar display of the icon for current page
