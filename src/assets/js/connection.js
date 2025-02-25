@@ -54,15 +54,17 @@ function nextStep() {
     if (currentStep < 3) {
         currentStep++;
         showStep(currentStep);
-    } else {
-        collectFormData();
-        const result = document.getElementById("result");
-        result.innerText = "Informations soumises avec succès! Redirection vers la page compte utilisateur...";
-        function toAccount() {
-            window.location.href = "/user-account";
-        }
-        setTimeout(toAccount, 3000);
-
+    // } else {
+    //     collectFormData();
+    //     const result = document.getElementById("result");
+    //     result.innerText = "Informations soumises avec succès! Redirection vers la page compte utilisateur...";
+    //     function toAccount() {
+    //         window.location.href = "/user-account";
+    //     }
+    //     setTimeout(toAccount, 3000);
+    // }
+    } else if (currentStep === 3) {
+        document.getElementById("nextButton").setAttribute('type', 'submit');
     }
 }
 

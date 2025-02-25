@@ -1,6 +1,7 @@
 <?php ob_start(); ?>
 
-        <form class="container-login" action="" method="">
+        <form class="container-login" action="<?= $_SERVER['PHP_SELF'] ?>" method="POST">
+            <input type="hidden" name="action" value="login">
             <h2>Connectez-vous</h2>
             <div class="login">
                 <label for="emailConnect">E-mail * : </label>
@@ -18,7 +19,8 @@
         <!-- <div class="separator">
             <span>ou</span>
         </div> -->
-        <form class="container-register" action="" method="">
+        <form class="container-register" action="" method="POST">
+            <input type="hidden" name="action" value="register">
             <h2>Créez votre compte</h2>
             <div class="step-indicator">
                 <span class="active">1</span>
@@ -69,7 +71,7 @@
                 </div>
                 <div class="field">
                     <label for="addressComplement">Compléments : </label>
-                    <input id="addressComplement" name="address-complement" type="text"
+                    <input id="addressComplement" name="addressComplement" type="text"
                         placeholder="Résidence, étage, appartement...">
                 </div>
                 <div class="field">
@@ -99,8 +101,8 @@
                 <div class="field">
                     <label for="newsletter">Je souhaite recevoir la newsletter</label>
                     <select name="newsletter" id="newsletter">
-                        <option value="yes" selected>Oui</option>
-                        <option value="no">Non</option>
+                        <option value="true" selected>Oui</option>
+                        <option value="false">Non</option>
                     </select>
                 </div>
             </div>

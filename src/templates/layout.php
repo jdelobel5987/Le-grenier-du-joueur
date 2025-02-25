@@ -64,8 +64,10 @@
     </footer>
 
     <?php 
-    foreach($data['js'] as $js) {
-        echo "<script src='$js'></script>";
+    if(isset($data['js'])) {
+        foreach($data['js'] as $js) {
+            echo "<script src='$js'></script>";
+        }
     }
     ?>
 

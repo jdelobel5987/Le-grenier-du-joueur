@@ -4,6 +4,8 @@
 require 'utils/utils.php';
 require 'utils/variables.php';
 
+require 'secret/database.php';
+
 // get the path of the requested page
 $path = $_SERVER['REDIRECT_URL'];
 
