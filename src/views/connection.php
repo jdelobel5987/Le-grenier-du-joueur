@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 
-        <form class="container-login" action="<?= $_SERVER['PHP_SELF'] ?>" method="POST">
+        <form class="container-login" action="" method="POST">
             <input type="hidden" name="action" value="login">
             <h2>Connectez-vous</h2>
             <div class="login">
@@ -14,7 +14,9 @@
                 <i class="fa fa-lock" id="login-lock"></i>
                 <input id="passwordConnect" name="password" type="password" placeholder="Mot de passe" required>
             </div>
-            <button type="button" id="loginBtn">Se connecter</button>
+            <?= isset($data['error']['login']) ? $data['error']['login'] : ''; ?>
+            <button type="submit" id="loginBtn">Se connecter</button>
+            <?= isset($data['user']) ? var_dump($data['user']) : ''; ?>
         </form>
         <!-- <div class="separator">
             <span>ou</span>

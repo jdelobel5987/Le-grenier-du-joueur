@@ -56,11 +56,26 @@ function createUser($user) {
         $stmt->bindParam(':password', $user['password'], PDO::PARAM_STR);
         $stmt->bindParam(':phone', $user['phone'], PDO::PARAM_STR);
         $stmt->bindParam(':communication', $user['communication'], PDO::PARAM_STR);
-        $stmt->bindParam(':newsletter', $user['newsletter'], PDO::PARAM_INT);
+        $stmt->bindParam(':newsletter', $user['newsletter'], PDO::PARAM_STR);
         return $stmt->execute();
     } catch(PDOException $e) {
         echo "Erreur lors de la création de l'utilisateur : " . $e->getMessage();
         return false;
+    }
+}
+
+//vérifier l'existance d'un compte avec un email donné (returns true si un compte avec email donné existe déjà)
+function userExists($email) {
+    $pdo = getConnexion();
+    $sql = "SELECT COUNT(*) FROM `ijen_users` WHERE email = :email";
+    try {
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->execute();
+        $count = $stmt->fetchColumn();
+        return $count > 0;
+    } catch(PDOException $e) {
+        echo "Erreur lors de la vérification";
     }
 }
 

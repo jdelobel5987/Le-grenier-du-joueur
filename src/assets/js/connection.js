@@ -263,13 +263,13 @@ const loginButton = document.getElementById("loginBtn");
 
 userData = JSON.parse(sessionStorage.user1);
 
-loginButton.addEventListener("click", () => {
-    if (loginEmail.value === userData.email && loginPassword.value === userData.password) {
-        window.location.pathname = "/user-account";
-    } else {
-        alert("Email ou mot de passe incorrect");
-    }
-});
+// loginButton.addEventListener("click", () => {
+//     if (loginEmail.value === userData.email && loginPassword.value === userData.password) {
+//         window.location.pathname = "/user-account";
+//     } else {
+//         alert("Email ou mot de passe incorrect");
+//     }
+// });
 
 
 // const simulateLogin = () => {
