@@ -32,7 +32,7 @@
 // Récupérer un utilisateur par son email
 function getUserByEmail($email) {
     $pdo = getConnexion();
-    $sql = "SELECT `email`, `password` FROM `ijen_users` WHERE email = :email";
+    $sql = "SELECT `id_users`, `email`, `password` FROM `ijen_users` WHERE email = :email";
     try {
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':email', $email, PDO::PARAM_STR);
@@ -44,10 +44,11 @@ function getUserByEmail($email) {
     }
 }
 
-// Créer un nouvel utilisateur
+// Créer un nouvel utilisateur ($user est une table assoc des champs de formulaire validés)
 function createUser($user) {
     $pdo = getConnexion();
-    $sql = "INSERT INTO `ijen_users` (firstname, lastname, email, password, phone, communication, newsletter) VALUES (:firstname, :lastname, :email, :password, :phone, :communication, :newsletter)";
+    $sql = "INSERT INTO `ijen_users` (firstname, lastname, email, password, phone, communication, newsletter) 
+            VALUES (:firstname, :lastname, :email, :password, :phone, :communication, :newsletter)";
     try {
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':firstname', $user['firstname'], PDO::PARAM_STR);
@@ -57,9 +58,31 @@ function createUser($user) {
         $stmt->bindParam(':phone', $user['phone'], PDO::PARAM_STR);
         $stmt->bindParam(':communication', $user['communication'], PDO::PARAM_STR);
         $stmt->bindParam(':newsletter', $user['newsletter'], PDO::PARAM_STR);
-        return $stmt->execute();
+        $stmt->execute();
+        return $pdo->lastInsertId();
     } catch(PDOException $e) {
         echo "Erreur lors de la création de l'utilisateur : " . $e->getMessage();
+        return false;
+    }
+}
+
+// Enregistrer une adresse utilisateur 
+// (context création de compte, $user est un tableau de tous les champs de formulaire, $id est le users_id retourné en fin de createUser() )
+// (context création adresse a posteriori, il faudra récupérer l'id de l'utilisateur à son login )
+function createAddress($user, $id) {
+    $pdo = getConnexion();
+    $sql = "INSERT INTO `ijen_addresses` (address, complement, zipcode, city, id_users) 
+            VALUES (:address, :complement, :zipcode, :city, :id_users)";
+    try {
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':address', $user['address']['main'], PDO::PARAM_STR);
+        $stmt->bindParam(':complement', $user['address']['complement'], PDO::PARAM_STR);
+        $stmt->bindParam(':zipcode', $user['zipcode'], PDO::PARAM_STR);
+        $stmt->bindParam(':city', $user['city'], PDO::PARAM_STR);
+        $stmt->bindParam(':id_users', $id, PDO::PARAM_INT);
+        $stmt->execute();
+    } catch(PDOException $e) {
+        echo "Erreur lors de la création de l'adresse utilisateur : " . $e->getMessage();
         return false;
     }
 }

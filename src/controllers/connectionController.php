@@ -1,6 +1,7 @@
 <?php 
 
 $error = [];
+$user = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require 'models/users.php';
@@ -12,8 +13,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // check valid credentials in DB
             $user = getUserByEmail($email);
             if ($user && password_verify($password, $user['password'])) {
-                // retrieve user data
-                $_SESSION['user'] = $user; // faire une jointure des tables user&address pour avoir toutes les data dispo
+                // retrieve user id and store in session
+                $_SESSION['user_id'] = $user['id_users'];
                 echo "connexion réussie!";
                 var_dump($_SESSION['user']);
                 // redirect to home page (ou page account?)
@@ -109,7 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $error['address'][$key] = "L'adresse ou son complément ne doivent pas dépasser 50 caractères";
                     }
                 } else {
-                    $user['address'][$key] = '';
+                    $user['address'][$key] = NULL;
                 }
             }
 
@@ -122,7 +123,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $error['zipcode'] = "Le code postal doit être strictement composé de 5 chiffres";
                 }
             } else {
-                $user['zipcode'] = '';
+                $user['zipcode'] = NULL;
             }
 
             //input validation for city
@@ -139,7 +140,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
 
             } else {
-                $user['city'] = '';
+                $user['city'] = NULL;
             }
 
             //input validation for phone
@@ -185,20 +186,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             switch ($newsletter) {
                 case 'true':
                     $user['newsletter'] = htmlspecialchars($newsletter);
+                    break;
                 case 'false':
                     $user['newsletter'] = htmlspecialchars($newsletter);
+                    break;
                 default:
                     $error['newsletter'] = "valeur non valide";
             }
-            
-            // var_dump($user);
-            createUser($user);
-            
-            $_SESSION['user'] = $user;
 
-            // check valid inputs
-            // createUser($nom, $email, $password....);
-            // attention! 2 tables in DB: users and addresses
+            //transmission to DB
+            if (empty($error)) {
+                // create user & get the newly created id
+                // $userId = createUser($user);
+                createUser($user);
+    
+                // check for input of address details
+                if (isset($user['address']['main']) || isset($user['address']['complement']) || isset($user['zipcode']) || isset($user['city'])) {
+                    $userId = getUserByEmail($user['email'])['id_users'];
+                    $user["id"] = $userId;
+                    createAddress($user, $userId);
+                }
+
+                // confirmation 
+                $error['none'] = "informations transmises avec succès, vous pouvez maintenant vous connecter";
+            } else {
+                var_dump($error); // to remove //
+            }
+
             break;
         default:
             echo "Action inconnue";
