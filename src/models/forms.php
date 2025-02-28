@@ -24,6 +24,11 @@ function userConnect() {
     // if valid credentials, proceed to user account
     if (empty($error)) {
         render('user-account');
+    } else {
+        render('connection', false, [
+            'error' => $error,
+            'user' => $user,
+        ]);
     }
 }
 
@@ -231,8 +236,9 @@ function registerToDB($user) {
         $user["id"] = $userId;
         createAddress($user);
     }
-    // confirmation 
+
     echo "informations transmises avec succès, vous pouvez maintenant vous connecter";
+    render('connection'); 
     
 }
 ?>
