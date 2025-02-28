@@ -45,10 +45,10 @@ function getUserByEmail($email) {
 }
 
 // Créer un nouvel utilisateur ($user est une table assoc des champs de formulaire validés)
-function createUser($user) {
+function createUser($user, $role = 2) {
     $pdo = getConnexion();
-    $sql = "INSERT INTO `ijen_users` (firstname, lastname, email, password, phone, communication, newsletter) 
-            VALUES (:firstname, :lastname, :email, :password, :phone, :communication, :newsletter)";
+    $sql = "INSERT INTO `ijen_users` (firstname, lastname, email, password, phone, communication, newsletter, id_roles) 
+            VALUES (:firstname, :lastname, :email, :password, :phone, :communication, :newsletter, :id_roles)";
     try {
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':firstname', $user['firstname'], PDO::PARAM_STR);
@@ -58,6 +58,7 @@ function createUser($user) {
         $stmt->bindParam(':phone', $user['phone'], PDO::PARAM_STR);
         $stmt->bindParam(':communication', $user['communication'], PDO::PARAM_STR);
         $stmt->bindParam(':newsletter', $user['newsletter'], PDO::PARAM_STR);
+        $stmt->bindParam(':id_roles', $role, PDO::PARAM_INT);
         $stmt->execute();
         return $pdo->lastInsertId();
     } catch(PDOException $e) {
@@ -69,7 +70,7 @@ function createUser($user) {
 // Enregistrer une adresse utilisateur 
 // (context création de compte, $user est un tableau de tous les champs de formulaire, $id est le users_id retourné en fin de createUser() )
 // (context création adresse a posteriori, il faudra récupérer l'id de l'utilisateur à son login )
-function createAddress($user, $id) {
+function createAddress($user) {
     $pdo = getConnexion();
     $sql = "INSERT INTO `ijen_addresses` (address, complement, zipcode, city, id_users) 
             VALUES (:address, :complement, :zipcode, :city, :id_users)";
@@ -79,7 +80,7 @@ function createAddress($user, $id) {
         $stmt->bindParam(':complement', $user['address']['complement'], PDO::PARAM_STR);
         $stmt->bindParam(':zipcode', $user['zipcode'], PDO::PARAM_STR);
         $stmt->bindParam(':city', $user['city'], PDO::PARAM_STR);
-        $stmt->bindParam(':id_users', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':id_users', $user['id'], PDO::PARAM_INT);
         $stmt->execute();
     } catch(PDOException $e) {
         echo "Erreur lors de la création de l'adresse utilisateur : " . $e->getMessage();
