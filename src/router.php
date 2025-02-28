@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 // useful functions/variables for MVC architecture, called here for availability on the whole site
 require 'utils/utils.php';
 require 'utils/variables.php';

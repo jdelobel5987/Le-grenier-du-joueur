@@ -25,24 +25,24 @@ if (sessionStorage.user) {
   console.log('No user data found in session storage');
 }
 
-// modify log button properties based on existence of user data in session storage
-const logBtn = document.querySelector('.connection>button');
-const logBtnText = document.querySelector('.connection span');
-const iconBarUser = document.getElementById('iconAccount');
+// // modify log button properties based on existence of user data in session storage
+// const logBtn = document.querySelector('.connection>button');
+// const logBtnText = document.querySelector('.connection span');
+// const iconBarUser = document.getElementById('iconAccount');
 
-if (userData) {
-  logBtnText.textContent = 'Mon compte';
-  logBtn.addEventListener('click', () => {
-    window.location.href = '/user-account';
-  })
-  iconBarUser.href = "/user-account";
-} else {
-  logBtnText.textContent = 'Connexion';
-  logBtn.addEventListener('click', () => {
-    window.location.href = '/connection';
-  })
-  iconBarUser.href = "/connection"
-}
+// if (userData) {
+//   logBtnText.textContent = 'Mon compte';
+//   logBtn.addEventListener('click', () => {
+//     window.location.href = '/user-account';
+//   })
+//   iconBarUser.href = "/user-account";
+// } else {
+//   logBtnText.textContent = 'Connexion';
+//   logBtn.addEventListener('click', () => {
+//     window.location.href = '/connection';
+//   })
+//   iconBarUser.href = "/connection"
+// }
 
 // modify iconbar display of the icon for current page
 const icons = document.querySelectorAll('.icon-bar .fa-solid');

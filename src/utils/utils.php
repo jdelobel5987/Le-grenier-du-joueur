@@ -11,3 +11,10 @@ function render($path, $template = false, $data = [])
 		require "views/$path.php";
 	}
 }
+
+
+// function to check if the user is logged in
+
+function isLogged() {
+	return isset($_SESSION['user_id']) ? true : false;
+}

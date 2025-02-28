@@ -63,6 +63,29 @@
         </div>
     </footer>
 
+    <script type="text/javascript"> 
+        const isLogged = <?= json_encode(isLogged()); ?>;
+        document.addEventListener('DOMContentLoaded', () => {
+            const logBtn = document.querySelector('.connection>button');
+            const logBtnText = document.querySelector('.connection span');
+            const iconBarUser = document.getElementById('iconAccount');
+
+            if (isLogged) {
+              logBtnText.textContent = 'Mon compte';
+              logBtn.addEventListener('click', () => {
+                window.location.href = '/user-account';
+              })
+              iconBarUser.href = "/user-account";
+            } else {
+              logBtnText.textContent = 'Connexion';
+              logBtn.addEventListener('click', () => {
+                window.location.href = '/connection';
+              })
+              iconBarUser.href = "/connection"
+            }
+        });      
+    </script>
+    
     <?php 
     if(isset($data['js'])) {
         foreach($data['js'] as $js) {
