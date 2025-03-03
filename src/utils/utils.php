@@ -16,5 +16,6 @@ function render($path, $template = false, $data = [])
 // function to check if the user is logged in
 
 function isLogged() {
-	return isset($_SESSION['user_id']) ? true : false;
+	// return isset($_SESSION['user_id']) ? true : false;
+	return isset($_SESSION['user']) ? true : false;
 }
