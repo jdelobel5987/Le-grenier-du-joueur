@@ -4,6 +4,8 @@
             <h2><img src="assets/img/icones/user.svg" alt="icone d'utilisateur"><span></span></h2>
             <div class="container userCards">
                 <div class="cards row gx-3 gy-3">
+                    <!-- create a php object of cards, then do a foreach calling render('templates/ui/user-account-card', true, [src, alt, title] ) 
+                     create templates/ui/user-account-card.php containing the html <div class="col-6...> with calls to $data['src'], $data['alt'] and $data['title'] -->
                     <div class="col-6 col-md-3 col-lg-3">
                         <div class="card h-100" id="card-details">
                             <div class="card-image">
@@ -52,6 +54,9 @@
                 </div>
             </div>
             <div class="container userContent">
+                <!-- same as cards: create a php object of modals [ ['name'=> 'info perso', 'fields' => [field1 => value1, field2 => value2]], [...], [...] ], 
+                 then do a foreach calling render('templates/ui/user-account-modale', true, [title, fields] ), foreach($modals as $item) {render(..., ['name' => $item['name'], 'fields' => $item['fields']])}
+                 create templates/ui/user-account-modale.php with calls to foreach $data['name'] and foreach $data['fields'] -->
                 <div class="content card-details" id="user-details">
                     <i class="fa fa-close fa-2x"></i>
                     <h3>Mes informations personnelles</h3>
