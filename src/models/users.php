@@ -15,24 +15,28 @@
 // }
 
 // // Récupérer un utilisateur par son ID
-// function getUserById($id) {
-//     $pdo = getConnexion();
-//     $sql = "SELECT * FROM users WHERE id = :id";
-//     try {
-//         $stmt = $pdo->prepare($sql);
-//         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-//         $stmt->execute();
-//         return $stmt->fetch(PDO::FETCH_ASSOC);
-//     } catch(PDOException $e) {
-//         echo "Erreur lors de la récupération de l'utilisateur : " . $e->getMessage();
-//         return false;
-//     }
-// }
+
+function getUserById($id) {
+    $pdo = getConnexion();
+    $sql = "SELECT * FROM `ijen_users` 
+            INNER JOIN `ijen_addresses`
+            ON `ijen_users`.`id_users` = `ijen_addresses`.`id_users`
+            WHERE `ijen_users`.`id_users` = :id";
+    try {
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    } catch(PDOException $e) {
+        echo "Erreur lors de la récupération de l'utilisateur : " . $e->getMessage();
+        return false;
+    }
+}
 
 // Récupérer un utilisateur par son email
 function getUserByEmail($email) {
     $pdo = getConnexion();
-    $sql = "SELECT `id_users`, `email`, `password` FROM `ijen_users` WHERE email = :email";
+    $sql = "SELECT `id_users`, `email`, `password` FROM `ijen_users` WHERE `email` = :email";
     try {
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':email', $email, PDO::PARAM_STR);
@@ -47,7 +51,7 @@ function getUserByEmail($email) {
 // Créer un nouvel utilisateur ($user est une table assoc des champs de formulaire validés)
 function createUser($user, $role = 2) {
     $pdo = getConnexion();
-    $sql = "INSERT INTO `ijen_users` (firstname, lastname, email, password, phone, communication, newsletter, id_roles) 
+    $sql = "INSERT INTO `ijen_users` (`firstname`, `lastname`, `email`, `password`, `phone`, `communication`, `newsletter`, `id_roles`) 
             VALUES (:firstname, :lastname, :email, :password, :phone, :communication, :newsletter, :id_roles)";
     try {
         $stmt = $pdo->prepare($sql);
