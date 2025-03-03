@@ -5,7 +5,10 @@ function getLoginData() {
     $email = isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '';
     $password = isset($_POST['password']) ? $_POST['password'] : '';
 
-    return [$email, $password];
+    return [
+        'email' => $email, 
+        'password' => $password
+    ];
 }
 
 function userConnect() {
@@ -13,10 +16,11 @@ function userConnect() {
     $login = getLoginData();
 
     // check credentials validity from DB
-    $user = getUserByEmail($login[0]);
+    $user = getUserByEmail($login['email']);
 
-    if ($user && password_verify($login[1], $user['password'])) {
-        $_SESSION['user_id'] = $user['id_users'];
+    if ($user && password_verify($login['password'], $user['password'])) {
+        // $_SESSION['user_id'] = $user['id_users'];
+        $_SESSION['user'] = getUserById($user['id_users']);
     } else {
         $error['login'] = "Email ou mot de passe incorrect";
     }
