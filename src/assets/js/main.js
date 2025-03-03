@@ -100,13 +100,13 @@ console.log(sessionStorage.user1);
 // display or download documents in footer according to user device
 // let thresholdMobile = 500; // 320; 375; 425; 768; 1024; 1440;
 // let thresholdDesktop = 1000; // 320; 375; 425; 768; 1024; 1440;
-let screenWidth = window.innerWidth;
+// let screenWidth = window.innerWidth;
 
-let documents = document.querySelectorAll('.container-footer>a');
+// let documents = document.querySelectorAll('.container-footer>a');
 
-if (screenWidth > 1000) {
-  documents.forEach((doc) => {
-    doc.setAttribute('target', '_blank');
-    console.log(doc.getAttribute('target'));
-  })
-};
+// if (screenWidth > 1000) {
+//   documents.forEach((doc) => {
+//     doc.setAttribute('target', '_blank');
+//     console.log(doc.getAttribute('target'));
+//   })
+// };
