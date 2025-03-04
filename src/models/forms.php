@@ -245,4 +245,24 @@ function registerToDB($user) {
     render('connection'); 
     
 }
+
+
+// case 'logout' algo
+function userLogout() {
+    // unset session variables
+    $_SESSION = [];
+
+    // kill the session
+    session_destroy();
+
+    // redirection to login
+    render('connection');
+}
+
+// case 'delete account' algo
+// function deleteAccount() {
+//     if (isset($_SESSION['user'])) {
+
+// }
+
 ?>

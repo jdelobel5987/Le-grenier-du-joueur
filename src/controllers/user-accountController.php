@@ -1,5 +1,6 @@
 <?php 
 
+// assign the user details
 $accountContentCards = [
     "details" => [
         'title' => "Mes informations personnelles",
@@ -39,14 +40,8 @@ $accountContentCards = [
     ]
 ];
 
-// echo '<pre>';
-// print_r($accountContentCards);
-// echo '</pre>';
-
-// calls the user-account view
 render('user-account', false, [
     'cardContent' => $accountContentCards
-    ]
-);
+]);
 
 ?>
