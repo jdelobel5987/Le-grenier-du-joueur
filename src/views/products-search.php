@@ -260,7 +260,6 @@
 <?php 
 
 $content = ob_get_clean();
-$defaultDescription = $_SESSION['defaultDescription'];
 $description = "Parcourez notre catalogue de jeux de société, trouvez rapidement les produits idéals pour toute occasion grâce à nos filtres de recherche avancée.";
 
 render('layout', true, [
@@ -272,11 +271,3 @@ render('layout', true, [
 ]);
 
 ?>
-
- 
-    <script src="./assets/js/main.js"></script>
-    <script src="./assets/js/product-search.js"></script>
-    <script src="./lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-</body>
-
-</html>

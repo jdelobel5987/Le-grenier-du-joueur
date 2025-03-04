@@ -61,7 +61,6 @@
 <?php 
 
 $content = ob_get_clean();
-$defaultDescription = $_SESSION['defaultDescription'];
 $description = "Découvrez notre boutique physique, ouverte du lundi au vendredi de 10h a 19h, et inscrivez-vous à nos évènements ludiques.";
 
 render('layout', true, [

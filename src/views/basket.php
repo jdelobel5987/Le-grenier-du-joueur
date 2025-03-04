@@ -42,7 +42,6 @@
 <?php 
 
 $content = ob_get_clean();
-$defaultDescription = $_SESSION['defaultDescription'];
 $description = "Gérez le contenu de votre panier, sélectionnez vos articles et validez votre commande.";
 
 render('layout', true, [

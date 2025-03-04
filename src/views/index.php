@@ -179,10 +179,9 @@
 <?php 
 
 $content = ob_get_clean();
-$defaultDescription = $_SESSION['defaultDescription'];
 
 render('layout', true, [
-    'description' => $defaultDescription,
+    'description' => DEFAULT_DESCRIPTION,
     'title' => "Le Grenier du Joueur - Accueil",
     'css' => ['/lib/bootstrap/css/bootstrap.min.css', '/assets/css/styles.css'],
     'content' => $content,

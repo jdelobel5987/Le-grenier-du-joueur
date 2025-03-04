@@ -118,7 +118,6 @@
 <?php 
 
 $content = ob_get_clean();
-$defaultDescription = $_SESSION['defaultDescription'];
 $description = "Créez votre compte utilisateur et connectez-vous pour une expérience personnalisée.";
 
 render('layout', true, [

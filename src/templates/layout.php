@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content= <?= isset($data['description']) ? $data['description'] : $defaultDescription; ?> >
+        content= <?= isset($data['description']) ? $data['description'] : DEFAULT_DESCRIPTION; ?> >
     <title><?= isset($data['title']) ? $data['title'] : 'Le Grenier du Joueur' ?></title>
     <?php 
     foreach ($data['css'] as $css) {
