@@ -7,6 +7,6 @@ mvc.txt
 useDockerCompose.txt
 update_phpdoc.sh
 how_to_phpdoc.txt
-.phpdoc/*
+.phpdoc/
 src_tree.md
 git_untrack_a_tracked_folder.txt
