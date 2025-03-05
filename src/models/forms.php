@@ -27,7 +27,8 @@ function userConnect() {
 
     // if valid credentials, proceed to user account
     if (empty($error)) {
-        render('user-account');
+        header('Location: /user-account');
+        exit();
     } else {
         render('connection', false, [
             'error' => $error,
@@ -256,7 +257,8 @@ function userLogout() {
     session_destroy();
 
     // redirection to login
-    render('connection');
+    header('Location: /connection');
+    exit();
 }
 
 // case 'delete account' algo
