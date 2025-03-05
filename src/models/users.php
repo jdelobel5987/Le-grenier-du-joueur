@@ -141,17 +141,17 @@ function userExists($email) {
 // }
 
 // // Supprimer un utilisateur
-// function deleteUser($id) {
-//     $pdo = getConnexion();
-//     $sql = "DELETE FROM users WHERE id = :id";
-//     try {
-//         $stmt = $pdo->prepare($sql);
-//         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-//         return $stmt->execute();
-//     } catch(PDOException $e) {
-//         echo "Erreur lors de la suppression de l'utilisateur : " . $e->getMessage();
-//         return false;
-//     }
-// }
+function deleteUser($id) {
+    $pdo = getConnexion();
+    $sql = "DELETE FROM `ijen_users` WHERE `id_users` = :id";
+    try {
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        return $stmt->execute();
+    } catch(PDOException $e) {
+        echo "Erreur lors de la suppression de l'utilisateur : " . $e->getMessage();
+        return false;
+    }
+}
 
 ?>

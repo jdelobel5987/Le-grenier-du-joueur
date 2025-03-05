@@ -262,10 +262,24 @@ function userLogout() {
 }
 
 // case 'delete account' algo
-// function deleteAccount() {
-//     if (isset($_SESSION['user'])) {
-//         $userId = $_SESSION['user']['id_users'];
+function deleteAccount() {
+    if (!isset($_SESSION['user'])) {
+        header('Location: /connection');
+        exit();
+    }
 
-// }
+    $userId = $_SESSION['user']['id_users'];
+
+    if (!empty($userId) && deleteUser($userId)) {
+        unset($_SESSION['user']);
+        session_destroy();
+        header('Location: /');
+        echo "Votre compte a bien été supprimé";
+        exit();
+    } else {
+        userLogout();
+        echo "Un problème est survenu lors de la suppression de votre compte, veuillez vous reconnecter.";
+    }
+}
 
 ?>

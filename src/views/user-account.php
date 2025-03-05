@@ -19,7 +19,7 @@ ob_start(); ?>
                         </form>
                     </li>
                     <li>
-                        <form method="POST", action="">
+                        <form method="POST", action="accountAction">
                             <input type="hidden" name="action" value="deleteAccount">
                             <button type="submit" class="dropdown-item">Supprimer mon compte</button>
                         </form>
