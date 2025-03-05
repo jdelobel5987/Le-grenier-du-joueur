@@ -1,7 +1,6 @@
 <?php
-
-global $accountCards; 
-global $accountContentCards;
+// var_dump(ACCOUNT_CARD_CONTENT);
+// exit();
 
 ob_start(); ?>
 
@@ -45,8 +44,8 @@ ob_start(); ?>
 
             <div class="container userContent">
                 <?php
-                    if(isset($data['cardContent']) && is_array($data['cardContent'])) {
-                        foreach($data['cardContent'] as $section => $content) {
+                    if((ACCOUNT_CARD_CONTENT) && is_array(ACCOUNT_CARD_CONTENT)) {
+                        foreach(ACCOUNT_CARD_CONTENT as $section => $content) {
                             render('components/account_contentCard', true, [
                                 'name' => $section,
                                 'title' => $content['title'],

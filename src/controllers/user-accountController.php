@@ -1,7 +1,7 @@
 <?php 
 
 // assign the user details
-$accountContentCards = [
+define('ACCOUNT_CARD_CONTENT', [
     "details" => [
         'title' => "Mes informations personnelles",
         'fields' => [
@@ -38,10 +38,13 @@ $accountContentCards = [
             'jeux' => ""
         ]
     ]
-];
+]);
+
+// var_dump(ACCOUNT_CARD_CONTENT);
+// exit();
 
 render('user-account', false, [
-    'cardContent' => $accountContentCards
+    'cardContent' => ACCOUNT_CARD_CONTENT
 ]);
 
 ?>
