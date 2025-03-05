@@ -16,7 +16,7 @@
             </div>
             <?= isset($data['error']['login']) ? $data['error']['login'] : ''; ?>
             <button type="submit" id="loginBtn">Se connecter</button>
-            <?= isset($data['user']) ? var_dump($data['user']) : ''; ?> <!-- to remove -->
+            <!-- <?= isset($data['user']) ? var_dump($data['user']) : ''; ?> to remove -->
         </form>
         <!-- <div class="separator">
             <span>ou</span>

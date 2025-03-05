@@ -16,14 +16,14 @@ searchBtn.addEventListener("click", () => {
 });
 
 // get user data from session storage
-let userData;
-if (sessionStorage.user) {
-  userData = JSON.parse(sessionStorage.user);
-  console.log(userData);
-} else {
-  // userData = null;
-  console.log('No user data found in session storage');
-}
+// let userData;
+// if (sessionStorage.user) {
+//   userData = JSON.parse(sessionStorage.user);
+//   console.log(userData);
+// } else {
+//   // userData = null;
+//   console.log('No user data found in session storage');
+// }
 
 // // modify log button properties based on existence of user data in session storage
 // const logBtn = document.querySelector('.connection>button');
@@ -62,14 +62,15 @@ console.log(pageLinks);
 pageLinks.forEach((link) => {
   if (document.location.pathname === link.pathname) {
     let icon = link.querySelector('i');
-    // icon.setAttribute('data-fa-transform', 'grow-3 up-6');
     icon.style.color = 'black';
     icon.style.height = '70px';
-    // // icon.style.width = '70px';
     icon.style.backgroundColor = 'var(--myColYellow)';
-    // // icon.style.border = '1px solid var(--myColBrown)';
     icon.style.borderRadius = '50%';
     icon.classList.replace('fa-2x', 'fa-3x');
+    
+    // icon.setAttribute('data-fa-transform', 'grow-3 up-6');
+    // // icon.style.width = '70px';
+    // // icon.style.border = '1px solid var(--myColBrown)';
     // // icon.style.position = 'absolute';
     // // icon.style.top = 0;
     // // // icon.style.left = calc(((indexOf(icon) + 1) * 20) - 10) + '%';
@@ -79,22 +80,22 @@ pageLinks.forEach((link) => {
 
 
 // simulate a previously registered user
-let user = {};
-user.email = "user1@example.com";
-user.password = "Password123!";
-user.firstName = "John";
-user.lastName = "Doe";
-user.city = "Paris";
-user.zipcode = "75000";
-user.phone = "0123456789";
-user.address = "1 rue de la Paix";
-user.addressComplement = "3ème étage";
-user.communication = "email";
-user.newsletter = "yes";
-console.log(user);
+// let user = {};
+// user.email = "user1@example.com";
+// user.password = "Password123!";
+// user.firstName = "John";
+// user.lastName = "Doe";
+// user.city = "Paris";
+// user.zipcode = "75000";
+// user.phone = "0123456789";
+// user.address = "1 rue de la Paix";
+// user.addressComplement = "3ème étage";
+// user.communication = "email";
+// user.newsletter = "yes";
+// console.log(user);
 
-sessionStorage.setItem('user1', JSON.stringify(user));
-console.log(sessionStorage.user1);
+// sessionStorage.setItem('user1', JSON.stringify(user));
+// console.log(sessionStorage.user1);
 
 
 // display or download documents in footer according to user device

@@ -225,7 +225,7 @@ function dataValidation() {
     if (empty($error)) {
         return $user;
     } else {
-        return $error;
+        return $error; // should return false instead ? then in connectionController $user ? registerToDB($user) : render('connection', false, ['error' => $error]); 
     }
     
     // return empty($error) ? true : false;
@@ -264,6 +264,7 @@ function userLogout() {
 // case 'delete account' algo
 // function deleteAccount() {
 //     if (isset($_SESSION['user'])) {
+//         $userId = $_SESSION['user']['id_users'];
 
 // }
 
