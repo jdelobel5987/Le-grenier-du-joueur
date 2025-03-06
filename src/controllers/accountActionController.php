@@ -6,6 +6,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require 'models/forms.php';
 
     switch ($_POST['action']) {
+        case 'edit':
+            render('editAccount');
+            break;
+        
         case 'logout':
             userLogout();
             break;

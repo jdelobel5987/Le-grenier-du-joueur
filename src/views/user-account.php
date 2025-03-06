@@ -11,17 +11,24 @@ ob_start(); ?>
                     Mon compte
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <li><a class="dropdown-item" href="#">Paramètres</a></li>
+                    <!-- <li><a class="dropdown-item" href="#">Paramètres</a></li> -->
+                    <li>
+                        <form method="POST", action="accountAction">
+                            <input type="hidden" name="action" value="edit">
+                            <button type="submit" class="dropdown-item">Éditer mes informations</button>
+                        </form>
+                    </li>
                     <li>
                         <form method="POST", action="accountAction">
                             <input type="hidden" name="action" value="logout">
                             <button type="submit" class="dropdown-item">Déconnexion</button>
                         </form>
                     </li>
+                    <li> <hr> </li>
                     <li>
                         <form method="POST", action="accountAction">
                             <input type="hidden" name="action" value="deleteAccount">
-                            <button type="submit" class="dropdown-item">Supprimer mon compte</button>
+                            <button type="submit" class="dropdown-item" style="color: red">Supprimer mon compte</button>
                         </form>
                     </li>
                 </ul>
