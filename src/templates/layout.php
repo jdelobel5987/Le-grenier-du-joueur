@@ -8,8 +8,10 @@
         content= <?= isset($data['description']) ? $data['description'] : DEFAULT_DESCRIPTION; ?> >
     <title><?= isset($data['title']) ? $data['title'] : 'Le Grenier du Joueur' ?></title>
     <?php 
-    foreach ($data['css'] as $css) {
-        echo "<link rel='stylesheet' href='$css'>\n";
+    if (isset($data['css'])) {
+        foreach ($data['css'] as $css) {
+            echo "<link rel='stylesheet' href='$css'>\n";
+        }
     }
     ?>
     <script src="https://kit.fontawesome.com/e5fa1154d4.js" crossorigin="anonymous"></script>
