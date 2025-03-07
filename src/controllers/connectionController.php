@@ -5,7 +5,6 @@ $user = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require 'models/users.php';
-    require 'models/forms.php';
 
     switch($_POST['action']) {
         case 'login':
@@ -13,7 +12,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             break;
 
         case 'register':
-            // $dataReg = getRegisterData();
             $user = dataValidation();
             $user ? registerToDB($user) : var_dump($error);
             break;
