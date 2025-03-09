@@ -123,7 +123,7 @@ function userExists($email) {
 //     }
 // }
 
-// // Mettre à jour un utilisateur
+// Mettre à jour un utilisateur
 // function updateUser($id, $nom, $email, $password) {
 //     $pdo = getConnexion();
 //     $sql = "UPDATE users SET nom = :nom, email = :email, password = :password WHERE id = :id";
@@ -139,6 +139,74 @@ function userExists($email) {
 //         return false;
 //     }
 // }
+
+// Mettre à jour un utilisateur
+function updateSingleField($id, $table, $field, $value) {
+    $pdo = getConnexion();
+
+    $allowedTables = ['ijen_users', 'ijen_addresses'];
+    $allowedFields = [
+        'ijen_users' => ['firstname', 'lastname', 'email', 'password', 'phone', 'communication', 'newsletter'],
+        'ijen_addresses' => ['address', 'complement', 'zipcode', 'city']
+        ];
+    if(!in_array($table, $allowedTables) || !in_array($field, $allowedFields[$table])) {
+        throw new Exception("Table ou champ invalide");
+    }
+    
+    $sql = "UPDATE $table SET $field = :value WHERE id_users = :id";
+    try {
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':value', $value, PDO::PARAM_STR);
+        return $stmt->execute();
+    } catch(PDOException $e) {
+        echo "Erreur lors de la mise à jour de l'utilisateur : " . $e->getMessage();
+        return false;
+    }
+}
+
+function updateUserDetails($id, $fields) {
+    $pdo = getConnexion();
+    $sql = "UPDATE `ijen_users` 
+            SET `firstname` = :firstname, `lastname` = :lastname, `email` = :email, `password` = :password, `phone` = :phone, `communication` = :communication, `newsletter` = :newsletter 
+            WHERE `id_users` = :id";
+    try {
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':firstname', $fields['firstname'], PDO::PARAM_STR);
+        $stmt->bindParam(':lastname', $fields['lastname'], PDO::PARAM_STR);
+        $stmt->bindParam(':email', $fields['email'], PDO::PARAM_STR);
+        $stmt->bindParam(':password', $fields['password'], PDO::PARAM_STR);
+        $stmt->bindParam(':phone', $fields['phone'], PDO::PARAM_STR);
+        $stmt->bindParam(':communication', $fields['communication'], PDO::PARAM_STR);
+        $stmt->bindParam(':newsletter', $fields['newsletter'], PDO::PARAM_STR);
+        
+        return $stmt->execute();
+    } catch(PDOException $e) {
+        echo "Erreur lors de la mise à jour de l'utilisateur : " . $e->getMessage();
+        return false;
+    }
+}
+
+function updateUserAddress($id, $fields) {
+    $pdo = getConnexion();
+    $sql = "UPDATE `ijen_addresses` 
+            SET `address` = :address, `complement` = :complement, `zipcode` = :zipcode, `city` = :city 
+            WHERE `id_users` = :id";
+    try {
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':address', $fields['address'], PDO::PARAM_STR);
+        $stmt->bindParam(':complement', $fields['complement'], PDO::PARAM_STR);
+        $stmt->bindParam(':zipcode', $fields['zipcode'], PDO::PARAM_STR);
+        $stmt->bindParam(':city', $fields['city'], PDO::PARAM_STR);
+        
+        return $stmt->execute();
+    } catch(PDOException $e) {
+        echo "Erreur lors de la mise à jour de l'utilisateur : " . $e->getMessage();
+        return false;
+    }
+}
 
 // // Supprimer un utilisateur
 function deleteUser($id) {

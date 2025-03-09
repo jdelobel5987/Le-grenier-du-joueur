@@ -5,19 +5,46 @@
     align-content: center;
     width: 80%;
 }
+
 form {
+    margin-top: 0;
     display: flex;
-    align-content: stretch;
-    justify-content: space-evenly;
     flex-direction: column;
+    align-content: stretch;
+    justify-content: center;
     gap: 1rem;
     background-color: aqua;
-    width: 40%;
-    padding: 20px;
+    width: 30%;
+    padding: 24px;
     border: 2px solid black;
     border-radius: 10px;
 }
 
-form>h2{
+form>.title{
     min-height: 10%;
+    background-color: yellow;
+}
+
+/* form>div {
+    margin: auto;
+} */
+
+form label {
+    display: block;
+    margin-bottom: 6px;
+}
+
+form input{
+    width: 60%;
+}
+
+.submit{
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.submit>button {
+    width: 70%;
+    /* height: 24px; */
 }

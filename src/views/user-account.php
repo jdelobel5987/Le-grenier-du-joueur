@@ -3,7 +3,7 @@
 // exit();
 
 ob_start(); ?>
-
+        <?= $updateMsg ?? ''; ?>
         <div class="user-account">
             <h2><img src="assets/img/icones/user.svg" alt="icone d'utilisateur"><span><?= "Bienvenue " . $_SESSION['user']['firstname'] . " !" ?> </span></h2>
             <div class="dropdown">
