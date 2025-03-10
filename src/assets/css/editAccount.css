@@ -13,16 +13,16 @@ form {
     align-content: stretch;
     justify-content: center;
     gap: 1rem;
-    background-color: aqua;
+    /* background-color: aqua; */
     width: 30%;
     padding: 24px;
     border: 2px solid black;
-    border-radius: 10px;
+    border-radius: 12px;
 }
 
 form>.title{
     min-height: 10%;
-    background-color: yellow;
+    /* background-color: yellow; */
 }
 
 /* form>div {
@@ -36,10 +36,12 @@ form label {
 
 form input{
     width: 60%;
+    padding-left: 10px;
 }
 
 .submit{
     margin-top: auto;
+    padding: 10px;
     display: flex;
     justify-content: center;
 }

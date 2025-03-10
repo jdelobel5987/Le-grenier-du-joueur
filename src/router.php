@@ -1,12 +1,16 @@
 <?php
 
-session_start();
+// session_start();
 
 // useful functions/variables for MVC architecture, called here for availability on the whole site
+require 'utils/session.php';
 require 'utils/utils.php';
 require 'utils/variables.php';
 
 require 'secret/database.php';
+
+// check the user session (inactivity-based logout) before calling a controller
+checkUserSession();
 
 // get the path of the requested page
 $path = $_SERVER['REDIRECT_URL'];

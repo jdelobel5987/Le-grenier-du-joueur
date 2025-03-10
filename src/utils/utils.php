@@ -215,15 +215,17 @@ function userConnect() {
     $user = getUserByEmail(htmlspecialchars($login['email']));
 	
     if ($user && password_verify($login['password'], $user['password'])) {
-		$_SESSION['user'] = getUserById($user['id_users']);
+		session_start();
+        $_SESSION['user'] = getUserById($user['id_users']);
     } else {
 		$error['login'] = "Email ou mot de passe incorrect";
     }
 	
     // if valid credentials, proceed to user account
     if (empty($error)) {
-		header('Location: /user-account');
-        exit();
+        render('user-account');
+		// header('Location: /user-account');
+        // exit();
     } else {
 		render('connection', false, [
 			'error' => $error,
@@ -245,13 +247,10 @@ function isLogged() {
 
 // function containing the logout algorithm (no DB interaction)
 function userLogout() {
-    // unset session variables
-    $_SESSION = [];
-
-    // kill the session
+    // unset variables, kill the session and redirect to login
+    session_unset();
     session_destroy();
-
-    // redirection to login
+    setcookie(session_name(), '', time() - 3600, '/');
     header('Location: /connection');
     exit();
 }
@@ -262,9 +261,9 @@ function deleteAccount() {
         header('Location: /connection');
         exit();
     }
-
+    
     $userId = $_SESSION['user']['id_users'];
-
+    
     if (!empty($userId) && deleteUser($userId)) {
         unset($_SESSION['user']);
         session_destroy();
@@ -274,5 +273,25 @@ function deleteAccount() {
     } else {
         userLogout();
         echo "Un problème est survenu lors de la suppression de votre compte, veuillez vous reconnecter.";
+    }
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////// AUTO LOGOUT ////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
+
+// function for auto-logout after inactivity (default 300 seconds) (called in router before routing)
+function checkUserSession($inactivityLimit = 300) {
+    $currentTime = time();
+
+    if(isset($_SESSION['user'])) {
+        // check the time lapsed since last activity of the logged-in user, if above the limit: trigger logout
+        if(isset($_SESSION['last_activity']) && ($currentTime - $_SESSION['last_activity']) > $inactivityLimit) {
+            userLogout();
+        }
+
+        // session variable created at first routing for a logged-in user 
+        $_SESSION['last_activity'] = $currentTime;
     }
 }
