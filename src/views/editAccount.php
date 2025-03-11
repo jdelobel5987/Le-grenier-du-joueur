@@ -28,14 +28,13 @@
                         <i class="fa fa-edit"></i>
                     </button>
                 </div>
-                <div class="password">
+                <!-- <div class="password">
                     <label for="password">Mot de passe : </label>
                     <input id="password" name="password" type="password" value="<?=$_SESSION['user']['password'];?>">
-                    <!-- <input id="password" name="password" type="password" placeholder="••••••••••"> -->
                     <button type="submit" name="field" value="password">
                         <i class="fa fa-edit"></i>
                     </button>
-                </div>
+                </div> -->
                 <div class="phone">
                     <label for="phone">Téléphone : </label>
                     <input id="phone" name="phone" type="tel" value="<?=$_SESSION['user']['phone'];?>">

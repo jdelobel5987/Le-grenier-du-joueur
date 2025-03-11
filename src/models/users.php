@@ -168,7 +168,7 @@ function updateSingleField($id, $table, $field, $value) {
 function updateUserDetails($id, $fields) {
     $pdo = getConnexion();
     $sql = "UPDATE `ijen_users` 
-            SET `firstname` = :firstname, `lastname` = :lastname, `email` = :email, `password` = :password, `phone` = :phone, `communication` = :communication, `newsletter` = :newsletter 
+            SET `firstname` = :firstname, `lastname` = :lastname, `email` = :email, `phone` = :phone, `communication` = :communication, `newsletter` = :newsletter 
             WHERE `id_users` = :id";
     try {
         $stmt = $pdo->prepare($sql);
@@ -176,7 +176,6 @@ function updateUserDetails($id, $fields) {
         $stmt->bindParam(':firstname', $fields['firstname'], PDO::PARAM_STR);
         $stmt->bindParam(':lastname', $fields['lastname'], PDO::PARAM_STR);
         $stmt->bindParam(':email', $fields['email'], PDO::PARAM_STR);
-        $stmt->bindParam(':password', $fields['password'], PDO::PARAM_STR);
         $stmt->bindParam(':phone', $fields['phone'], PDO::PARAM_STR);
         $stmt->bindParam(':communication', $fields['communication'], PDO::PARAM_STR);
         $stmt->bindParam(':newsletter', $fields['newsletter'], PDO::PARAM_STR);

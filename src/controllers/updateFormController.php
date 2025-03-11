@@ -4,46 +4,39 @@
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require 'models/users.php';
 
-    foreach($_POST as $key => $value) {
-        $POST[$key] = htmlspecialchars($value);
-    }
-    $field = $_POST['field'];
     $id = $_SESSION['user']['id_users'];
+
+    // validate fields
+    $user = validateFields($_POST);
+    // var_dump($_POST);
+    // var_dump($user);
+
+    // identify the action (update all fields vs one field) and the submitted form
+    $field = $_POST['field'];
     
     if ($field === "all") {
         switch ($_POST['action']) {
             case 'userEdit':
                 // edit all fields in users table
-                $updateAll = updateUserDetails($id, $_POST);
-                // if ($updateAll) {
-                //     render('user-account', false, [
-                //         'updateMsg' => "informations de compte mises à jour avec succès"
-                //     ]);
-                // }
+                $updateAll = updateUserDetails($id, $user);
                 break;
 
             case 'addressEdit':
                 // edit all fields in addresses table
-                $updateAll = updateUserAddress($id, $_POST);
-                // if ($updateAll) {
-                //     render('user-account', false, [
-                //         'updateMsg' => "informations d'adresse mises à jour avec succès"
-                //     ]);
-                // }
+                $updateAll = updateUserAddress($id, $user);
                 break;
             
             default:
                 render('editAccount', false, [
                     'error' => "action inconnue"
                 ]);
-                // echo "action inconnue";
-        }  
+        }
     } else {
         // update single field
         $userTable = ['firstname', 'lastname', 'email', 'password', 'phone', 'communication', 'newsletter'];
         $addressTable = ['address', 'complement', 'zipcode', 'city'];
-        $table = in_array($field, $userTable) ? 'ijen_users' : (in_array($field, $addressTable) ? 'ijen_addresses' : 'false');
         
+        // define the table concerned by the update
         if (in_array($field, $userTable)) {
             $table = 'ijen_users';
         } elseif (in_array($field, $addressTable)) {
@@ -53,9 +46,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
         }
 
-        $value = htmlspecialchars($_POST[$field]);
+        // $value = htmlspecialchars($_POST[$field]);
+        // var_dump($_POST);
+        // var_dump($user);
 
-        $updateField = updateSingleField($id, $table, $field, $value);
+        // define the validated value for the update
+        $value = $user[$field] ?? null;
+
+        if($value !== null) {
+            $updateField = updateSingleField($id, $table, $field, $value);
+        } else {
+            echo "Champs invalide";
+        }
         // if ($updateField) {
         //     header("Location: user-account");
         //     exit();

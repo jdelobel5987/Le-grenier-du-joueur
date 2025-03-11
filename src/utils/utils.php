@@ -215,7 +215,9 @@ function userConnect() {
     $user = getUserByEmail(htmlspecialchars($login['email']));
 	
     if ($user && password_verify($login['password'], $user['password'])) {
-		session_start();
+		if(session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
         $_SESSION['user'] = getUserById($user['id_users']);
     } else {
 		$error['login'] = "Email ou mot de passe incorrect";
@@ -223,9 +225,9 @@ function userConnect() {
 	
     // if valid credentials, proceed to user account
     if (empty($error)) {
-        render('user-account');
-		// header('Location: /user-account');
-        // exit();
+        // render('user-account');
+		header('Location: /user-account');
+        exit();
     } else {
 		render('connection', false, [
 			'error' => $error,
@@ -294,4 +296,226 @@ function checkUserSession($inactivityLimit = 300) {
         // session variable created at first routing for a logged-in user 
         $_SESSION['last_activity'] = $currentTime;
     }
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////
+////////////////////// INPUT VALIDATION (EDIT ACCOUNT) //////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
+
+function validateFirstname($data) {
+    $namePattern = "/^[A-Za-zÀ-ÿ' ]+$/";
+    if (!empty($data['firstname'])) {
+        if (strlen($data['firstname']) <= 50) {
+            if(preg_match($namePattern, $data['firstname'])) {
+                // $user['firstname'] = htmlspecialchars($data['firstname']);
+                return htmlspecialchars($data['firstname']);
+            } else {
+                $error['firstname'] = 'le prénom ne peut contenir que les lettres, espaces et tirets';
+            }
+        } else {
+            $error['firstname'] = 'le prénom ne doit pas dépasser 50 caractères';
+        }
+    } else {
+        $error['firstname'] = 'Le prénom est requis';
+    }
+}
+function validateLastname($data) {
+    $namePattern = "/^[A-Za-zÀ-ÿ' ]+$/";
+    if (!empty($data['lastname'])) {
+        if (strlen($data['lastname']) <= 50) {
+            if(preg_match($namePattern, $data['lastname'])) {
+                // $user['lastname'] = htmlspecialchars($data['lastname']);
+                return htmlspecialchars($data['lastname']);
+            } else {
+                $error['lastname'] = 'le nom ne peut contenir que les lettres, espaces et tirets';
+            }
+        } else {
+            $error['lastname'] = 'le nom ne doit pas dépasser 50 caractères';
+        }
+    } else {
+        $error['lastname'] = 'Le nom est requis';
+    }
+}
+function validateEmail($data) {
+    if (!empty($data['email'])) {
+        if (filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+            // if (!userExists($data['email'])) {
+            //     // $user['email'] = htmlspecialchars($data['email']);
+            //     return htmlspecialchars($data['email']);
+            // } else {
+            //     $error['email'] = "Un compte avec cette adresse email existe déjà";
+            // }
+
+            // we won't validate upon non-existing email in DB because this is an account update, not a creation
+            // the user might update every fields but the email, and this should be authorized!
+            return htmlspecialchars($data['email']); 
+        } else {
+            $error['email'] = "L'adresse email n'est pas valide";
+        }
+    } else {
+        $error['email'] = "L'email est requis";
+    }
+}
+// function validatePassword($data) {
+//     $pwdPattern = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$/";
+//     if (!empty($data['password'])) {
+//         if (!preg_match($pwdPattern, $data['password'])) {
+//             $error['password'] = "Le mot de passe doit contenir entre 8 et 15 caractères dont au moins une minuscule, une majuscule, un chiffre et un caractère spécial parmi @,$,!,%,*,?,&";
+//         }
+//     } else {
+//         $error['password'] = "Le mot de passe est requis";
+//     }
+// }
+// function validateConfirmPassword($data) {
+//     $pwdPattern = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$/";
+//     if (!empty($data['pwdConfirm'])) {
+//         if (preg_match($pwdPattern, $data['pwdConfirm'])) {
+//             if ($data['pwdConfirm'] === $data['password']) {
+//                 $user['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+//             } else {
+//                 $error['password'] = "Le mot de passe et sa confirmation ne correspondent pas";
+//             }
+//         } else {
+//             $error['password'] = "Le mot de passe doit contenir entre 8 et 15 caractères dont au moins une minuscule, une majuscule, un chiffre et un caractère spécial parmi @,$,!,%,*,?,&";
+//         }
+//     } else {
+//         $error['password'] = "La confirmation du mot de passe est requise";
+//     }
+// }
+function validateAddress($data) {
+    $addressPattern = "/^[A-Za-zÀ-ÖØ-öø-ÿ0-9-,' ]+$/";
+    if (!empty($data['address'])) {
+        if (strlen($data['address']) <= 50) {
+            if(preg_match($addressPattern, $data['address'])) {
+                // $user['address'] = htmlspecialchars($data['address']);
+                return htmlspecialchars($data['address']);
+            } else {
+                $error['address']['main'] = "L'adresse comporte des caractères non autorisés";
+            }
+        } else {
+            $error['address']['main'] = "L'adresse ou son complément ne doivent pas dépasser 50 caractères";
+        }
+    } else {
+        $user['address']['main'] = NULL;
+    }
+}
+function validateComplement($data) {
+    $addressPattern = "/^[A-Za-zÀ-ÖØ-öø-ÿ0-9-,' ]+$/";
+    if (!empty($data['complement'])) {
+        if (strlen($data['complement']) <= 50) {
+            if(preg_match($addressPattern, $data['complement'])) {
+                // $user['complement'] = htmlspecialchars($data['complement']);
+                return htmlspecialchars($data['complement']);
+            } else {
+                $error['address']['complement'] = "L'adresse comporte des caractères non autorisés";
+            }
+        } else {
+            $error['address']['complement'] = "L'adresse ou son complément ne doivent pas dépasser 50 caractères";
+        }
+    } else {
+        $user['address']['complement'] = NULL;
+    }
+}
+function validateZipcode($data) {
+    $zipcodePattern = "/^[0-9]{5}$/";
+    if (!empty($data['zipcode'])) {
+        if (preg_match($zipcodePattern, $data['zipcode'])) {
+            // $user['zipcode'] = htmlspecialchars($data['zipcode']);
+            return htmlspecialchars($data['zipcode']);
+        } else {
+            $error['zipcode'] = "Le code postal doit être strictement composé de 5 chiffres";
+        }
+    } else {
+        $user['zipcode'] = NULL;
+    }
+}
+function validateCity($data) {
+    $cityPattern = "/^[A-Za-zÀ-ÿ' ]+$/";
+    if (!empty($data['city'])) {
+        if (strlen($data['city']) <= 50) {
+            if (preg_match($cityPattern, $data['city'])) {
+                // $user['city'] = htmlspecialchars($data['city']);
+                return htmlspecialchars($data['city']);
+            } else {
+                $error['city'] = "Le format du nom de ville est invalide";
+            }
+        } else {
+            $error['city'] = "Le nom de ville est limité à 50 charactères";
+        }
+    } else {
+        $user['city'] = NULL;
+    }
+}
+function validatePhone($data) {
+    $phonePattern = "/^0([67]\d{8}|([1-5]|9)\d{8})$/";
+    if (!empty($data['phone'])) {
+        if (preg_match($phonePattern, $data['phone'])) {
+            // $user['phone'] = htmlspecialchars($data['phone']);
+            return htmlspecialchars($data['phone']);
+        } else {
+            $error['phone'] = "Le format du numéro de téléphone est invalide (numéro national à 10 chiffres hors numéro en 08";
+        }
+    } else {
+        $user['phone'] = '';
+    }
+}
+function validateCommunication($data) {
+    $isMobilePhone = (substr($data['phone'], 0, 2) == '06' || substr($data['phone'], 0, 2) == '07');
+    switch ($data['communication']) {
+        case 'email':
+            // $user['communication'] = htmlspecialchars($data['communication']);
+            return htmlspecialchars($data['communication']);
+            break;
+        case 'sms':
+            if ($isMobilePhone) {
+                // $user['communication'] = htmlspecialchars($data['communication']);
+                return htmlspecialchars($data['communication']);
+                break;
+            } else {
+                $error['communication'] = "Le numéro de téléphone indiqué ne permet pas l'envoi de SMS. Veuillez choisir une autre option de communication ou revenir à l'étape précédente pour renseigner un numéro de téléphone compatible";
+            }
+        case 'both':
+            if ($isMobilePhone) {
+                // $user['communication'] = htmlspecialchars($data['communication']);
+                return htmlspecialchars($data['communication']);
+                break;
+            } else {
+                $error['communication'] = "Le numéro de téléphone indiqué ne permet pas l'envoi de SMS. Veuillez choisir une autre option de communication ou revenir à l'étape précédente pour renseigner un numéro de téléphone compatible";
+            }
+        case 'none':
+            // $user['communication'] = htmlspecialchars($data['communication']);
+            return htmlspecialchars($data['communication']);
+            break;
+        default:
+            $error['communication'] = "Valeur non valide";
+    }
+}
+function validateNewsletter($data) {
+    switch ($data['newsletter']) {
+        case 'true':
+            // $user['newsletter'] = htmlspecialchars($data['newsletter']);
+            return htmlspecialchars($data['newsletter']);
+            break;
+        case 'false':
+            // $user['newsletter'] = htmlspecialchars($data['newsletter']);
+            return htmlspecialchars($data['newsletter']);
+            break;
+        default:
+            $error['newsletter'] = "valeur non valide";
+    }
+}
+
+function validateFields($data) {
+    $user['firstname'] = isset($data['firstname']) ? validateFirstname($data) : null;
+    $user['lastname'] = isset($data['lastname']) ? validateLastname($data) : null;
+    $user['email'] = isset($data['email']) ? validateEmail($data) : null;
+    $user['phone'] = isset($data['phone']) ? validatePhone($data) : null;
+    $user['communication'] = isset($data['communication']) ? validateCommunication($data) : null;
+    $user['newsletter'] = isset($data['newsletter']) ? validateNewsletter($data) : null;
+    $user['address'] = isset($data['address']) ? validateAddress($data) : null;
+    $user['complement'] = isset($data['complement']) ? validateComplement($data) : null;
+    $user['zipcode'] = isset($data['zipcode']) ? validateZipcode($data) : null;
+    $user['city'] = isset($data['city']) ? validateCity($data) : null;
+    return $user;
 }
