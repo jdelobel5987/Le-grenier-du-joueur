@@ -3,6 +3,7 @@
 // exit();
 
 ob_start(); ?>
+        <?= isset($data['error']) ? $data['error'] : ''; ?>
         <?= $updateMsg ?? ''; ?>
         <div class="user-account">
             <h2><img src="assets/img/icones/user.svg" alt="icone d'utilisateur"><span><?= "Bienvenue " . $_SESSION['user']['firstname'] . " !" ?> </span></h2>
@@ -51,7 +52,8 @@ ob_start(); ?>
 
             <div class="container userContent">
                 <?php
-                    if((ACCOUNT_CARD_CONTENT) && is_array(ACCOUNT_CARD_CONTENT)) {
+                    // if((ACCOUNT_CARD_CONTENT) && is_array(ACCOUNT_CARD_CONTENT)) {
+                    if(($data['cardContent']) && is_array($data['cardContent'])) {
                         foreach(ACCOUNT_CARD_CONTENT as $section => $content) {
                             render('components/account_contentCard', true, [
                                 'name' => $section,

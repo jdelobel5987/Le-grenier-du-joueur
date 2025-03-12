@@ -44,7 +44,24 @@
     <main>
         <?= $data['content']; ?>
 
-        <div class="icon-bar">
+        <?php
+        if(isset($_SESSION['user'])) {
+            switch($_SESSION['user']['id_roles']) {
+                case '1':
+                    render('components/iconBar_admin', true);
+                    break;
+
+                case '2':
+                    render('components/iconBar', true);
+                    break;
+                default:
+            }
+        } else {
+            render('components/iconBar', true);
+        }
+        ?>
+
+        <!-- <div class="icon-bar">
             <div class="container-icon-bar">
                 <a href="/" class="icon" id="iconHome"><i class="fa-solid fa-house fa-2x"></i></a>
                 <a href="/products-search" class="icon" id="iconSearch"><i class="fa-solid fa-magnifying-glass fa-2x"></i></a>
@@ -52,7 +69,7 @@
                 <a href="/basket" class="icon" id="iconCart"><i class="fa-solid fa-cart-shopping fa-2x"></i></a>
                 <a href="/irl-store" class="icon" id="iconStore"><i class="fa-solid fa-dungeon fa-2x"></i></a>
             </div>
-        </div>
+        </div> -->
     </main>
 
     <footer>
