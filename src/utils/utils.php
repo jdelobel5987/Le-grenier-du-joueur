@@ -284,7 +284,7 @@ function deleteAccount() {
 /////////////////////////////////////////////////////////////////////////////////
 
 // function for auto-logout after inactivity (default 300 seconds) (called in router before routing)
-function checkUserSession($inactivityLimit = 300) {
+function checkUserSession($inactivityLimit = 600) {
     $currentTime = time();
 
     if(isset($_SESSION['user'])) {

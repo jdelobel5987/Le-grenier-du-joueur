@@ -5,7 +5,11 @@ if ($_SESSION['user']['id_roles'] !== 1) {
         'error' => "Vous n'avez pas les droits requis pour accèder au panneau d'administration."
     ]);
 } else {
-    render('adminBoard');
+    require 'models/users.php';
+    $users = getAllUsers();
+    render('adminBoard', false, [
+        'users' => $users
+    ]);
 }
 
 ?>

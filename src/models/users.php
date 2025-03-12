@@ -1,6 +1,6 @@
 <?php
 
-// // Récupérer tous les utilisateurs (id et nom uniquement)
+// Récupérer tous les utilisateurs (id et nom uniquement)
 // function getAllUsers() {
 //     $pdo = getConnexion();
 //     $sql = "SELECT id, nom FROM users";
@@ -14,8 +14,23 @@
 //     }
 // }
 
-// // Récupérer un utilisateur par son ID
+function getAllUsers() {
+    $pdo = getConnexion();
+    $sql = "SELECT ijen_users.id_users, firstname, lastname, email, phone, communication, newsletter, id_roles, address, complement, zipcode, city 
+            FROM `ijen_users` 
+            LEFT JOIN `ijen_addresses` 
+            ON `ijen_users`.`id_users` = `ijen_addresses`.`id_users`";
+    try {
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch(PDOException $e) {
+        echo "Erreur lors de la récupération des utilisateurs : " . $e->getMessage();
+        return false;
+    }
+}
 
+// Récupérer un utilisateur par son ID
 function getUserById($id) {
     $pdo = getConnexion();
     $sql = "SELECT * FROM `ijen_users` 
