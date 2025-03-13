@@ -20,20 +20,34 @@
         <h3>Base des comptes utilisateurs</h3>
         <!-- <p>CRUD utilisateurs</p> -->
 
-        <div class="subtabContent" id="create">
+        <div class="subtabs">            
+            <button class="subtabLink" data-target="read">Voir les utilisateurs</button>
+            <button class="subtabLink" data-target="create">Créer un utilisateur</button>
+            <button class="subtabLink" data-target="update">Modifier un utilisateur</button>
+            <button class="subtabLink" data-target="delete">Supprimer un utilisateur</button>
+        </div>
+        <br>
+
+        <div class="subtabContent" id="subtab-read">
+            test read<br><br>
             <?php
             // var_dump($users);
+            
+            // dynamic user table display
             if(count($users) > 0) {
                 echo "<table border='1'><thead><tr>";
-            
+                
+                // create table header = column names from DB ($users is a left join of users and addresses)
                 foreach(array_keys($users[0]) as $colname) {
                     echo "<th>" . htmlspecialchars($colname) . "</th>";
                 }
                 echo"</tr></thead><tbody>";
+            
+                // populate the table with $users data
                 foreach($users as $user) {
                     echo "<tr>";
                     foreach($user as $key => $value) {
-                        echo "<td align='center'>". htmlspecialchars($value ?? ''). "</td>";
+                        echo "<td align='center'>" . htmlspecialchars($value ?? '') . "</td>";
                     }
                     echo "</tr>";
                 }
@@ -43,16 +57,41 @@
                 echo "Aucun utilisateur trouvé";
             }
             ?>
+            <label for="id">sélectionner un utilisateur : </label>
+            <select name="id_users" id="id">
+                <?php
+            foreach($users as $user) {
+                echo "<option value='" . $user['id_users'] . "'>" . $user['id_users'] . "</option>";
+            }
+            ?>
+            </select><br>
         </div>
-        <br>
-        <div class="subtabs">
-            <button class="subtabLink" data-target="create">Créer un utilisateur</button>
-            <button class="subtabLink" data-target="read">Voir un/des utilisateurs</button>
-            <button class="subtabLink" data-target="update">Modifier un utilisateur</button>
-            <button class="subtabLink" data-target="delete">Supprimer un utilisateur</button>
+        <div class="subtabContent" id="subtab-create">
+            test create<br><br>
+            
         </div>
-
-        
+        <div class="subtabContent" id="subtab-update">
+            test update<br><br>
+            <label for="id">sélectionner un utilisateur : </label>
+            <select name="id_users" id="id">
+                <?php
+            foreach($users as $user) {
+                echo "<option value='" . $user['id_users'] . "'>" . $user['id_users'] . "</option>";
+            }
+            ?>
+            </select><br>
+        </div>
+        <div class="subtabContent" id="subtab-delete">
+            test delete<br><br>
+            <label for="id">sélectionner un utilisateur : </label>
+            <select name="id_users" id="id">
+                <?php
+            foreach($users as $user) {
+                echo "<option value='" . $user['id_users'] . "'>" . $user['id_users'] . "</option>";
+            }
+            ?>
+            </select><br>
+        </div>
     </div>
 
     <div class="tabContent" id="products">

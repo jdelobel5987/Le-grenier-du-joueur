@@ -2,49 +2,90 @@
   box-sizing: border-box;
 }
 
-.tabs {
-  float: left;
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Mobile-first layout */
+.tabs, .subtabs {
+  width: 100%;
   border: 1px solid #ccc;
   background-color: #f1f1f1;
-  width: 10%;
-  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  /* Handle small screens with overflow */
+  overflow-x: auto; 
 }
 
-.tabs button {
-  display: block;
+.tabs button, .subtabs button {
+  flex: 1;
+  text-align: center;
   background-color: inherit;
   color: black;
-  padding: 22px 16px;
-  width: 100%;
+  padding: 12px 8px;
   border: none;
   outline: none;
-  text-align: left;
   cursor: pointer;
   transition: 0.3s;
+  white-space: nowrap; /* Prevent buttons from wrapping */
 }
 
-.tabs button:hover {
+.tabs button:hover, .subtabs button:hover {
   background-color: #ccc;
   font-weight: bold;
 }
 
-.tabs button.active {
-  background-color: #ccc;
-  background-color: #406bc8; /* Couleur d'arrière-plan */
-  color: #eee; /* Couleur du texte */
+.tabs button.active, .subtabs button.active {
+  background-color: #406bc8;
+  color: #eee;
   font-weight: bold;
 }
 
-.tabContent {
-  float: left;
-  padding: 0px 12px;
+.tabContent, .subtabContent {
+  padding: 16px;
   border: 1px solid #ccc;
-  width: 90%;
-  border-left: none;
-  height: 100%;
+  width: 100%;
+  border-top: none;
   min-height: 300px;
 }
 
+/* Table styling */
 table {
+  width: 100%;
   border-collapse: collapse;
+}
+
+table th,
+table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+table th {
+  background-color: #f4f4f4;
+}
+
+/* Laptop and larger screen adjustments */
+@media screen and (min-width: 768px) {
+  .tabs {
+    float: left;
+    flex-direction: column;
+    width: 10%;
+    height: 100vh;
+  }
+
+  .tabs button {
+    text-align: left;
+    padding: 22px 16px;
+    flex: none;
+  }
+
+  .tabContent {
+    float: left;
+    width: 90%;
+    height: 100%;
+    border-left: none;
+  }
 }
