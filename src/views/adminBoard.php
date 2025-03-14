@@ -62,7 +62,7 @@
             <select name="id_users" id="id">
                 <?php
             foreach($users as $user) {
-                echo "<option value='" . $user['id_users'] . "'>" . $user['id_users'] . "</option>";
+                echo "<option value='" . $user['id'] . "'>" . $user['id'] . "</option>";
             }
             ?>
             </select><br>
@@ -142,7 +142,7 @@
             <select name="id_users" id="id">
                 <?php
             foreach($users as $user) {
-                echo "<option value='" . $user['id_users'] . "'>" . $user['id_users'] . "</option>";
+                echo "<option value='" . $user['id'] . "'>" . $user['id'] . "</option>";
             }
             ?>
             </select><br>
@@ -153,7 +153,7 @@
             <select name="id_users" id="id">
                 <?php
             foreach($users as $user) {
-                echo "<option value='" . $user['id_users'] . "'>" . $user['id_users'] . "</option>";
+                echo "<option value='" . $user['id'] . "'>" . $user['id'] . "</option>";
             }
             ?>
             </select><br>
@@ -162,7 +162,6 @@
 
     <div class="tabContent" id="products">
         <h3>Base des produits</h3>
-        <p>CRUD produits</p>
 
         <div class="subtabs">            
             <button class="subtabLink" data-target="readProduct">Voir les produits</button>
@@ -174,9 +173,18 @@
 
         <div class="subtabContent" id="subtab-readProduct">
             test read<br><br>
-            <?php
-            // var_dump($users);
             
+            <br><label for="title">sélectionner un produit : </label>
+            <select name="title_games" id="title">
+            <?php
+            foreach($products as $product) {
+                echo "<option value='" . $product['id'] . "'>" . $product['titre'] . "</option>";
+            }
+            ?>
+            </select><br><br>
+
+            <?php
+            // var_dump($products);
             // dynamic user table display
             if(isset($products) && count($products) > 0) {
                 echo "<table border='1'><thead><tr>";
@@ -201,15 +209,6 @@
                 echo "Aucun produit trouvé";
             }
             ?>
-
-            <br><label for="id">sélectionner un produit : </label>
-            <select name="id_games" id="id">
-                <?php
-            foreach($products as $product) {
-                echo "<option value='" . $product['id_games'] . "'>" . $product['id_games'] . "</option>";
-            }
-            ?>
-            </select><br>
         </div>
         <div class="subtabContent" id="subtab-createProduct">
             test create<br><br>
@@ -268,7 +267,7 @@
             <select name="id_games" id="id">
                 <?php
             foreach($products as $product) {
-                echo "<option value='" . $product['id_games'] . "'>" . $product['id_games'] . "</option>";
+                echo "<option value='" . $product['id'] . "'>" . $product['titre'] . "</option>";
             }
             ?>
             </select><br>
@@ -279,7 +278,7 @@
             <select name="id_games" id="id">
                 <?php
             foreach($products as $product) {
-                echo "<option value='" . $product['id_games'] . "'>" . $product['id_games'] . "</option>";
+                echo "<option value='" . $product['id'] . "'>" . $product['titre'] . "</option>";
             }
             ?>
             </select><br>

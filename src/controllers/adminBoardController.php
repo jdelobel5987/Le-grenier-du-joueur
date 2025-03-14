@@ -6,12 +6,13 @@ if ($_SESSION['user']['id_roles'] !== 1) {
     ]);
 } else {
     require 'models/users.php';
-    // require 'models/products.php'; // à créer
+    require 'models/products.php';
 
     $users = getAllUsers();
-    // $products = getAllProducts(); // à créer
+    $products = getAllProducts();
     render('adminBoard', false, [
-        'users' => $users
+        'users' => $users,
+        'products' => $products
     ]);
 }
 

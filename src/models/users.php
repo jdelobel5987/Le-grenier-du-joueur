@@ -16,7 +16,7 @@
 
 function getAllUsers() {
     $pdo = getConnexion();
-    $sql = "SELECT ijen_users.id_users, firstname, lastname, email, phone, communication, newsletter, id_roles, address, complement, zipcode, city 
+    $sql = "SELECT ijen_users.id_users AS id, firstname AS prénom, lastname AS nom, email, phone AS téléphone, communication, newsletter, id_roles AS rôle, `address` AS adresse, complement AS complément, zipcode AS CP, city AS ville 
             FROM `ijen_users` 
             LEFT JOIN `ijen_addresses` 
             ON `ijen_users`.`id_users` = `ijen_addresses`.`id_users`";
