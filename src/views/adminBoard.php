@@ -1,3 +1,16 @@
+<?php 
+
+if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_games'])) {
+    $id = $_POST['id_games'];
+    $game = getProductById($id);
+    // echo $id;
+    // var_dump($game);
+}
+
+$productUpdateTabActive = isset($game) ? 'active' : '';
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -212,50 +225,104 @@
         </div>
         <div class="subtabContent" id="subtab-createProduct">
             test create<br><br>
-            
+        
             <form action="adminAction" method="post">
                 <input type="hidden" name="DB_table" value="products">
                 <input type="hidden" name="action" value="create">
+
                 <div class="panel required">
                     <div class="field">
-                        <label for="name">Titre : </label>
-                        <input id="name" name="name" type="text" required>
+                        <label for="title">Titre : </label>
+                        <input id="title" name="title" type="text" required>
                     </div>
                     <div class="field">
                         <label for="price">Prix : </label>
                         <input id="price" name="price" type="text" required>
                     </div>
                     <div class="field">
-                        <label for="players">Nombre de joueurs : </label>
-                        <input id="players" name="players" type="text" required>
-                    </div>
-                    <div class="field">
-                        <label for="age">Âge minimal : </label>
-                        <input id="age" name="age" type="text" required>
-                    </div>
-                    <div class="field">
-                        <label for="duration">Durée estimée : </label>
-                        <input id="duration" name="duration" type="text" required>
-                    </div>
-                    <div class="field">
-                        <label for="createdAtYear">Année de création : </label>
-                        <input id="createdAtYear" name="createdAtYear" type="text" required>
-                    </div>
-                    <div class="field">
-                        <label for="createdAtMonth">Mois de création : </label>
-                        <input id="createdAtMonth" name="createdAtMonth" type="text" required>
-                    </div>
-                    <div class="field">
                         <label for="stock">Stock : </label>
                         <input id="stock" name="stock" type="text" required>
                     </div>
                     <div class="field">
-                        <label for="description">Description : </label>
-                        <textarea id="description" name="description" rows="" cols="" required></textarea>
+                        <label for="year_published">Année de création : </label>
+                        <input id="year_published" name="year_published" type="text" required>
                     </div>
                     <div class="field">
-                        <label for="difficulty">Difficulté : </label>
-                        <input id="difficulty" name="difficulty" type="text" required>
+                        <label for="month_published">Mois de création : </label>
+                        <select id="month_published" name="month_published" required>
+                            <?php
+                            for($i = 1; $i <= 12; $i++) {
+                                echo "<option value='" . $i . "'>" . $i . "</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="panel play">
+                    <div class="field">
+                        <label for="id_difficulty">Difficulté : </label>
+                        <select id="id_difficulty" name="id_difficulty" required>
+                            <?php
+                            foreach($difficulties as $difficulty) {
+                                echo "<option value='" . $difficulty['id_difficulty'] . "'>" . $difficulty['name'] . "</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="min_players">Joueurs_min : </label>
+                        <input id="min_players" name="min_players" type="text" required>
+                    </div>
+                    <div class="field">
+                        <label for="max_players">Joueurs_max : </label>
+                        <input id="max_players" name="max_players" type="text" required>
+                    </div>
+                    <div class="field">
+                        <label for="recommended_age">Âge minimal : </label>
+                        <input id="recommended_age" name="recommended_age" type="text" required>
+                    </div>
+                    <div class="field">
+                        <label for="playing_time">Durée estimée : </label>
+                        <input id="playing_time" name="playing_time" type="text" required>
+                    </div>                    
+                </div>
+
+                <div class="panel lore">    
+                    <div class="field">
+                        <label for="id_categories">Catégories (1+): </label>
+                        <select id="id_categories" name="id_categories" multiple>
+                            <?php
+                            foreach($categories as $category) {
+                                echo "<option value='" . $category['id_categories'] . "'>" . $category['name'] . "</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="id_themes">Thèmes (1+): </label>
+                        <select id="id_themes" name="id_themes" multiple>
+                            <?php
+                            foreach($themes as $theme) {
+                                if($theme['licensed'] === 'false') { // licensed is not a boolean in DB -> use brackets
+                                    echo "<option value='" . $theme['id_themes'] . "'>" . $theme['name'] . "</option>";
+                                }
+                            }
+                            ?>
+                            <optgroup label='Licences'>
+                            <?php
+                            foreach($themes as $theme) {
+                                if($theme['licensed'] === 'true') { // same comment, not a bool in DB
+                                    echo "<option value='" . $theme['id_themes'] . "'>" . $theme['name'] . "</option>";
+                                }
+                            }
+                            ?>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="description">Description : </label>
+                        <textarea id="description" name="description" rows="3" cols="" required></textarea>
                     </div>
                     <button type="submit">Enregistrer</button>
                 </div>
@@ -263,14 +330,122 @@
         </div>
         <div class="subtabContent" id="subtab-updateProduct">
             test update<br><br>
-            <label for="id">sélectionner un produit : </label>
-            <select name="id_games" id="id">
-                <?php
-            foreach($products as $product) {
-                echo "<option value='" . $product['id'] . "'>" . $product['titre'] . "</option>";
-            }
-            ?>
-            </select><br>
+            <form action="" method="post" id="updateProductForm">
+                <label for="id_games">sélectionner un produit : </label>
+                <select name="id_games" id="id_games">
+                    <?php
+                    foreach($products as $product) {
+                        $selected = (isset($game) && $product['id'] === $game['id_games']) ? 'selected' : '';
+                        echo "<option value='" . $product['id'] . "'" . $selected . ">" . $product['titre'] . "</option>";
+                    }
+                    ?>
+                </select>
+            </form><br><br>
+
+            <form action="adminAction" method="post">
+                <input type="hidden" name="DB_table" value="products">
+                <input type="hidden" name="action" value="update">
+                <input type="hidden" name="id_game" id="id_game" value="<?= isset($id) ? $id : '' ?>">
+
+                <div class="panel required">
+                    <div class="field">
+                        <label for="update_title">Titre : </label>
+                        <input id="update_title" name="title" type="text" value="<?= isset($game) ? $game['title'] : '' ?>" required>
+                    </div>
+                    <div class="field">
+                        <label for="update_price">Prix : </label>
+                        <input id="update_price" name="price" type="text" value="<?= isset($game) ? $game['price'] : '' ?>" required>
+                    </div>
+                    <div class="field">
+                        <label for="update_stock">Stock : </label>
+                        <input id="update_stock" name="stock" type="text" value="<?= isset($game) ? $game['stock'] : '' ?>" required>
+                    </div>
+                    <div class="field">
+                        <label for="update_year_published">Année de création : </label>
+                        <input id="update_year_published" name="year_published" type="text" value="<?= isset($game) ? $game['year_published'] : '' ?>" required>
+                    </div>
+                    <div class="field">
+                        <label for="update_month_published">Mois de création : </label>
+                        <select id="update_month_published" name="month_published" required>
+                            <?php
+                            for($i = 1; $i <= 12; $i++) {
+                                $selected = (isset($game) && $i === $game['month_published']) ? 'selected' : '';
+                                echo "<option value='" . $i . "'" . $selected . ">" . $i . "</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="panel play">
+                    <div class="field">
+                        <label for="update_id_difficulty">Difficulté : </label>
+                        <select id="update_id_difficulty" name="id_difficulty" required>
+                            <?php
+                            foreach($difficulties as $difficulty) {
+                                $selected = (isset($game) && $difficulty['id_difficulty'] === $game['id_difficulty']) ? 'selected' : '';
+                                echo "<option value='" . $difficulty['id_difficulty'] . "'" . $selected . ">" . $difficulty['name'] . "</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="update_min_players">Joueurs_min : </label>
+                        <input id="update_min_players" name="min_players" type="text" value="<?= isset($game) ? $game['min_players'] : '' ?>" required>
+                    </div>
+                    <div class="field">
+                        <label for="update_max_players">Joueurs_max : </label>
+                        <input id="update_max_players" name="max_players" type="text" value="<?= isset($game) ? $game['max_players'] : '' ?>" required>
+                    </div>
+                    <div class="field">
+                        <label for="update_recommended_age">Âge minimal : </label>
+                        <input id="update_recommended_age" name="recommended_age" type="text" value="<?= isset($game) ? $game['recommended_age'] : '' ?>" required>
+                    </div>
+                    <div class="field">
+                        <label for="update_playing_time">Durée estimée : </label>
+                        <input id="update_playing_time" name="playing_time" type="text" value="<?= isset($game) ? $game['playing_time'] : '' ?>" required>
+                    </div>                    
+                </div>
+
+                <div class="panel lore">    
+                    <div class="field">
+                        <label for="update_id_categories">Catégories (1+): </label>
+                        <select id="update_id_categories" name="id_categories" multiple>
+                            <?php
+                            foreach($categories as $category) {
+                                echo "<option value='" . $category['id_categories'] . "'>" . $category['name'] . "</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="update_id_themes">Thèmes (1+): </label>
+                        <select id="update_id_themes" name="id_themes" multiple>
+                            <?php
+                            foreach($themes as $theme) {
+                                if($theme['licensed'] === 'false') { // licensed is not a boolean in DB -> use brackets
+                                    echo "<option value='" . $theme['id_themes'] . "'>" . $theme['name'] . "</option>";
+                                }
+                            }
+                            ?>
+                            <optgroup label='Licences'>
+                            <?php
+                            foreach($themes as $theme) {
+                                if($theme['licensed'] === 'true') { // same comment, not a bool in DB
+                                    echo "<option value='" . $theme['id_themes'] . "'>" . $theme['name'] . "</option>";
+                                }
+                            }
+                            ?>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="update_description">Description : </label>
+                        <textarea id="update_description" name="description" rows="3" cols="" required><?= isset($game) ? $game['description'] : '' ?></textarea>
+                    </div>
+                    <button type="submit">Enregistrer</button>
+                </div>
+            </form>
         </div>
         <div class="subtabContent" id="subtab-deleteProduct">
             test delete<br><br>

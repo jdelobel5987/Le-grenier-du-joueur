@@ -8,11 +8,12 @@ if ($_SESSION['user']['id_roles'] !== 1) {
     require 'models/users.php';
     require 'models/products.php';
 
-    $users = getAllUsers();
-    $products = getAllProducts();
     render('adminBoard', false, [
-        'users' => $users,
-        'products' => $products
+        'users' => getAllUsers(),
+        'products' => getAllProducts(),
+        'difficulties' => getAllDifficulties(),
+        'categories' => getAllCategories(),
+        'themes' => getAllThemes()
     ]);
 }
 
