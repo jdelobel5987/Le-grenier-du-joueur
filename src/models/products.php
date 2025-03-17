@@ -17,6 +17,21 @@ function getAllProducts() {
     }
 }
 
+function getAllProductsWithMedia() {
+    $pdo = getConnexion();
+    $sql = "SELECT * FROM `ijen_games`
+            LEFT JOIN `ijen_media`
+            ON `ijen_games`.`id_games` = `ijen_media`.`id_games`";
+    try {
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch(PDOException $e) {
+        echo "Erreur lors de la récupération des produits : " . $e->getMessage();
+        return false;
+    }
+}
+
 function getProductById($id) {
     $pdo = getConnexion();
     $sql = "SELECT * FROM `ijen_games` WHERE `id_games` = ?";

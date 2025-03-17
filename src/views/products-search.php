@@ -94,151 +94,18 @@
         <div class="products">
             <div class="container-products">
                 <div class="cards row gx-3 gy-5">
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <a href="product-card.html" class="card h-100">
-                            <div class="card-image">
-                                <img src="assets/img/produits/bunny-kingdom.webp"
-                                    alt="image de la boîte du jeu Bunny Kingdom" class="card-img-top">
-                            </div>
-                            <div class="card-body">
-                                <p class="card-title">Bunny Kingdom</p>
-                                <!-- <p class="card-text">Description du jeu</p> -->
-                            </div>
-                            <div class="card-footer">
-                                <!-- <p class="card-price">50€</p> -->
-                                <button type="button" class="btn btn-primary">consulter</button>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <a href="product-card.html" class="card h-100">
-                            <div class="card-image">
-                                <img src="assets/img/produits/calico.webp" alt="image de la boîte du jeu Calico"
-                                    class="card-img-top">
-                            </div>
-                            <div class="card-body">
-                                <p class="card-title">Calico</p>
-                                <!-- <p class="card-text">Description du jeu</p> -->
-                            </div>
-                            <div class="card-footer">
-                                <!-- <p class="card-price">50€</p> -->
-                                <button type="button" class="btn btn-primary">consulter</button>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <a href="product-card.html" class="card h-100">
-                            <div class="card-image">
-                                <img src="assets/img/produits/cascadia.webp" alt="image de la boîte du jeu Cascadia"
-                                    class="card-img-top">
-                            </div>
-                            <div class="card-body">
-                                <p class="card-title">Cascadia</p>
-                                <!-- <p class="card-text">Description du jeu</p> -->
-                            </div>
-                            <div class="card-footer">
-                                <!-- <p class="card-price">50€</p> -->
-                                <button type="button" class="btn btn-primary">consulter</button>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <a href="product-card.html" class="card h-100">
-                            <div class="card-image">
-                                <img src="assets/img/produits/chateaux-de-bourgogne.webp"
-                                    alt="image de la boîte du jeu Châteaux de Bourgogne" class="card-img-top">
-                            </div>
-                            <div class="card-body">
-                                <p class="card-title">Châteaux de Bourgogne</p>
-                                <!-- <p class="card-text">Description du jeu</p> -->
-                            </div>
-                            <div class="card-footer">
-                                <!-- <p class="card-price">50€</p> -->
-                                <button type="button" class="btn btn-primary">consulter</button>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <a href="product-card.html" class="card h-100">
-                            <div class="card-image">
-                                <img src="assets/img/produits/esquisse.webp" alt="image de la boîte du jeu Esquissé?"
-                                    class="card-img-top">
-                            </div>
-                            <div class="card-body">
-                                <p class="card-title">Esquissé?</p>
-                                <!-- <p class="card-text">Description du jeu</p> -->
-                            </div>
-                            <div class="card-footer">
-                                <!-- <p class="card-price">50€</p> -->
-                                <button type="button" class="btn btn-primary">consulter</button>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <a href="product-card.html" class="card h-100">
-                            <div class="card-image">
-                                <img src="assets/img/produits/kingdomino.webp" alt="image de la boîte du jeu Kingdomino"
-                                    class="card-img-top">
-                            </div>
-                            <div class="card-body">
-                                <p class="card-title">Kingdomino</p>
-                                <!-- <p class="card-text">Description du jeu</p> -->
-                            </div>
-                            <div class="card-footer">
-                                <!-- <p class="card-price">50€</p> -->
-                                <button type="button" class="btn btn-primary">consulter</button>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <a href="product-card.html" class="card h-100">
-                            <div class="card-image">
-                                <img src="assets/img/produits/takenoko.webp" alt="image de la boîte du jeu Takenoko"
-                                    class="card-img-top">
-                            </div>
-                            <div class="card-body">
-                                <p class="card-title">Takenoko</p>
-                                <!-- <p class="card-text">Description du jeu</p> -->
-                            </div>
-                            <div class="card-footer">
-                                <!-- <p class="card-price">50€</p> -->
-                                <button type="button" class="btn btn-primary">consulter</button>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <a href="product-card.html" class="card h-100">
-                            <div class="card-image">
-                                <img src="assets/img/produits/ticket-to-ride.webp"
-                                    alt="image de la boîte du jeu Ticket to Ride" class="card-img-top">
-                            </div>
-                            <div class="card-body">
-                                <p class="card-title">Ticket to Ride</p>
-                                <!-- <p class="card-text">Description du jeu</p> -->
-                            </div>
-                            <div class="card-footer">
-                                <!-- <p class="card-price">50€</p> -->
-                                <button type="button" class="btn btn-primary">consulter</button>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <a href="product-card.html" class="card h-100">
-                            <div class="card-image">
-                                <img src="assets/img/produits/TURBULENCES_couverture_2020-600x600.jpg"
-                                    alt="image de la boîte du jeu Turbulences" class="card-img-top">
-                            </div>
-                            <div class="card-body">
-                                <p class="card-title">Turbulences</p>
-                                <!-- <p class="card-text">Description du jeu</p> -->
-                            </div>
-                            <div class="card-footer">
-                                <!-- <p class="card-price">50€</p> -->
-                                <button type="button" class="btn btn-primary">consulter</button>
-                            </div>
-                        </a>
-                    </div>
+                    <?php
+                    foreach($products as $product) {
+                        render('components/gameCard', true, [
+                            'thumbnail' => $product['pathThumbnail'],
+                            'fullImage' => $product['pathP1'],
+                            'title' => $product['title']
+                        ]);
+                    }
+                    ?>
                 </div>
+
+                    
             </div>
         </div>
 
