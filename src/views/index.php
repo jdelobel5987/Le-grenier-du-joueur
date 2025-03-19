@@ -64,115 +64,22 @@
         <div class="categories">
             <h2>Catégories</h2>
             <div class="row">
-                <div class="col-12 col-md-6 col-lg-3 mb-5">
-                    <div class="card h-100 shadow p-3 mb-5 bg-white rounded">
-                        <div class="card-header text-center fs-5 fw-bold">Pour enfants</div>
-                        <div class="card-body d-flex flex-column">
-                            <img src="assets/img/categories/Cat_enfants2.png" alt="image de catégorie jeux pour enfants"
-                                class="card-img-top">
-                            <p class="card-text">Des jeux ludiques et éducatifs pour éveiller l'imagination des plus
-                                jeunes tout en s'amusant.</p>
-                            <a href="#" class="btn mt-auto">Explorer</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-3 mb-5">
-                    <div class="card h-100 shadow p-3 mb-5 bg-white rounded">
-                        <div class="card-header text-center fs-5 fw-bold">Jeux de cartes</div>
-                        <div class="card-body d-flex flex-column">
-                            <img src="assets/img/categories/Cat_cartes2.png" alt="image de catégorie jeux de cartes"
-                                class="card-img-top">
-                            <p class="card-text">Construisez votre stratégie carte après carte dans ces jeux captivants
-                                et évolutifs.</p>
-                            <a href="#" class="btn mt-auto">Explorer</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-3 mb-5">
-                    <div class="card h-100 shadow p-3 mb-5 bg-white rounded">
-                        <div class="card-header text-center fs-5 fw-bold">Jeux de dés</div>
-                        <div class="card-body d-flex flex-column">
-                            <img src="assets/img/categories/Cat_des2.png" alt="image de catégorie jeux de dés"
-                                class="card-img-top">
-                            <p class="card-text">Laissez la chance et la stratégie décider de l'issue avec ces jeux
-                                dynamiques basés sur les dés.</p>
-                            <a href="#" class="btn mt-auto">Explorer</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-3 mb-5">
-                    <div class="card h-100 shadow p-3 mb-5 bg-white rounded">
-                        <div class="card-header text-center fs-5 fw-bold">Jeux classiques</div>
-                        <div class="card-body d-flex flex-column">
-                            <img src="assets/img/categories/Cat_classique2.png" alt="image de catégorie jeux classiques"
-                                class="card-img-top">
-                            <p class="card-text">Redécouvrez les incontournables qui traversent les générations et
-                                rassemblent tout le monde.</p>
-                            <a href="#" class="btn mt-auto">Explorer</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-3 mb-5">
-                    <div class="card h-100 shadow p-3 mb-5 bg-white rounded">
-                        <div class="card-header text-center fs-5 fw-bold">Jeux de réflexion</div>
-                        <div class="card-body d-flex flex-column">
-                            <img src="assets/img/categories/Cat_reflexion.webp"
-                                alt="image de catégorie jeux de réflexion" class="card-img-top">
-                            <p class="card-text">Mettez vos méninges à l'épreuve avec ces défis intellectuels
-                                passionants.</p>
-                            <a href="#" class="btn mt-auto">Explorer</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-3 mb-5">
-                    <div class="card h-100 shadow p-3 mb-5 bg-white rounded">
-                        <div class="card-header text-center fs-5 fw-bold">Jeux de rôles</div>
-                        <div class="card-body d-flex flex-column">
-                            <img src="assets/img/categories/Cat_jdr.png" alt="image de catégorie jeux de rôles"
-                                class="card-img-top">
-                            <p class="card-text">Plongez dans des univers immersifs et incarnez des personnages dans des
-                                aventures épiques.</p>
-                            <a href="#" class="btn mt-auto">Explorer</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-3 mb-5">
-                    <div class="card h-100 shadow p-3 mb-5 bg-white rounded">
-                        <div class="card-header text-center fs-5 fw-bold">Jeux de stratégie</div>
-                        <div class="card-body d-flex flex-column">
-                            <img src="assets/img/categories/Cat_strategie2.png"
-                                alt="image de catégorie jeux de stratégie" class="card-img-top">
-                            <p class="card-text">Planifiez, anticipez et dominez vos adversaires avec ces jeux exigeants
-                                et captivants.</p>
-                            <a href="#" class="btn mt-auto">Explorer</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-3 mb-5">
-                    <div class="card h-100 shadow p-3 mb-5 bg-white rounded">
-                        <div class="card-header text-center fs-5 fw-bold">Jeux d'ambiance</div>
-                        <div class="card-body d-flex flex-column">
-                            <img src="assets/img/categories/Cat_ambiance.png" alt="image de catégorie jeux d'ambiance"
-                                class="card-img-top">
-                            <p class="card-text">Créez des moments inoubliables avec des jeux drôles et interactifs
-                                parfaits pour les soirées.</p>
-                            <a href="#" class="btn mt-auto">Explorer</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-3 mb-5">
-                    <div class="card h-100 shadow p-3 mb-5 bg-white rounded">
-                        <div class="card-header text-center fs-5 fw-bold">Accessoires</div>
-                        <div class="card-body d-flex flex-column">
-                            <img src="assets/img/categories/Cat_accessoires.jpg"
-                                alt="image de catégorie accessoires de jeu" class="card-img-top">
-                            <p class="card-text">Complétez vos parties avec des accessoires essentiels pour une
-                                expérience de jeu optimale.</p>
-                            <a href="#" class="btn mt-auto">Explorer</a>
-                        </div>
-                    </div>
-                </div>
 
+                <?php
+
+                require('models/products.php');
+                $categories = getAllCategories();
+
+                foreach($categories as $category) {
+                    render('components/index_categoryCard', true, [
+                        'catName' => $category['name'],
+                        'catImage' => $category['image'],
+                        'catText' => $category['text']
+                    ]);  
+                }
+
+                ?>        
+                        
             </div>
         </div>
 
