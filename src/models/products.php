@@ -40,7 +40,51 @@ function getProductById($id) {
         $stmt->execute([$id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     } catch(PDOException $e) {
-        echo "Erreur lors de la récupération des produits : " . $e->getMessage();
+        echo "Erreur lors de la récupération du produit : " . $e->getMessage();
+        return false;
+    }
+}
+
+function getProductWithMediaById($id) {
+    $pdo = getConnexion();
+    $sql = "SELECT * FROM `ijen_games` 
+            JOIN `ijen_media` 
+            ON `ijen_games`.`id_games` = `ijen_media`.`id_games` 
+            WHERE `ijen_games`.`id_games` = ?";
+    try {
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    } catch(PDOException $e) {
+        echo "Erreur lors de la récupération du produit : " . $e->getMessage();
+        return false;
+    }
+}
+
+function getIdByTitle($title) {
+    $pdo = getConnexion();
+    $sql = "SELECT `id_games` FROM `ijen_games` WHERE `title` = ?";
+    try {
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$title]);
+        return $stmt->fetchColumn();
+        // return $stmt->fetch(PDO::FETCH_ASSOC);
+    } catch(PDOException $e) {
+        echo "Erreur lors de la récupération de l'Id du produit : " . $e->getMessage();
+        return false;
+    }
+}
+
+function getPlaylistFromGameId($id) {
+    $pdo = getConnexion();
+    $sql = "SELECT `pathMelodice` FROM `ijen_media` WHERE `id_games` = ?";
+    try {
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$id]);
+        // return $stmt->fetch(PDO::FETCH_ASSOC);
+        return $stmt->fetchColumn();
+    } catch(PDOException $e) {
+        echo "Erreur lors de la récupération de l'Id de playlist : " . $e->getMessage();
         return false;
     }
 }
@@ -66,7 +110,7 @@ function getAllCategories() {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     } catch(PDOException $e) {
-        echo "Erreur lors de la récupération des categories : " . $e->getMessage();
+        echo "Erreur lors de la récupération des catégories : " . $e->getMessage();
         return false;
     }
 }
