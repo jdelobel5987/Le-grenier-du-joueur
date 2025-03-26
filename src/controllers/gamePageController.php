@@ -1,17 +1,18 @@
 <?php
 
-if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['title'])) {
+if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['gameId'])) {
     require 'models/products.php';
-    $title = htmlspecialchars($_POST['title']);
-    $id = getIdByTitle($title);
+    $gameId = $_POST['gameId'];
+    $title = getProductById($gameId)['title'];
+    // $id = getIdByTitle(htmlspecialchars($title));
     
-    // echo $_POST['title'];
-    // echo($id);
+    // echo $_POST['gameId'];
+    // echo "id récupérée depuis \$_post" . $gameId;
 
     render('gamePage', false, [
+        'gameId' => $gameId,
         'title' => $title,
-        'gameId' => $id,
-        'playlistId' => getPlaylistFromGameId($id)
+        'playlistId' => getPlaylistFromGameId($gameId)
     ]);
 }
     

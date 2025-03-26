@@ -1,5 +1,8 @@
 // const playlistId = "TLGGp7HnS8DZ_XAxOTAzMjAyNQ";
-const playlistId = document.getElementById("playlistId").value;
+// const playlistId = document.getElementById("playlistId").value;
+const videoIdsString = document.getElementById("playlistId").value;
+let videoIds = videoIdsString.split(",");
+let currentIndex = 0;
 console.log(`playlist Id: ${playlistId}`);
 let player;
 
@@ -25,9 +28,10 @@ function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
         // height: '320',
         // width: '180',
+        videoId: videoIds[currentIndex],
         playerVars: {
-            listType: 'playlist',
-            list: playlistId,
+            // listType: 'playlist',
+            // list: playlistId,
             autoplay: 0,
             controls: 1,
             rel: 0,
@@ -47,8 +51,14 @@ window.addEventListener('resize', adjustPlayerSize);
 // Auto-loading of next video on the list
 function onPlayerStateChange(event) {
     if (event.data === YT.PlayerState.ENDED) {
-        console.log("Vidéo terminée, passage à la suivante...");
-        player.nextVideo();
+        // console.log("Vidéo terminée, passage à la suivante...");
+        // player.nextVideo();
+        currentIndex++;
+        if (currentIndex < videoIds.length) {
+            player.loadVideoById(videoIds[currentIndex]);
+        } else {
+            console.log("Vidéo terminée, passage à la suivante...");
+        }        
     }
 }
 
