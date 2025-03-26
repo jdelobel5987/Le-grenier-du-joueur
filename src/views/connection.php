@@ -1,5 +1,16 @@
-<?php ob_start(); ?>
+<?php
+// require 'utils/session.php'; 
+// $message = '';
+// if(isset($_SESSION['error_message'])) {
+//     $message = $_SESSION['error_message'];
+//     unset($_SESSION['error_message']);
+// }
 
+ob_start(); ?>
+        
+        <!-- <small style="color: red; margin-bottom: 20px;">
+            <?= $message ? htmlspecialchars($message) : "" ?>
+        </small> -->
         <form class="container-login" action="" method="POST">
             <input type="hidden" name="action" value="login">
             <h2>Connectez-vous</h2>
