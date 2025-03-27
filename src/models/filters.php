@@ -1,4 +1,7 @@
 <?php
+///////////////////////////////////////////////////////////////////////////
+///////////// functions relatives to product filtering ////////////////////
+///////////////////////////////////////////////////////////////////////////
 
 function getFilter($filter) {
     $allowedFilters = ['categories', 'themes', 'difficulties', 'games'];
@@ -44,12 +47,13 @@ function getUniqueOf($filter) {
 function getProductSelection($conditions, $params) {
 
     $pdo = getConnexion();
-    $sql = "SELECT * FROM `ijen_games` AS games
+    $sql = "SELECT games.*, media.* 
+            FROM `ijen_games` AS games
             JOIN `ijen_media` AS media
             ON games.id_games = media.id_games
-            JOIN `ijen_mood` AS mood
+            LEFT JOIN `ijen_mood` AS mood
             ON games.id_games = mood.id_games
-            JOIN `ijen_universe` AS universe
+            LEFT JOIN `ijen_universe` AS universe
             ON games.id_games = universe.id_games
             WHERE 1=1
             ";
@@ -57,6 +61,8 @@ function getProductSelection($conditions, $params) {
     if (!empty($conditions)) {
         $sql .= " AND " . implode(" AND ", $conditions);
     }
+
+    $sql .= " GROUP BY games.id_games";
 
     try {
         unset($stmt);   // empty cache from previous similar query

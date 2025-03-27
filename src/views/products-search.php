@@ -87,7 +87,7 @@
                 </div>
                 <div class="price col-12 col-md-8 col-lg-6">
                     <label for="max_price">Prix maximal : <span id="value"></span></label>
-                    <input type="range" name="max_price" id="max_price" value="50" min="0" max="150" step="10">
+                    <input type="range" name="max_price" id="max_price" value="150" min="0" max="150" step="10">
                 </div>
                 <div class="submit-button col-12 col-md-4 col-lg-12">
                     <label for="submit-filters"></label>

@@ -40,13 +40,13 @@ document.getElementById('filtersForm').addEventListener('submit', function(e) {
   const selects = form.getElementsByTagName('select');
   
   for (let i = 0; i < inputs.length; i++) {
-      if (inputs[i].value === inputs[i].min) {
-          form.delete(inputs[i].name);  // Supprime le paramètre si vide
+      if (inputs[i].value === inputs[i].min) { // only input here is a range 0-150 for maximum price
+          form.delete(inputs[i].name);  // if select min = 0, do not consider this filter (max price = 0)
       }
   }
 
   for (let i = 0; i < selects.length; i++) {
-    if (selects[i].value === "" || selects[i].value === null) {
+    if (selects[i].value === "" || selects[i].value === null) {  // if select is empty or null, do not consider the filter for DB request
       form.delete(selects[i].name);
     }
   }
