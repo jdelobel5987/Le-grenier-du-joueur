@@ -16,26 +16,26 @@ if($_SERVER['REQUEST_METHOD'] === "POST" && !empty($_POST['id_games']) && !empty
         exit();
     }
 
-    echo "test ajout wishlist ou panier";
-
+    // echo "test ajout wishlist ou panier";     
         
-        
+    require_once 'models/productUserAction.php';
+    
+    $gameId = (int) htmlspecialchars($_POST['id_games']);
+    // $userId = htmlspecialchars($_SESSION['user']['id_users']);
 
-
-        // require_once 'models/productUserAction.php';
-        
-        // $gameId = (int) htmlspecialchars($_POST['id_games']);
-               
-        // switch($_POST['action']) {
-        //     case 'toWishlist':
-        //         addToWishlist($gameId);
-        //         break;
-        //     case 'toCart':
-        //         addToCart($gameId);
-        //         break;
-        //     default:                    
-        // }
-                
+    switch($_POST['action']) {
+        case 'toWishlist':
+            $table = 'wishlist';
+            addProductTo($table, $gameId);
+            break;
+        case 'toCart':
+            $table = 'cart';
+            addProductTo($table, $gameId);
+            break;
+        default:                    
+    }
+    
+    header('Location: products-search');
 
 
 }
