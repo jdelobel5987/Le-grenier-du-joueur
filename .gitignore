@@ -3,6 +3,7 @@ database/
 script_DB/
 src/not_for_versioning/
 src/secret/
+tests/
 mvc.txt
 useDockerCompose.txt
 update_phpdoc.sh
@@ -10,3 +11,4 @@ how_to_phpdoc.txt
 .phpdoc/
 src_tree.md
 git_untrack_a_tracked_folder.txt
+hierarchy.md
