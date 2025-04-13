@@ -29,6 +29,8 @@ services:
       MYSQL_PASSWORD: password
       MYSQL_CHARSET: utf8mb4
       MYSQL_COLLATION: utf8mb4_general_ci
+    ports:
+      - '3306:3306'
     networks:
       - app-network
 
