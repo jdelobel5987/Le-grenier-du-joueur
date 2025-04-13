@@ -1,13 +1,11 @@
 <?php
 
-// session_start();
+// useful functions/variables for MVC architecture, called here for a constant availability
+require_once 'utils/session.php';
+require_once 'utils/utils.php';
+require_once 'utils/variables.php';
 
-// useful functions/variables for MVC architecture, called here for availability on the whole site
-require 'utils/session.php';
-require 'utils/utils.php';
-require 'utils/variables.php';
-
-require 'secret/database.php';
+require_once 'secret/database.php';
 
 // check the user session (inactivity-based logout) before calling a controller
 checkUserSession();

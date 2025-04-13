@@ -99,8 +99,8 @@
         <div class="products">
             <div class="container-products">
                 <div class="cards row gx-3 gy-5">
+
                     <?php
-                    // var_dump($products);
                     foreach($products as $product) {
                         render('components/gameCard', true, [
                             'thumbnail' => $product['pathThumbnail'],
@@ -110,12 +110,10 @@
                         ]);
                     }
                     ?>
-                </div>
-
                     
+                </div>                    
             </div>
         </div>
-
 
 <?php 
 

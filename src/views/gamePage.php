@@ -76,7 +76,7 @@ ob_start(); ?>
         <hr>
     <?php endif; ?>
     
-    <?php if(!empty($pathVideoRegles)): ?>
+    <?php if(!empty($pathVideoRegle)): ?>
         <h5>Plongez au cœur des mécaniques et stratégies avec cette vidéo explicative complète : maîtrisez les règles avant de faire de ce jeu une pièce maîtresse de votre collection !</h5>
         <iframe 
             src="https://www.youtube.com/embed/<?=htmlspecialchars($pathVideoRegle)?>" 

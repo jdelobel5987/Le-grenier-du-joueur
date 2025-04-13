@@ -3,6 +3,7 @@
 ///////////// functions relatives to user wishlist & cart//////////////////
 ///////////////////////////////////////////////////////////////////////////
 
+// add product to cart or wishlist
 function addProductTo($table, $gameId) {
     $pdo = getConnexion();
     
@@ -24,6 +25,7 @@ function addProductTo($table, $gameId) {
     }
 }
 
+// remove product from cart or wishlist
 function removeProductFrom($table, $gameId) {
     $pdo = getConnexion();
     

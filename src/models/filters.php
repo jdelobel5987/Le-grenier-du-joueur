@@ -3,6 +3,7 @@
 ///////////// functions relatives to product filtering ////////////////////
 ///////////////////////////////////////////////////////////////////////////
 
+// gather filter names for display in select form
 function getFilter($filter) {
     $allowedFilters = ['categories', 'themes', 'difficulties', 'games'];
     if(!in_array($filter, $allowedFilters)) {
@@ -24,6 +25,7 @@ function getFilter($filter) {
     }
 }
 
+// gather filter unique options for display in select form input
 function getUniqueOf($filter) {
     $allowedFilters = ['min_players', 'max_players', 'recommended_age', 'playing_time', 'price'];
     if(!in_array($filter, $allowedFilters)) {
@@ -44,6 +46,7 @@ function getUniqueOf($filter) {
     }
 }
 
+// gather filtered list of products
 function getProductSelection($conditions, $params) {
 
     $pdo = getConnexion();

@@ -7,8 +7,9 @@
 // function to display a view (by default) or a template when specified as 2nd argument
 // with possibility to pass data (empty array by default)
 function render($path, $template = false, $data = []) {
-	// Convertir les clés de $data en variables accessibles dans la vue
+    // gets the keys of $data and makes them available as variables
     extract($data);
+     
 	if ($template) {
 		require "templates/$path.php";
 	} else {

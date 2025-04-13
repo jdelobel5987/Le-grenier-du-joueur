@@ -5,8 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content= <?= isset($data['description']) ? $data['description'] : DEFAULT_DESCRIPTION; ?> >
-    <title><?= isset($data['title']) ? $data['title'] : 'Le Grenier du Joueur' ?></title>
+        content= 
+        <?= isset($data['description']) ? $data['description'] : DEFAULT_DESCRIPTION; ?> >
+    <title>
+        <?= isset($data['title']) ? $data['title'] : 'Le Grenier du Joueur' ?></title>
     <?php 
     if (isset($data['css'])) {
         foreach ($data['css'] as $css) {
@@ -14,7 +16,8 @@
         }
     }
     ?>
-    <script src="https://kit.fontawesome.com/e5fa1154d4.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/e5fa1154d4.js" 
+    crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -26,12 +29,12 @@
 
             <div class="container-searchbar">
                 <div class="searchBar">
-                    <!-- burger menu -->
                     <input class="input" type="text" placeholder="Rechercher un jeu">
-                    <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    <!-- icone de recherche -->
+                    <button type="submit">
+                        <i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>
             </div>
+
             <div class="connection">
                 <button type="button">
                     <i class="fa-solid fa-user"></i>
@@ -43,14 +46,12 @@
 
     <main>
         <?= $data['content']; ?>
-
         <?php
         if(isset($_SESSION['user'])) {
             switch($_SESSION['user']['id_roles']) {
                 case '1':
                     render('components/iconBar_admin', true);
                     break;
-
                 case '2':
                     render('components/iconBar', true);
                     break;
@@ -60,16 +61,16 @@
             render('components/iconBar', true);
         }
         ?>
-
     </main>
 
     <footer>
         <div class="container-footer">
             <p>Copyright © Julien Delobel 2024</p>
             <p>site fictif d'e-commerce: Le Grenier du Joueur</p>
-            <a href="./assets/pdf/Mentions_Légales_Le_Grenier_du_Joueur.pdf">Mentions légales</a>
-            <a href="./assets/pdf/Politique_de_Confidentialite_Le_Grenier_du_Joueur.pdf">Politiques de
-                confidentialité</a>
+            <a href="./assets/pdf/Mentions_Légales_Le_Grenier_du_Joueur.pdf">
+                Mentions légales</a>
+            <a href="./assets/pdf/Politique_de_Confidentialite_Le_Grenier_du_Joueur.pdf">
+                Politiques de confidentialité</a>
         </div>
     </footer>
 
@@ -105,5 +106,4 @@
     ?>
 
 </body>
-
 </html>
