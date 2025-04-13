@@ -2,7 +2,7 @@
 let screenWidth = window.innerWidth;
 console.log(screenWidth);
 
-// create an object containing screen width thresholds and corresponding classes to be used
+// create an array of objects containing screen width thresholds and corresponding classes to be used
 let thresholds = [
   { limit: 500, class: 'w-75' },
   { limit: 1000, class: 'w-50' },
@@ -11,9 +11,16 @@ let thresholds = [
 
 // define a function that applies the class to the image based on a given width
 function applyClass(img, width) {
-  thresholds.forEach(({ limit, class: className }) => {
-    img.classList.toggle(className, width <= limit);  // toggle = add if condition istrue, remove if condition is false
-  });
+  // delete previous classes
+  thresholds.forEach(({ class: className }) => img.classList.remove(className));
+  
+  // find first match of width <= limit amongst thresholds objects 
+  let firstMatch = thresholds.find(({ limit }) => width <= limit);
+  
+  // apply the corresponding class when a match is found
+  if(firstMatch) {
+    img.classList.add(firstMatch.class);
+  }
 }
 
 // call the applyClass function with the current screen width for each img of the carousel
