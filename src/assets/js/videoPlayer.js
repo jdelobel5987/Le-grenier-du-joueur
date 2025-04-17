@@ -24,7 +24,7 @@ function adjustPlayerSize() {
 }
 
 // Load youtube API
-function onYouTubeIframeAPIReady() {
+function onYouTubeIframeAPIReady() { // fonction obligatoire appelée par l'API youtube
     player = new YT.Player('player', {
         // height: '320',
         // width: '180',

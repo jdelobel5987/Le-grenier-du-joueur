@@ -66,10 +66,8 @@ ob_start(); ?>
 
     <?php if(!empty($pathLudoChrono)): ?>
         <h5>Un doute sur le jeu ? Appréhendez rapidement les règles pour vous faire votre avis !</h5>
-        <iframe 
+        <iframe class="videoRule"
             src="https://www.youtube.com/embed/<?=htmlspecialchars($pathLudoChrono)?>" 
-            width="300" 
-            height="150" 
             allowfullscreen
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share">
         </iframe>
@@ -78,10 +76,8 @@ ob_start(); ?>
     
     <?php if(!empty($pathVideoRegle)): ?>
         <h5>Plongez au cœur des mécaniques et stratégies avec cette vidéo explicative complète : maîtrisez les règles avant de faire de ce jeu une pièce maîtresse de votre collection !</h5>
-        <iframe 
+        <iframe class="videoRule"
             src="https://www.youtube.com/embed/<?=htmlspecialchars($pathVideoRegle)?>" 
-            width="300" 
-            height="150" 
             allowfullscreen
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share">
         </iframe>

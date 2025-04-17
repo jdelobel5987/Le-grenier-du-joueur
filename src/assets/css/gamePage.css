@@ -75,8 +75,13 @@
 }
 .videoFrame {
     margin: 0 auto;
-    max-width: 640px;
-    width: 80%;
+    /* max-width: 640px; */
+    width: min(80%, 640px);
+    aspect-ratio: 16/9;
+}
+
+.videoRule {
+    width: min(80%, 640px);
     aspect-ratio: 16/9;
 }
 
