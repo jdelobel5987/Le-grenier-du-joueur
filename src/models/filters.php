@@ -82,3 +82,18 @@ function getProductSelection($conditions, $params) {
         return false;
     }
 }
+
+// get a list of products based on user query
+function getProductByQuery($query){
+    $pdo = getConnexion();
+    
+    $sql = "SELECT games.*, media.*
+            FROM `ijen_games` AS games
+            LEFT JOIN `ijen_media` AS media
+            ON games.id_games = media.id_games
+            WHERE games.title LIKE :query";
+    
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([':query' => '%' . $query . '%']);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}

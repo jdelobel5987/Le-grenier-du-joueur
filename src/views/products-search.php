@@ -1,7 +1,8 @@
 <?php ob_start(); ?>
 
         <div class="container-filter">
-            <form action="" method="get" id="filtersForm" class="filters row gx-1 gy-3">
+            <form action="" method="GET" id="filtersForm" class="filters row gx-1 gy-3">
+                <input type="hidden" name="action" value="filter">
                 <h2 class="">Affiner ma recherche</h2>
                 <div class="col-6 col-md-4 col-lg-3">
                     <select name="category" id="category">

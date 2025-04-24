@@ -28,11 +28,12 @@
             </div>
 
             <div class="container-searchbar">
-                <div class="searchBar">
-                    <input class="input" type="text" placeholder="Rechercher un jeu">
+                <form action="products-search" method="GET" class="searchBar">
+                    <input type="hidden", name="action", value="search">
+                    <input class="input" type="text" name="query" placeholder="Rechercher un jeu" required>
                     <button type="submit">
                         <i class="fa-solid fa-magnifying-glass"></i></button>
-                </div>
+                </form>
             </div>
 
             <div class="connection">
