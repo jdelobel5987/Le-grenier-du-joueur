@@ -32,8 +32,9 @@ function removeProductFrom($table, $gameId) {
     $userId = htmlspecialchars($_SESSION['user']['id_users']);
     // $table = "ijen_".$table; 
 
-    $sql = "INSERT INTO `ijen_$table` (`id_users`, `id_games`) 
-            VALUES (:userId, :gameId)";
+    $sql = "DELETE FROM `ijen_$table` (`id_users`, `id_games`) 
+            WHERE `ijen_$table`.`id_users` = :userId 
+            AND `ijen_$table`.`id_games` = :gameId";
 
     try {
         $stmt = $pdo->prepare($sql);
@@ -46,8 +47,3 @@ function removeProductFrom($table, $gameId) {
         return false;
     }
 }
-
-
-// « DELETE FROM ijen_cart 
-// WHERE `ijen_cart`.`id_users` = 1 
-// AND `ijen_cart`.`id_games` = 559 »
