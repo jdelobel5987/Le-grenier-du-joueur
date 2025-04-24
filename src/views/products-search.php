@@ -102,13 +102,17 @@
                 <div class="cards row gx-3 gy-5">
 
                     <?php
-                    foreach($products as $product) {
-                        render('components/gameCard', true, [
-                            'thumbnail' => $product['pathThumbnail'],
-                            'fullImage' => $product['pathP1'],
-                            'title' => $product['title'],
-                            'gameId' => $product['id_games']
-                        ]);
+                    if(!empty($products)){
+                        foreach($products as $product) {
+                            render('components/gameCard', true, [
+                                'thumbnail' => $product['pathThumbnail'],
+                                'fullImage' => $product['pathP1'],
+                                'title' => $product['title'],
+                                'gameId' => $product['id_games']
+                            ]);
+                        }
+                    } else {
+                        echo "Aucun article ne correspond à la recherche effectuée.";
                     }
                     ?>
                     
