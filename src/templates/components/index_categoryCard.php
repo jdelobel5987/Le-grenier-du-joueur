@@ -5,7 +5,7 @@
             <img src="assets/img/categories/<?=$catImage?>" alt="image de catégorie <?=$catName?>"
                 class="card-img-top">
             <p class="card-text"><?=$catText?></p>
-            <a href="#" class="btn mt-auto">Explorer</a>
+            <a href="<?=$catLink?>" class="btn mt-auto">Explorer</a>
         </div>
     </div>
 </div>

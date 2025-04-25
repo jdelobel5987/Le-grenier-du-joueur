@@ -74,7 +74,8 @@
                     render('components/index_categoryCard', true, [
                         'catName' => $category['name'],
                         'catImage' => $category['image'],
-                        'catText' => $category['text']
+                        'catText' => $category['text'],
+                        'catLink' => "products-search?action=filter&category=" . $category['id_categories']
                     ]);  
                 }
 
