@@ -1,3 +1,5 @@
+<h2> 🚀 Le développement actuellement en cours est versionné dans la branche docker-MVC</h2>
+
 <b>Le Grenier du Joueur</b> est un projet de formation professionnelle en web development effectuée à LaManu en 2024-2025. Le nom fait évidemment référence au célèbre personnage du <b>Joueur du Grenier</b> bien connu de la communauté web et gaming.
 C'est mon premier veritable projet dev web et ma première véritable utilisation d'un système de versioning.
 
