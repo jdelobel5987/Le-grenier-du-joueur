@@ -2,7 +2,7 @@
 // const playlistId = document.getElementById("playlistId").value;
 const videoIdsString = document.getElementById("playlistId").value;
 let videoIds = videoIdsString.split(",");
-let currentIndex = 0;
+let currentIndex = 0; // rand(0, videoIds.length - 1); for alternative starting video at each page load
 console.log(`playlist Id: ${playlistId}`);
 let player;
 

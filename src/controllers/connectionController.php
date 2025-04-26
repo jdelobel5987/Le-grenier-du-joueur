@@ -25,5 +25,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // calls the connection view
     render('connection');
 }
-    
+
+// if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+//     require 'models/users.php';
+
+//     switch($_POST['action']) {
+//         case 'login':
+//             userConnect();
+//             break;
+
+//         case 'register':
+//             $user = dataValidation();
+//             $user ? registerToDB($user) : render('connection', false, ['error' => $error]);
+//             break;
+
+//         default:
+//             echo "Action inconnue";
+//             break;
+//     }
+// } else {
+//     // calls the connection view
+//     render('connection');
+// }
 ?>

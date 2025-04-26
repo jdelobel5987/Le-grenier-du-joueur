@@ -1,7 +1,7 @@
 <?php 
 
 // assign the user details
-define('ACCOUNT_CARD_CONTENT', [
+define('ACCOUNT_CARD_CONTENT', [    // define function used for defining a constant
     "details" => [
         'title' => "Mes informations personnelles",
         'fields' => [
