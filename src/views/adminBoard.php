@@ -22,6 +22,9 @@ $productUpdateTabActive = isset($game) ? 'active' : '';
 <body>
 
     <h1>Admin Board</h1>
+    <nav>
+        <a href="/" class="btn">Retour à l'acceuil </a>
+    </nav>
 
     <div class="tabs">
         <button class="tabLink" data-target="users">Utilisateurs</button>

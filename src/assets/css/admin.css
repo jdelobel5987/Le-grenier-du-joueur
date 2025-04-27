@@ -7,6 +7,13 @@ body {
   font-family: Arial, sans-serif;
 }
 
+.btn {
+  display: inline-block;
+  margin-bottom: 20px;
+  font-size: 18px;
+  text-decoration: none;
+}
+
 /* Mobile-first layout */
 .tabs, .subtabs {
   width: 100%;
