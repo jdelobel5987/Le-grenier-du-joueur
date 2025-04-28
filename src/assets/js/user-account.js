@@ -71,19 +71,13 @@ cards.forEach((card) => {
 //
 
 const deleteForm = document.getElementById('deleteAccountForm');
-const deleteButton = document.getElementById('deleteAccountButton');
-const confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
 const confirmDeletionButton = document.getElementById('confirmDeletion');
 
-// Afficher la modale au clic sur "Supprimer mon compte"
-deleteButton.addEventListener('click', function () {
-    confirmationModal.show();
-});
-
-// Soumettre le formulaire si l'utilisateur confirme la suppression
+// submit delete account form on user validation
 confirmDeletionButton.addEventListener('click', function () {
     deleteForm.submit();
 });
+
 
 
 // function showContent(content) {

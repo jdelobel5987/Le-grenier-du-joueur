@@ -29,8 +29,8 @@ ob_start(); ?>
                     <li>
                         <form method="POST" action="accountAction" id="deleteAccountForm">
                             <input type="hidden" name="action" value="deleteAccount">
-                            <!-- <button type="submit" class="dropdown-item" style="color: red">Supprimer mon compte</button> -->
-                            <button type="button" class="dropdown-item text-danger" id="deleteAccountButton">Supprimer mon compte</button>
+                            <!-- <button type="button" class="dropdown-item text-danger" id="deleteAccountButton">Supprimer mon compte</button> -->
+                            <button type="button" class="dropdown-item text-danger" data-bs-toggle="modal" data-bs-target="#confirmationModal">Supprimer mon compte</button>
                         </form>
                     </li>
                 </ul>
@@ -44,11 +44,12 @@ ob_start(); ?>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible.
+                            Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est <strong>irréversible</strong> oui oui.
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                            <button type="button" class="btn btn-danger" id="confirmDeletion">Supprimer</button>
+                            <!-- <button type="button" class="btn btn-danger" id="confirmDeletion">Supprimer</button> -->
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="confirmDeletion">Supprimer</button>
                         </div>
                     </div>
                 </div>
