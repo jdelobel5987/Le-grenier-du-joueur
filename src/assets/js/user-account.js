@@ -66,6 +66,26 @@ cards.forEach((card) => {
     });
 });
 
+//
+// delete account modal
+//
+
+const deleteForm = document.getElementById('deleteAccountForm');
+const deleteButton = document.getElementById('deleteAccountButton');
+const confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
+const confirmDeletionButton = document.getElementById('confirmDeletion');
+
+// Afficher la modale au clic sur "Supprimer mon compte"
+deleteButton.addEventListener('click', function () {
+    confirmationModal.show();
+});
+
+// Soumettre le formulaire si l'utilisateur confirme la suppression
+confirmDeletionButton.addEventListener('click', function () {
+    deleteForm.submit();
+});
+
+
 // function showContent(content) {
 //     const content = document.querySelectorAll('.content');
 //     content.forEach((element) => {

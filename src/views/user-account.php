@@ -14,25 +14,44 @@ ob_start(); ?>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <!-- <li><a class="dropdown-item" href="#">Paramètres</a></li> -->
                     <li>
-                        <form method="POST", action="accountAction">
+                        <form method="POST" action="accountAction">
                             <input type="hidden" name="action" value="edit">
                             <button type="submit" class="dropdown-item">Éditer mes informations</button>
                         </form>
                     </li>
                     <li>
-                        <form method="POST", action="accountAction">
+                        <form method="POST" action="accountAction">
                             <input type="hidden" name="action" value="logout">
                             <button type="submit" class="dropdown-item">Déconnexion</button>
                         </form>
                     </li>
                     <li> <hr> </li>
                     <li>
-                        <form method="POST", action="accountAction">
+                        <form method="POST" action="accountAction" id="deleteAccountForm">
                             <input type="hidden" name="action" value="deleteAccount">
-                            <button type="submit" class="dropdown-item" style="color: red">Supprimer mon compte</button>
+                            <!-- <button type="submit" class="dropdown-item" style="color: red">Supprimer mon compte</button> -->
+                            <button type="button" class="dropdown-item text-danger" id="deleteAccountButton">Supprimer mon compte</button>
                         </form>
                     </li>
                 </ul>
+            </div>
+
+            <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="confirmationModalLabel">Confirmer la suppression</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible.
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                            <button type="button" class="btn btn-danger" id="confirmDeletion">Supprimer</button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="container userCards">
