@@ -50,6 +50,14 @@
     /* text-align: center; */
 }
 
+#step3 .checkbox label {
+    display: inline;
+}
+#step3 .checkbox input {
+    display: inline;
+    width: auto;
+}
+
 .step #password, .step #pwdConfirm, #emailConnect, #passwordConnect {
     text-align: center
 }

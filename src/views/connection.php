@@ -118,6 +118,19 @@ ob_start(); ?>
                         <option value="false">Non</option>
                     </select>
                 </div>
+                <p>J'ai lu et j'accepte : </p>
+                <div class="checkbox">
+                    <input type="checkbox" name="acceptPrivacyPolicy" required>
+                    <label for="acceptPrivacyPolicy">
+                    la <a href="assets/pdf/Politique_de_Confidentialite_Le_Grenier_du_Joueur.pdf" target="_blank">politique de confidentialité</a>.
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <input type="checkbox" name="acceptTerms" required>
+                    <label for="acceptTerms">
+                    les <a href="assets/pdf/CGV_Le_Grenier_du_Joueur.pdf" target="_blank">conditions générales de vente</a>.
+                    </label>
+                </div>
             </div>
             <div class="buttons">
                 <button type="button" id="prevButton" disabled>Préc.</button>
