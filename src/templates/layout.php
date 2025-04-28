@@ -68,10 +68,12 @@
         <div class="container-footer">
             <p>Copyright © Julien Delobel 2024</p>
             <p>site fictif d'e-commerce: Le Grenier du Joueur</p>
-            <a href="./assets/pdf/Mentions_Légales_Le_Grenier_du_Joueur.pdf">
+            <a href="assets/pdf/Mentions_Légales_Le_Grenier_du_Joueur.pdf">
                 Mentions légales</a>
-            <a href="./assets/pdf/Politique_de_Confidentialite_Le_Grenier_du_Joueur.pdf">
+            <a href="assets/pdf/Politique_de_Confidentialite_Le_Grenier_du_Joueur.pdf">
                 Politiques de confidentialité</a>
+            <a href="assets/pdf/CGV_Le_Grenier_du_Joueur.pdf">
+                Conditions Générales de Vente</a>
         </div>
     </footer>
 
