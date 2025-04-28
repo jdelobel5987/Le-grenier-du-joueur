@@ -218,12 +218,10 @@ h2 {
 //////////////////////*/
 
 footer {
-    height: 200px;
+    height: fit-content;
     background-color: var(--myColBrown);
     color: var(--myColBckgnd);
-    /* display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between; */
+    padding-bottom: 60px;
 }
 
 .container-footer {
@@ -264,9 +262,6 @@ footer a {
     /* .icon-bar {
         display: none;
     } */
-    footer {
-        height: 150px;
-    }
     header {
         /* background-size: cover; */
         background-position: center;
