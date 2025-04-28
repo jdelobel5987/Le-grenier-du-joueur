@@ -86,11 +86,11 @@
                         <?php endforeach; ?>
                     </select>
                 </div>
-                <div class="price col-12 col-md-8 col-lg-6">
+                <div class="price col-12 col-md-8 col-lg-3">
                     <label for="max_price">Prix maximal : <span id="value"></span></label>
                     <input type="range" name="max_price" id="max_price" value="150" min="0" max="150" step="10">
                 </div>
-                <div class="submit-button col-12 col-md-4 col-lg-12">
+                <div class="submit-button col-12 col-md-12 col-lg-12">
                     <label for="submit-filters"></label>
                     <button type="submit" id="submit-filters">Filtrer</button>
                 </div>
