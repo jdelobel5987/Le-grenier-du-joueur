@@ -1,0 +1,278 @@
+:root {
+    --myColYellow: #d4af37;
+    --myColYellowHover: rgb(212, 165, 55);
+    --myColBrown: #8b5e3c;
+    --myColBckgnd: #fef5ea;
+    --myColBckgndOpacity: #fef5eacc;
+    --myColGrey: #b0b0b0cc;
+    --myColRed: #b22222;
+}
+
+body {
+    color: var(--myColBrown);
+    margin: 0;
+    padding: 0;
+    font-family: 'Fredoka One';
+    background-color: var(--myColBckgnd) !important;
+    height: 100vh;
+}
+
+/*/////////////////////
+        HEADER
+//////////////////////*/
+
+header {
+    display:flex;
+    /* gap: 40px; */
+    height: 200px;
+    background-image: url('../img/img_header.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container-header{
+    margin: auto;
+    width: 90%;
+    height: 90%;
+    display: flex;
+    /* justify-content: flex-start; */
+}
+
+.name {
+    align-self: center;
+    display: flex;
+    background-color: var(--myColGrey);
+    border-radius: 6px;
+    /* margin: 20px; */
+    /* height: 100%; */
+    width: 25%;
+    /* max-width: 150px; */
+}
+
+.name p {
+    font-size: 14px;
+    font-weight: bolder;
+    margin: auto;
+}
+
+.connection {
+    margin-bottom: 10px;
+    align-self: flex-end;
+    width: 20%;
+    height: 20%;
+    display: flex;
+    justify-content:flex-end;
+    /* display: flex; */
+    /* color: var(--myColBrown); */
+    /* font-weight: bolder; */
+    /* background-color: var(--myColYellow); */
+    /* border-radius: 6px; */
+    /* margin: 20px; */
+    /* height: 100%; */
+}
+
+.connection button {
+    background-color: var(--myColYellow);
+    color: var(--myColBrown);
+    border: 2px solid black;
+    font-weight: bolder;
+    border-radius: 6px;
+    display: flex;
+    flex-wrap:nowrap;
+    gap: 10px;
+    align-items: center;
+    /* margin: 0 auto; */
+    padding: 0 10px;
+    margin: 0 auto;
+    justify-self: center;
+}
+
+.container-searchbar {
+    margin: 10px;
+    align-self: flex-end;
+    justify-self: end;
+    display: flex;
+    justify-content: center;
+    width: 60%;
+    height: 20%;
+    /* border: 1px solid black; */
+}
+
+.searchBar {
+    /* margin: auto; */
+    /* height: 20%; */
+    width: 100%;
+    max-width: 800px;
+    background-color: var(--myColGrey);
+    font-weight: 900;
+    border-radius: 6px;
+    /* margin-bottom: 10px; */
+    /* margin-right: 10%; */
+    display: flex;
+}
+
+.input {
+    font-size: 12px;
+    margin: auto 10px;
+    width: 90%;
+    border-radius: 4px;
+    border: none;
+}
+
+.searchBar>button {
+    background-color: transparent;
+    border: none;
+    font-weight: bolder;
+    margin: auto 10px;
+}
+
+/*/////////////////////
+    MAIN CONTENT
+//////////////////////*/
+
+main {
+    min-height: calc(100vh - 200px - 150px);
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    /* height: 1600px; */
+    /* min-height: calc(100vh - hauteur du header - hauteur du footer) pour avoir le footer en bas de page même si la page n'a pas beaucoup de contenu*/ 
+}
+
+h2 {
+    text-align: center;
+    color: var(--myColBrown) !important;
+    font-weight: 900 !important;
+}
+
+/*/////////////////////
+        CAROUSEL
+//////////////////////*/
+
+.container-carousel {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.carousel img {
+    border-radius: 12px;
+}
+
+/*/////////////////////
+    CARDS CATEGORIES
+//////////////////////*/
+
+.categories {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.card-header {
+    background-color: var(--myColYellow) !important;
+    color: var(--myColBrown) !important;
+}
+
+.card-body .btn {
+    background-color: var(--myColYellow);
+    color: var(--myColBrown);
+    border: 2px solid var(--myColBrown);
+    font-weight: bolder;
+}
+
+.card-text {
+    text-align: justify;
+    /* text-wrap: balance; */
+}
+
+/*/////////////////////
+    ICON BAR MOBILE
+//////////////////////*/
+
+.icon-bar {
+    height: 50px;
+    color: var(--myColBrown);
+    background-color: var(--myColYellow);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.container-icon-bar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+}
+
+.icon {
+    color: var(--myColBrown);
+}
+
+/*/////////////////////
+        FOOTER
+//////////////////////*/
+
+footer {
+    height: fit-content;
+    background-color: var(--myColBrown);
+    color: var(--myColBckgnd);
+    padding-bottom: 60px;
+}
+
+.container-footer {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+footer a {
+    color: var(--myColBckgnd);
+}
+
+/*/////////////////////
+    RESPONSIVENESS
+//////////////////////*/
+
+@media screen and (min-width: 1024px) {
+    
+    header {
+        height: 200px;
+    }
+    .name p {
+        font-size: 20px;
+        font-weight: 900;
+        margin: auto;
+    }
+    .input {
+        font-size: 16px;
+    }
+    /* .icon-bar {
+        display: none;
+    } */
+}
+
+@media screen and (min-width: 768px) {
+    /* .icon-bar {
+        display: none;
+    } */
+    header {
+        /* background-size: cover; */
+        background-position: center;
+    }
+    .name {
+        width: 20%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .connection {
+        display: none;
+    }
+}

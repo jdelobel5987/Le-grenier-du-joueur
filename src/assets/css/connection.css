@@ -1,0 +1,247 @@
+.container-register, .container-login {
+    margin: 20px auto;
+    width: 80%;
+    display: grid;
+    gap: 15px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px #0000001a;
+}
+
+.step {
+    display: none;
+}
+
+.step.active {
+    display: block;
+}
+
+.step>p {
+    text-align: center;
+    color: var(--myColBrown);
+    font-weight: bolder;
+}
+
+#step3>.field {
+    display: block;
+    margin-bottom: 20px;
+}
+
+.step label, .login label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.field>i, .login>i{
+    position: absolute;
+    padding: 14px;
+    /* min-width: 40px; */
+}
+
+.step input, .login input {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    /* text-align: center; */
+}
+
+#step3 .checkbox label {
+    display: inline;
+}
+#step3 .checkbox input {
+    display: inline;
+    width: auto;
+}
+
+.step #password, .step #pwdConfirm, #emailConnect, #passwordConnect {
+    text-align: center
+}
+
+.pwdRules {
+    text-decoration: dashed underline;
+    cursor: help;
+}
+
+.pwdRules:hover {
+    text-decoration: none;
+}
+
+/* .step input:required:invalid {
+    border: 1px solid red;
+}
+
+.step input:required:valid {
+    border: 1px solid green;
+} */
+
+/* .valid:not(:required) {
+    border: 1px solid blue;
+} */
+
+.valid {
+    border: 1px solid green;
+}
+
+/* .invalid:not(:required) {
+    border: 1px dashed red;
+} */
+
+.invalid {
+    border: 1px solid red;
+}
+
+.invalid +.error {
+    color:red;
+}
+
+.valid +.error {
+    color: green;
+}
+
+/* .valid +.error>i {
+    position: absolute;
+} */
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.buttons>button, .container-login button {
+    padding: 8px 30px;
+    width: 50%;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--myColYellow);
+    color: var(--myColBrown);
+    cursor: pointer;
+}
+
+.container-login button {
+    width: 100%;
+}
+
+.buttons>button[disabled], .container-login button[disabled] {
+    background-color: var(--myColGrey);
+    cursor: not-allowed;
+}
+
+.buttons>button:hover:not([disabled]) {
+    background-color: var(--myColYellowHover);
+}
+
+.step-indicator {
+    display: flex;
+    justify-content: space-around;
+}
+
+.step-indicator span {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    text-align: center;
+    background-color: var(--myColGrey);
+    color: var(--myColBrown);
+}
+
+.step-indicator span.active {
+    background-color: var(--myColYellow);
+}
+
+@media screen and (min-width: 768px) {
+    .container-register, .container-login {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    body {
+        width: 100%;
+    }
+    main {
+        width: 80%;
+        margin: 20px auto;
+        display: flex;
+        align-content: center;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        justify-content: center;
+        gap: 100px;
+    }
+    .container-register, .container-login {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        height: fit-content;
+    }
+    .step.active {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .step.active>p, .step.active>small:not(.pwdRules) {
+        width: 100%;
+    }
+    #pwdHelpIcon {
+        margin: 4px 5px auto 20px;
+    }
+
+    /* :not(.field:nth-of-type(3)) */
+    .step.active>.field {
+        width: 50%;
+        display: box;
+        padding-left: 20px;
+        /* margin: auto; */
+    }
+    #step1>.field:nth-of-type(3) {
+        width: 100%;
+    }
+
+    .step.active label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    .step.active input {
+        display: block;
+        width: 90%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+    }
+    #step1>.field:nth-of-type(3)>input {
+        width: 95%;
+    }
+    .container-login button {
+        width: 60%;
+        margin: auto;
+    }
+    #step3>.field {
+        width: 100%;
+    }
+}
+
+/* @media screen and (min-width: 1440px) {
+    body {
+        width: 100%;
+    }
+    main {
+        width: 90%;
+        margin: 20px auto;
+        display: flex;
+        align-content: center;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        justify-content: center;
+    }
+    .container-register, .container-login {
+        width: 40%;
+        height:fit-content;
+    }
+} */

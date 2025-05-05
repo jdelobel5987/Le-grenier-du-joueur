@@ -1,0 +1,56 @@
+:root {
+    --myColYellow: #d4af37;
+    --myColYellowHover: rgb(212, 165, 55);
+    --myColBrown: #8b5e3c;
+    --myColBckgnd: #fef5ea;
+    --myColBckgndOpacity: #fef5eacc;
+    --myColGrey: #b0b0b0cc;
+    --myColRed: #b22222;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--myColBckgnd);
+    text-align: center;
+    padding: 50px;
+}
+
+h1 {
+    font-size: 50px;
+    color: #333;
+}
+
+p {
+    font-size: 20px;
+    color: #666;
+}
+
+.container {
+    background-color: var(--myColBckgndOpacity);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+}
+
+.meeple-icon {
+    width: 100px;
+    height: 100px;
+    transform:rotate(180deg);
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--myColBrown);
+    background-color: var(--myColYellow);
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background-color: var(--myColYellowHover);
+}
